@@ -1,0 +1,113 @@
+{% extends "socialsite/base.html" %}
+{% load static %}
+{% load webdesign %}
+{% block title %}Index{% endblock %}
+{% block headContent %}
+	<style>
+		body {
+			background-color: #ffffff;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<main id="index">
+		<section id="top-bar">
+			<div id="title">
+				<h1>Social Site Title</h1>
+			</div>
+			<div id="register-form" class="invisible">
+				<form method="post" action="{% url 'social:index' %}">
+					{% csrf_token %}
+					<h2>Register for Social Site</h2>
+					<br>
+					{% for field in registerUserForm.visible_fields %}
+						{{ field.help_text }}
+						{% if field.errors %}{{ field.errors }}{% endif %}
+						<br>
+						{{ field }}<br>
+					{% endfor %}
+					{% for field in registerUserProfileForm.visible_fields %}
+						{{ field.help_text }}
+						{% if field.errors %}{{ field.errors }}{% endif %}
+						<br>
+						{{ field }}<br>
+					{% endfor %}
+					<div class="form-button-container">
+						<input id="index-form-register-button" type="submit" name="submit" value="Register"/>
+						<div class="index-form-cancel-button">
+							Cancel
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="login-form" class="invisible">
+				<form method="post" action="{% url 'social:index' %}">
+					{% csrf_token %}
+					<h2>Please sign in</h2>
+					<br>
+					Username:<br>
+					<input type="text" name="username" value="" size="50" />
+					<br>
+					Password:<br>
+					<input type="password" name="password" value="" size="50" />
+					<br>
+					<br>
+					{% if badDetails or disabledAccount %}
+						<div id="incorrect-login">
+							{% if badDetails %}	
+								Your username and/or password were incorrect.
+								<br>
+							{% endif %}
+							{% if disabledAccount %}
+								Your account is currently disabled.
+								<br>
+							{% endif %}
+						</div>
+					{% endif %}
+					<div class="form-button-container">
+						<button id="index-form-login-button" type="submit" name="submit" value="Login">
+							Login
+						</button>
+						<div class="index-form-cancel-button">
+							Cancel
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+		<section id="register-buttons">
+			<div id="register-buttons-inner">
+				<div id="register-button">
+					Register
+				</div><div id="login-button">
+					Login
+				</div>
+			</div>
+		</section>
+		<section id="about">
+			<div id="about-inner">
+				<ul>
+					{% for i in "123" %}
+						<li>
+							<header>
+								<h3>{% lorem 3 w random %}</h3>
+							</header>
+							{% lorem 35 w random %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</section>
+	</main>
+	<footer id="footer">
+		&copy; Ben Cooper ・ 2014
+	</footer>
+{% endblock %}
+{% block script %}
+	{% if autoOpenTo %}
+		<script>
+			window.autoOpenTo = "{{ autoOpenTo }}";
+		</script>
+	{% endif %}
+	<script src="{% static 'js/index_register.js' %}"></script>
+{% endblock %}

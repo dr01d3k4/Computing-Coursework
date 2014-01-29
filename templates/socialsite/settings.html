@@ -1,0 +1,18 @@
+{% extends "socialsite/header_base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+	<form method="post" action="{% url 'social:settings' %}" enctype="multipart/form-data">
+		<h1>Profile Settings</h1>
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in userProfileSettingsForm.visible_fields %}
+			{{ field.help_text }}{% if field.help_text = "Select a profile image (optional):" %}{% if profileImageTooLarge %}<ul class="errorlist"><li>This image is too large</li></ul>{% endif %}{% endif %}
+			{% if field.errors %}{{ field.errors }}{% endif %}
+			<br>
+			{{ field }}<br>
+		{% endfor %}
+		<input id="settings-form-change-button" type="submit" name="submit" value="Accept Changes"/>
+	</form>
+{% endblock %}

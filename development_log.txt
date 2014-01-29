@@ -1,0 +1,114 @@
+2014/01/13 Monday
+- Project started
+- Database tables created (later modified)
+- Populate script for those tables written
+- HTML and CSS for profile page started
+- Index page started
+- Index page animation written
+
+
+2014/01/14 Tuesday
+- Register and login form classes written on server
+- Register form added to HTML
+- Index view now responds to POST for register
+- Login form added to HTML
+- Index view now responds to POST for login
+- Logout added on profile page
+- Graphical style of site changed
+
+
+2014/01/15 Wednesday
+- Profile page side bar created
+- Post section structure and CSS created using static content
+- Following database table added
+- Follow button added on profile page
+- Follow POST method written
+
+
+2014/01/16 Thursday
+- API folder created and URLs linked up
+- Creating JSON string from Python dictionary and sending through HTTP response tested
+- Wrote API for get-posts-by/username/
+- Wrote buildPostHtml function on client to parse JSON returned by get-posts-by API
+- Wrote API for get-replies-to/post-id/ and corropsonding CoffeeScript
+- Added animations on the client
+- Wrote API for get-post/post-id/
+- Added button and implementation on client for view full conversation
+
+
+2014/01/19 Sunday
+- Added APIs for getUsersFollowedBy, getFollowers and getPostsByUsersFollowedBy
+- Changed profile page to show posts in getPostsByUsersFollowedBy
+- Changed follow button to submit AJAX POST request, rather than use a HTML form so that the page doesn't refresh and close posts
+
+
+2014/01/20 Monday
+- Changed API code to use returnHttpJson decorator and refactored other parts
+- Added post reply box that appears wherever user clicks post reply
+- Added characters remaining text and colours
+- Wrote server side code for posting API
+- Client can now post replies to server, then display them like other posts
+
+
+2014/01/21 Tuesday
+- Delete post button added
+- Started work on post new post (not reply) button
+
+2014/01/22 Wednesday
+- A user now follows themselves by default (so they view their own posts)
+- Got new post button working
+- Deleted some test users and posts
+- Changed algorithm for getting replies to favour those already involved in conversation
+- Made profile page CSS mobile friendly
+- Adding no-JavaScript view
+
+
+2014/01/24 Friday
+- Started rewrite of CSS
+
+
+2014/01/25 Saturday
+- Finished rewrite of CSS
+
+
+2014/01/26 Sunday
+- Added browser download links to no script page
+- Moved lots of logic into decorators and model class
+
+
+2014/01/27 Monday
+- Added "isDeletable" to post to fix security issue
+- Changed client side code to reflect this
+- Began work on dialogue system
+- Created confirm dialogue
+- Changed delete post button to use confirm dialogue rather than built-in confirm function
+- Added view followers and followed buttons
+- View followers button now creates a dialogue
+- Added close button to dialogue
+- Created get followers API on server
+- View followers button now displays the full names from this API
+
+
+2014/01/28 Tuesday
+- Changed "H" button to "<"
+- Changed height of dialogue header to same height as site header
+- < and X buttons on these headers are now square with no padding in top left
+- Created settings page template
+- Added profile image, description and website fields to user profile model
+- Profile image and description now render on the profile page
+
+
+2014/01/29 Wednesday
+- Wrote HTML and SASS for settings page
+- Settings page now responds to POST method to update, though profile images don't work yet
+- Profile image uploading fixed
+- Now displays error message if profile image too large
+
+
+
+Plan for what to do next:
+- Maybe change view full conversation to be recursive and actually show the full conversation (both up and down), rather than just 1 layer up
+- Change the algorithm for ordering in get-replies-to/post-id/ - description of how it should work in details.txt
+- Maybe change the APIs to accept additional parameters for limiting amount of results
+	- The client shouldn't be rendering hundreds of posts/replies at once
+	- Only when they either click on view more or scroll down are more loaded

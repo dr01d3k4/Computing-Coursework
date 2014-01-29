@@ -1,0 +1,54 @@
+#content-outer {
+	display: block;
+	width: $site-width;
+	margin: 0px auto;
+	min-height: 100%;
+
+	background-color: $content-background-colour;
+
+	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour,
+		-$background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+
+	#content-inner {
+		padding-top: $header-height + $content-top-margin;
+		background-color: $white;
+		
+		@import "profile-about";
+
+		@import "posts";
+	}
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: $site-width) {
+	#content-outer {
+		width: $small-top-layer-width !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding-left: $small-top-layer-margin !important;
+		padding-right: $small-top-layer-margin !important;
+		box-shadow: 0px 0px 0px $black !important;
+
+		#content-inner {
+			#profile-about, #posts {
+				display: block !important;
+				float: none !important;
+				clear: both !important;
+				width: $small-top-layer-width !important;
+				margin: 0px auto !important;
+				padding-left: $small-top-layer-margin !important;
+				padding-right: $small-top-layer-margin !important;
+			}
+
+			#posts {
+				margin-top: $small-top-layer-vertical-margin !important;
+
+				.post-header, .post-footer {
+					height: auto !important;
+					min-height: $post-header-height !important;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{% extends "socialsite/base.html" %}
+{% block body %}
+	<header id="header">
+		<div id="inner-header">
+			{% if viewingUser != user %}<a id="home-button" href="{% url 'social:profile' %}">&lt;</a>{% endif %}
+			<h1 id="title">
+				{{ userProfile.fullName }}
+			</h1>
+			<h4 id="small-username">
+				@{{ user.username }}
+			</h4>
+			<div id="nav-container">
+				<nav id="nav" role="navigation">
+					<a id="menu-icon" href="#">Navigation</a>
+					<ul>
+						<li>
+							<a href="{% url 'social:profile' %}">Profile</a>
+						</li>
+						<li>
+							<a href="{% url 'social:settings' %}">Settings</a>
+						</li>
+						<li>
+							<a href="{% url 'social:logout' %}">Logout</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main id="content-outer">
+		<div id="content-inner">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</main>
+{% endblock %}

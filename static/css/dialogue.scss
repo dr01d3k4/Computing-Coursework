@@ -1,0 +1,104 @@
+.dialogue {
+	display: table;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	background-color: $dialogue-background-colour;
+
+	.dialogue-vertical-center-container {
+		width: 100%;
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+
+		.dialogue-container {
+			width: 90%;
+			max-width: $dialogue-width;
+			margin: {
+				left: auto;
+				right: auto;
+			};
+			padding: 0px;
+			background-color: $white;
+
+			.dialogue-header {
+				height: $dialogue-header-height;
+				background-color: $dark-grey;
+				box-shadow: 0px $background-shadow-size $background-shadow-spread $background-shadow-colour;
+
+				.dialogue-close-button {
+					@extend %clickable;
+					display: inline-block;
+					float: left;
+					width: $dialogue-header-height;
+					height: $dialogue-header-height;
+					line-height: $dialogue-header-height;
+					color: $white;
+					font-size: $dialogue-header-font-size;
+					text-align: center;
+				}
+
+				h1 {
+					line-height: $header-height;
+					color: $white;
+					font-size: $dialogue-header-font-size;
+					text-align: center;
+				}
+			}
+
+			.dialogue-content {
+				padding: $dialogue-content-padding;
+				padding-top: 0px;
+
+				p {
+					margin-top: $dialogue-content-paragraph-margin-vertical;
+					line-height: $dialogue-content-paragraph-line-height;
+					text-align: center;
+				}
+
+
+				.dialogue-button-container {
+					margin-top: $dialogue-content-paragraph-margin-vertical;
+
+					.dialogue-button {
+						@extend %clickable;
+						display: inline-block;
+						width: $dialogue-figure-width - (2 * $dialogue-figure-gutter);
+						margin: 0px $dialogue-figure-gutter;
+						padding: $dialogue-figure-padding;
+
+						figure {
+							display: inline-block;
+
+							img {
+								display: block;
+								width: $dialogue-figure-image-size;
+								height: $dialogue-figure-image-size;
+								margin: 0px auto;
+							}
+
+							figcaption {
+								margin-top: $dialogue-figure-caption-margin-top;
+								color: $white;
+								text-align: center;
+							}
+						}
+
+						&:first-of-type {
+							width: $dialogue-figure-width - $dialogue-figure-gutter;
+							margin-left: 0px;
+						}
+
+						&:last-of-type {
+							width: $dialogue-figure-width - $dialogue-figure-gutter;
+							margin-right: 0px;
+						}	
+					}
+				}
+			}
+		}
+	}
+}

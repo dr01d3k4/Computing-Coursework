@@ -1,0 +1,977 @@
+/*
+Order of properties:
+- position
+- display
+- float
+- clear
+- width
+- height
+- top
+- right
+- bottom
+- left
+- margin
+- padding
+- border
+- other layout
+- colour
+- font
+*/
+/* line 172, globals.scss */
+#index #top-bar .form-button-container #index-form-register-button, #index #top-bar .form-button-container #index-form-login-button, #index #top-bar .form-button-container .index-form-cancel-button, #index #register-buttons #register-buttons-inner #register-button, #index #register-buttons #register-buttons-inner #login-button, #header #inner-header #home-button, #header #inner-header #nav-container #nav #menu-icon, #header #inner-header #nav-container #nav ul li, #content-outer #content-inner #profile-about #profile-follow-button, #content-outer #content-inner #profile-about #profile-view-followers-button, #content-outer #content-inner #profile-about #profile-view-followed-button, #content-outer #content-inner #profile-about #profile-about-more-button, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button, form #settings-form-change-button {
+  color: #fefefe;
+  text-align: center;
+  background-color: #3a3a3a;
+  text-decoration: none;
+  box-shadow: 1px 1px 6px #3a3a3a;
+}
+/* line 179, globals.scss */
+#index #top-bar .form-button-container #index-form-register-button:hover, #index #top-bar .form-button-container #index-form-login-button:hover, #index #top-bar .form-button-container .index-form-cancel-button:hover, #index #register-buttons #register-buttons-inner #register-button:hover, #index #register-buttons #register-buttons-inner #login-button:hover, #header #inner-header #home-button:hover, #header #inner-header #nav-container #nav #menu-icon:hover, #header #inner-header #nav-container #nav ul li:hover, #content-outer #content-inner #profile-about #profile-follow-button:hover, #content-outer #content-inner #profile-about #profile-view-followers-button:hover, #content-outer #content-inner #profile-about #profile-view-followed-button:hover, #content-outer #content-inner #profile-about #profile-about-more-button:hover, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link:hover, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply:hover, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete:hover, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post:hover, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button:hover, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:hover, form #settings-form-change-button:hover, #index #top-bar .form-button-container #index-form-register-button:active, #index #top-bar .form-button-container #index-form-login-button:active, #index #top-bar .form-button-container .index-form-cancel-button:active, #index #register-buttons #register-buttons-inner #register-button:active, #index #register-buttons #register-buttons-inner #login-button:active, #header #inner-header #home-button:active, #header #inner-header #nav-container #nav #menu-icon:active, #header #inner-header #nav-container #nav ul li:active, #content-outer #content-inner #profile-about #profile-follow-button:active, #content-outer #content-inner #profile-about #profile-view-followers-button:active, #content-outer #content-inner #profile-about #profile-view-followed-button:active, #content-outer #content-inner #profile-about #profile-about-more-button:active, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link:active, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply:active, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete:active, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post:active, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button:active, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:active, form #settings-form-change-button:active {
+  cursor: pointer;
+  box-shadow: inset 2px 2px 6px #3a3a3a;
+  background-color: #545454;
+}
+
+/* line 187, globals.scss */
+.invisible {
+  display: none !important;
+}
+
+/* line 191, globals.scss */
+#index #top-bar input, form input {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid black;
+  line-height: 1;
+  text-align: left;
+}
+/* line 201, globals.scss */
+#index #top-bar input:focus, form input:focus {
+  background-color: #faff7e;
+}
+
+/* line 207, globals.scss */
+.errorlist {
+  list-style-type: none;
+  display: inline-block;
+  float: right;
+  color: red;
+  font-weight: bold;
+  font-size: 1em;
+}
+/* line 214, globals.scss */
+.errorlist li {
+  color: red;
+}
+
+/* line 1, fix-elements.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 13, fix-elements.scss */
+body {
+  line-height: 1;
+}
+
+/* line 19, fix-elements.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 25, fix-elements.scss */
+blockquote, q {
+  quotes: none;
+}
+/* line 28, fix-elements.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* line 36, fix-elements.scss */
+:focus {
+  outline: 0;
+}
+
+/* line 42, fix-elements.scss */
+ins {
+  text-decoration: none;
+}
+
+/* line 48, fix-elements.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 54, fix-elements.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 84, fix-elements.scss */
+* {
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  right: 0px;
+  border: 0px solid;
+  color: black;
+  font-size: 100%;
+  font-family: "lucidia", sans-serif;
+  text-decoration: none;
+  text-align: left;
+}
+/* line 87, fix-elements.scss */
+*:before {
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  right: 0px;
+  border: 0px solid;
+  color: black;
+  font-size: 100%;
+  font-family: "lucidia", sans-serif;
+  text-decoration: none;
+  text-align: left;
+}
+/* line 91, fix-elements.scss */
+*:after {
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  right: 0px;
+  border: 0px solid;
+  color: black;
+  font-size: 100%;
+  font-family: "lucidia", sans-serif;
+  text-decoration: none;
+  text-align: left;
+}
+
+/* line 98, fix-elements.scss */
+html, body {
+  position: absolute;
+  background-color: dodgerblue;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 107, fix-elements.scss */
+img {
+  display: block;
+}
+
+@media only and (min-width: 0px) and (max-width: 960px) {
+  /* line 114, fix-elements.scss */
+  body {
+    background-color: #ffffff !important;
+  }
+}
+/* line 1, index.scss */
+#index {
+  width: 100%;
+  background-color: #fefefe;
+}
+/* line 5, index.scss */
+#index #top-bar {
+  width: 100%;
+  height: 440px;
+  background-color: dodgerblue;
+}
+/* line 10, index.scss */
+#index #top-bar #title {
+  position: absolute;
+  width: 100%;
+  height: 440px;
+  z-index: 2;
+  background-color: #3a3a3a;
+  line-height: 220px;
+  vertical-align: middle;
+  box-shadow: 0px 1px 6px #3a3a3a;
+}
+/* line 20, index.scss */
+#index #top-bar #title h1 {
+  color: #fefefe;
+  font-size: 5em;
+  text-align: center;
+  font-weight: normal;
+}
+/* line 28, index.scss */
+#index #top-bar #register-form, #index #top-bar #login-form {
+  position: absolute;
+  width: 98%;
+  max-width: 436.364px;
+  height: 386px;
+  top: 46px;
+  left: 0px;
+  margin: 0px auto;
+  z-index: 1;
+  background-color: #fefefe;
+  box-shadow: 1px 1px 6px #3a3a3a;
+}
+/* line 49, index.scss */
+#index #top-bar h2 {
+  margin-top: 12px;
+  text-align: center;
+}
+/* line 54, index.scss */
+#index #top-bar form {
+  width: 305.455px;
+  margin: auto;
+}
+/* line 63, index.scss */
+#index #top-bar .form-button-container {
+  display: table;
+  height: 24px;
+  margin-top: 0px;
+  padding-left: 24px;
+}
+/* line 69, index.scss */
+#index #top-bar .form-button-container #index-form-register-button, #index #top-bar .form-button-container #index-form-login-button, #index #top-bar .form-button-container .index-form-cancel-button {
+  display: table-cell;
+  width: 108px;
+  height: 24px;
+  margin: 0px 44.727px 0px 0px;
+  padding: 0px;
+  border: 0px;
+  line-height: 24px;
+  vertical-align: middle;
+  font-size: 1em;
+}
+/* line 97, index.scss */
+#index #top-bar #incorrect-login {
+  margin-bottom: 16px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+}
+/* line 106, index.scss */
+#index #register-buttons {
+  width: 100%;
+  background-color: dodgerblue;
+}
+/* line 110, index.scss */
+#index #register-buttons #register-buttons-inner {
+  width: 960px;
+  margin: 0px auto;
+}
+/* line 114, index.scss */
+#index #register-buttons #register-buttons-inner #register-button, #index #register-buttons #register-buttons-inner #login-button {
+  display: inline-block;
+  width: 416px;
+  height: 50px;
+  margin: 20px 32px;
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+/* line 135, index.scss */
+#index #about {
+  width: 100%;
+  margin: 0px auto;
+  background-color: #fefefe;
+  box-shadow: 0px -1px 6px #3a3a3a;
+}
+/* line 141, index.scss */
+#index #about #about-inner {
+  max-width: 960px;
+  margin: 0px auto;
+}
+/* line 145, index.scss */
+#index #about #about-inner ul {
+  display: block;
+  padding: 22px 0px;
+  list-style-type: none;
+}
+/* line 150, index.scss */
+#index #about #about-inner ul li {
+  display: table-cell;
+  width: 288px;
+  padding: 0px 16px;
+  text-align: justify;
+}
+/* line 156, index.scss */
+#index #about #about-inner ul li header {
+  margin-bottom: 12px;
+}
+/* line 158, index.scss */
+#index #about #about-inner ul li header h3 {
+  font-size: 1.6em;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 960px) {
+  /* line 173, index.scss */
+  #index {
+    width: 100% !important;
+    margin: 0px;
+    padding: 0px;
+  }
+  /* line 178, index.scss */
+  #index #register-buttons {
+    width: 100% !important;
+  }
+  /* line 181, index.scss */
+  #index #register-buttons #register-buttons-inner {
+    width: 100% !important;
+    margin: 0px;
+    overflow: hidden;
+  }
+  /* line 186, index.scss */
+  #index #register-buttons #register-buttons-inner #register-button {
+    display: block;
+    width: 94% !important;
+    margin: 16px auto !important;
+  }
+  /* line 192, index.scss */
+  #index #register-buttons #register-buttons-inner #login-button {
+    display: block;
+    width: 94% !important;
+    margin: 16px auto !important;
+  }
+  /* line 200, index.scss */
+  #index #about {
+    width: 100% !important;
+    margin: 0px auto;
+  }
+  /* line 204, index.scss */
+  #index #about #about-inner {
+    width: 100% !important;
+    margin: 0px auto;
+  }
+  /* line 208, index.scss */
+  #index #about #about-inner ul {
+    list-style-type: none;
+  }
+  /* line 211, index.scss */
+  #index #about #about-inner ul li {
+    display: block;
+    clear: both;
+    width: 94% !important;
+    margin: 16px auto !important;
+    padding: 0px;
+  }
+}
+/* line 1, header.scss */
+#header {
+  position: fixed;
+  width: 100%;
+  height: 38px;
+  z-index: 2;
+  background-color: #3a3a3a;
+  box-shadow: 0px 1px 6px #3a3a3a;
+}
+/* line 9, header.scss */
+#header #inner-header {
+  width: 960px;
+  height: 100%;
+  margin: 0px auto;
+}
+/* line 14, header.scss */
+#header #inner-header #home-button {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  color: #fefefe;
+  font-size: 1.8em;
+  font-weight: normal;
+  text-align: center;
+}
+/* line 26, header.scss */
+#header #inner-header #title {
+  display: inline-block;
+  height: 100%;
+  line-height: 38px;
+  color: #fefefe;
+  font-size: 1.8em;
+  font-weight: normal;
+}
+/* line 36, header.scss */
+#header #inner-header #small-username {
+  position: relative;
+  display: inline-block;
+  top: 0px;
+  color: #fefefe;
+  font-size: 0.9em;
+  font-weight: normal;
+}
+/* line 45, header.scss */
+#header #inner-header #nav-container {
+  display: inline-block;
+  position: relative;
+  float: right;
+}
+/* line 50, header.scss */
+#header #inner-header #nav-container #nav {
+  float: right;
+  margin: 6px 0px;
+  padding: 0px;
+}
+/* line 55, header.scss */
+#header #inner-header #nav-container #nav #menu-icon {
+  display: none;
+}
+/* line 60, header.scss */
+#header #inner-header #nav-container #nav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+/* line 65, header.scss */
+#header #inner-header #nav-container #nav ul li {
+  display: table-cell;
+  margin: 0px;
+  padding: 0px;
+  border-left: 1px solid #fefefe;
+  border-right: 1px solid #fefefe;
+}
+/* line 75, header.scss */
+#header #inner-header #nav-container #nav ul li:first-child {
+  border-left: 0px;
+}
+/* line 79, header.scss */
+#header #inner-header #nav-container #nav ul li:last-child {
+  border-right: 0px;
+}
+/* line 83, header.scss */
+#header #inner-header #nav-container #nav ul li a {
+  display: table-cell;
+  width: 112px;
+  height: 26px;
+  margin: 0px;
+  padding: 0px;
+  line-height: 26px;
+  vertical-align: middle;
+  color: #fefefe;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 960px) {
+  /* line 105, header.scss */
+  #header {
+    position: fixed !important;
+    width: 100% !important;
+    margin: 0px;
+    padding: 0px;
+  }
+  /* line 111, header.scss */
+  #header #inner-header {
+    width: 100% !important;
+  }
+  /* line 114, header.scss */
+  #header #inner-header #nav-container {
+    width: 0px;
+    height: 0px;
+  }
+  /* line 118, header.scss */
+  #header #inner-header #nav-container #nav {
+    position: absolute;
+    display: block;
+    width: 134.4px;
+    top: 0px;
+    left: -140.4px;
+  }
+  /* line 125, header.scss */
+  #header #inner-header #nav-container #nav ul, #header #inner-header #nav-container #nav:active ul {
+    position: relative;
+    display: none;
+    width: 134.4px;
+    max-height: 240px;
+    margin-top: 26px;
+  }
+  /* line 133, header.scss */
+  #header #inner-header #nav-container #nav li {
+    display: block !important;
+    width: 100% !important;
+    height: 52px;
+    margin: 0px !important;
+    padding: 0px !important;
+    border: 0px solid !important;
+    border-top: 1px solid #fefefe !important;
+    line-height: 52px !important;
+    text-align: center !important;
+  }
+  /* line 144, header.scss */
+  #header #inner-header #nav-container #nav li a {
+    display: inline-block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    border: 0px solid  !important;
+    line-height: 52px !important;
+    font-size: 1.3em !important;
+    text-align: center !important;
+  }
+  /* line 158, header.scss */
+  #header #inner-header #nav-container #nav:active, #header #inner-header #nav-container #nav:active ul, #header #inner-header #nav-container #nav:hover ul {
+    display: block;
+  }
+  /* line 161, header.scss */
+  #header #inner-header #nav-container #nav:active:hover, #header #inner-header #nav-container #nav:active ul:hover, #header #inner-header #nav-container #nav:hover ul:hover {
+    display: block;
+  }
+  /* line 166, header.scss */
+  #header #inner-header #nav-container #nav #menu-icon {
+    display: inline-block !important;
+    float: right;
+    width: 134.4px;
+    height: 26px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px solid;
+    z-index: 8;
+    line-height: 26px;
+    font-size: 1.3em;
+  }
+}
+/* line 1, content.scss */
+#content-outer {
+  display: block;
+  width: 960px;
+  margin: 0px auto;
+  min-height: 100%;
+  background-color: #fefefe;
+  box-shadow: 1px 1px 6px #3a3a3a, -1px 1px 6px #3a3a3a;
+}
+/* line 12, content.scss */
+#content-outer #content-inner {
+  padding-top: 54px;
+  background-color: #fefefe;
+}
+/* line 1, profile-about.scss */
+#content-outer #content-inner #profile-about {
+  display: inline-block;
+  float: left;
+  width: 196px;
+  margin-left: 9.6px;
+  padding: 12px;
+  background-color: gainsboro;
+  box-shadow: 1px 1px 6px #3a3a3a;
+}
+/* line 10, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-picture {
+  width: 196px;
+  height: 196px;
+  margin: auto auto;
+  background-color: #3a3a3a;
+  color: #fefefe;
+  line-height: 196px;
+  text-align: center;
+}
+/* line 20, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-viewing-fullname {
+  margin: 6px 0px;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: center;
+}
+/* line 29, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-viewing-username {
+  margin-bottom: 6px;
+  font-weight: normal;
+  text-align: center;
+}
+/* line 35, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-content, #content-outer #content-inner #profile-about #profile-about-more {
+  font-size: 0.8em;
+  text-align: justify;
+}
+/* line 40, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-follow-button, #content-outer #content-inner #profile-about #profile-view-followers-button, #content-outer #content-inner #profile-about #profile-view-followed-button, #content-outer #content-inner #profile-about #profile-about-more-button {
+  display: block;
+  margin: 12px auto 6px;
+  padding: 4px;
+  font-size: 0.8em;
+  text-align: center;
+}
+/* line 53, profile-about.scss */
+#content-outer #content-inner #profile-about .profile-follow-button-followed {
+  background-color: dodgerblue !important;
+}
+/* line 65, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-more-button {
+  margin-bottom: 0px;
+}
+/* line 70, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-more {
+  padding: 4px;
+  border: 1px solid black;
+}
+/* line 75, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-more li {
+  line-height: 1.3;
+}
+/* line 78, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-more li a {
+  color: #005db7;
+}
+/* line 81, profile-about.scss */
+#content-outer #content-inner #profile-about #profile-about-more li a:hover, #content-outer #content-inner #profile-about #profile-about-more li a:active {
+  text-decoration: underline;
+}
+/* line 1, posts.scss */
+#content-outer #content-inner #posts {
+  display: inline-block;
+  float: right;
+  width: 695.2px;
+  margin-right: 9.6px;
+  padding: 8px;
+  background-color: gainsboro;
+}
+/* line 9, posts.scss */
+#content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container, #content-outer #content-inner #posts #posts-inner .post .post-header, #content-outer #content-inner #posts #posts-inner .post .post-footer, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer {
+  display: block;
+  height: auto;
+  padding: 2px 2px;
+  line-height: auto;
+  vertical-align: middle;
+  overflow: hidden;
+  background-color: gainsboro;
+}
+/* line 19, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply, #content-outer #content-inner #posts .post-small-text-left, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post, #content-outer #content-inner #posts .post-small-text-right, #content-outer #content-inner #posts #posts-inner .post .post-header .post-date {
+  display: inline-block;
+  height: 18px;
+  margin: 2px auto;
+  padding: 0px 4px;
+  line-height: 18px;
+  font-size: 0.9em;
+}
+/* line 28, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply, #content-outer #content-inner #posts .post-small-text-left {
+  float: left;
+  margin-left: 6px;
+}
+/* line 34, posts.scss */
+#content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post, #content-outer #content-inner #posts .post-small-text-right, #content-outer #content-inner #posts #posts-inner .post .post-header .post-date {
+  float: right;
+  margin-right: 6px;
+}
+/* line 50, posts.scss */
+#content-outer #content-inner #posts .post-small-text-left {
+  display: inline;
+  margin-left: 4px;
+  font-size: 0.8em;
+}
+/* line 57, posts.scss */
+#content-outer #content-inner #posts .post-small-text-right {
+  display: inline;
+  margin-right: 4px;
+  font-size: 0.8em;
+}
+/* line 64, posts.scss */
+#content-outer #content-inner #posts #post-new-post-button-outer-container {
+  border: 1px solid black;
+  border-bottom: 0px;
+  margin-bottom: 22px;
+}
+/* line 69, posts.scss */
+#content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container {
+  border-bottom: 1px solid black;
+  background-color: dodgerblue;
+}
+/* line 79, posts.scss */
+#content-outer #content-inner #posts #post-new-post-button-outer-container #post-reply-box {
+  border-bottom: 1px solid black;
+}
+/* line 85, posts.scss */
+#content-outer #content-inner #posts #posts-inner #post-top-layer {
+  margin-left: -22px;
+}
+/* line 89, posts.scss */
+#content-outer #content-inner #posts #posts-inner #post-top-layer:empty:after {
+  margin-left: 22px;
+  content: "No posts";
+}
+/* line 96, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post-container {
+  margin-bottom: 16px;
+  margin-left: 22px;
+}
+/* line 102, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post-container:last-child {
+  margin-bottom: 0px;
+}
+/* line 107, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post {
+  border: 1px solid black;
+  background-color: gainsboro;
+}
+/* line 121, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation .post-is-reply-to-id {
+  display: none;
+}
+/* line 126, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-header .post-date {
+  padding: 0px;
+}
+/* line 132, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-content {
+  display: block;
+  min-height: 18px;
+  padding: 6px;
+  background-color: #fefefe;
+}
+/* line 138, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-content .post-reply-to-username {
+  color: #005db7;
+}
+/* line 141, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post .post-content .post-reply-to-username:hover, #content-outer #content-inner #posts #posts-inner .post .post-content .post-reply-to-username:active {
+  text-decoration: underline;
+}
+/* line 165, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post-replies:not(:empty) {
+  padding-bottom: 16px;
+  box-shadow: 1px 1px 6px #3a3a3a;
+}
+/* line 170, posts.scss */
+#content-outer #content-inner #posts #posts-inner .post-replies > .post-container:first-child > .post {
+  border-top: 0px solid !important;
+}
+/* line 175, posts.scss */
+#content-outer #content-inner #posts #posts-inner #post-reply-box {
+  border-top: 1px solid black;
+}
+/* line 180, posts.scss */
+#content-outer #content-inner #posts .post-id-meta {
+  display: none;
+}
+/* line 184, posts.scss */
+#content-outer #content-inner #posts #post-reply-box {
+  display: block;
+  background-color: gainsboro;
+}
+/* line 188, posts.scss */
+#content-outer #content-inner #posts #post-reply-box #post-reply-box-content {
+  display: block;
+  padding: 6px;
+  background-color: #fefefe;
+}
+/* line 193, posts.scss */
+#content-outer #content-inner #posts #post-reply-box #post-reply-box-content #post-reply-box-text-box {
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin: 0px;
+  padding: 0px;
+  min-height: 17px;
+  height: 34px;
+  max-height: 68px;
+  font-family: sans-serif;
+}
+/* line 210, posts.scss */
+#content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container {
+  display: inline;
+  float: right;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 960px) {
+  /* line 25, content.scss */
+  #content-outer {
+    width: 94% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+    box-shadow: 0px 0px 0px black !important;
+  }
+  /* line 34, content.scss */
+  #content-outer #content-inner #profile-about, #content-outer #content-inner #posts {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: 94% !important;
+    margin: 0px auto !important;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+  }
+  /* line 44, content.scss */
+  #content-outer #content-inner #posts {
+    margin-top: 16px !important;
+  }
+  /* line 47, content.scss */
+  #content-outer #content-inner #posts .post-header, #content-outer #content-inner #posts .post-footer {
+    height: auto !important;
+    min-height: auto !important;
+  }
+}
+/* line 1, footer.scss */
+#footer {
+  display: block;
+  clear: both;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
+  background-color: #fefefe;
+  text-align: center;
+}
+
+/* line 1, dialogue.scss */
+.dialogue {
+  display: table;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+/* line 11, dialogue.scss */
+.dialogue .dialogue-vertical-center-container {
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 17, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container {
+  width: 90%;
+  max-width: 436.364px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+  background-color: #fefefe;
+}
+/* line 27, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header {
+  height: 38px;
+  background-color: #3a3a3a;
+  box-shadow: 0px 1px 6px #3a3a3a;
+}
+/* line 32, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button {
+  display: inline-block;
+  float: left;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  color: #fefefe;
+  font-size: 2em;
+  text-align: center;
+}
+/* line 44, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header h1 {
+  line-height: 38px;
+  color: #fefefe;
+  font-size: 2em;
+  text-align: center;
+}
+/* line 52, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content {
+  padding: 16px;
+  padding-top: 0px;
+}
+/* line 56, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content p {
+  margin-top: 14px;
+  line-height: 1.2em;
+  text-align: center;
+}
+/* line 63, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container {
+  margin-top: 14px;
+}
+/* line 66, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button {
+  display: inline-block;
+  width: 39%;
+  margin: 0px 4%;
+  padding: 1.5%;
+}
+/* line 73, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button figure {
+  display: inline-block;
+}
+/* line 76, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button figure img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0px auto;
+}
+/* line 83, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button figure figcaption {
+  margin-top: 4px;
+  color: #fefefe;
+  text-align: center;
+}
+/* line 90, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:first-of-type {
+  width: 43%;
+  margin-left: 0px;
+}
+/* line 95, dialogue.scss */
+.dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:last-of-type {
+  width: 43%;
+  margin-right: 0px;
+}
+
+/* line 1, settings.scss */
+form {
+  width: 100%;
+  max-width: 672px;
+  margin: auto;
+  padding: 16px;
+}
+/* line 7, settings.scss */
+form h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 24px;
+}
+/* line 16, settings.scss */
+form input#id_profile_image {
+  width: auto;
+  margin: 0px;
+  border-bottom: 0px;
+}
+/* line 22, settings.scss */
+form input:last-child {
+  margin-bottom: 0px;
+}
+/* line 27, settings.scss */
+form textarea {
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 17px;
+  height: 34px;
+  max-height: 51px;
+  border: 1px solid black;
+  margin-bottom: 16px;
+}
+/* line 38, settings.scss */
+form #settings-form-change-button {
+  display: block;
+  width: 128px;
+  height: 24px;
+  margin: 24px auto;
+  border: 0px;
+  line-height: 24px;
+  vertical-align: middle;
+  font-size: 1em;
+}

@@ -1,0 +1,222 @@
+#index {
+	width: 100%;
+	background-color: $white;
+
+	#top-bar {
+		width: 100%;
+		height: $index-title-height;
+		background-color: $background-colour;
+
+		#title {
+			position: absolute;
+			width: 100%;
+			height: $index-title-height;
+			z-index: 2;
+			background-color: $dark-grey;
+			line-height: $index-title-height / 2;
+			vertical-align: middle;
+			box-shadow: 0px $background-shadow-size $background-shadow-spread $background-shadow-colour;
+
+			h1 {
+				color: $white;
+				font-size: $index-title-font-size;
+				text-align: center;
+				font-weight: normal;
+			}
+		}
+
+		%index-form {
+			position: absolute;
+			width: 98%;
+			max-width: $index-form-width;
+			height: $index-form-height;
+			top: $header-height + $index-form-top-margin;
+			left: 0px;
+			margin: 0px auto;
+			z-index: 1;
+			background-color: $white;
+			box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+		}
+
+		#register-form {
+			@extend %index-form;
+		}
+
+		#login-form {
+			@extend %index-form;
+		}
+
+		h2 {
+			margin-top: $index-form-header-margin-top;
+			text-align: center;
+		}
+
+		form {
+			width: $index-inner-form-width;
+			margin: auto;
+		}
+
+		input {
+			@extend %text-input-field;
+		}
+
+		.form-button-container {
+			display: table;
+			height: $index-form-button-height;
+			margin-top: $index-form-button-container-margin-top;
+			padding-left: $index-form-button-height;
+
+			%form-button {
+				@extend %clickable;
+				display: table-cell;
+				width: $index-form-button-width;
+				height: $index-form-button-height;
+				margin: 0px 2 * $index-form-button-margin-left 0px 0px;
+				padding: 0px;
+				border: 0px;
+				line-height: $index-form-button-height;
+				vertical-align: middle;
+				font-size: $index-form-button-font-size;
+			}
+
+			#index-form-register-button {
+				@extend %form-button;
+			}
+
+			#index-form-login-button {
+				@extend %form-button;
+			}
+
+			.index-form-cancel-button {
+				@extend %form-button;
+			}
+		}
+
+		
+
+		#incorrect-login {
+			margin-bottom: $index-incorrect-login-margin-bottom;
+			color: $red;
+			font-weight: bold;
+			text-align: center;
+			font-size: $index-incorrect-login-font-size;
+		}
+	}
+
+	#register-buttons {
+		width: 100%;
+		background-color: $background-colour;
+
+		#register-buttons-inner {
+			width: $site-width;
+			margin: 0px auto;
+
+			%register-login-button {
+				@extend %clickable;
+				display: inline-block;
+				width: $index-register-button-width;
+				height: $index-register-button-height;
+				margin: ($index-register-height - $index-register-button-height) / 2.5 $index-register-button-margin;
+				line-height: $index-register-button-height;
+				vertical-align: middle;
+				font-size: 1.5em;
+			}
+
+			#register-button {
+				@extend %register-login-button;
+			}
+
+			#login-button {
+				@extend %register-login-button;
+			}
+		}
+	}
+
+	#about {
+		width: 100%;
+		margin: 0px auto;
+		background-color: $white;
+		box-shadow: 0px (-$background-shadow-size) $background-shadow-spread $background-shadow-colour;
+
+		#about-inner {
+			max-width: $site-width;
+			margin: 0px auto;
+
+			ul {
+				display: block;
+				padding: $index-about-item-container-padding-top 0px;
+				list-style-type: none;
+
+				li {
+					display: table-cell;
+					width: $index-about-item-width;
+					padding: 0px $index-about-item-margin;
+					text-align: justify;
+
+					header {
+						margin-bottom: $index-about-item-header-margin-bottom;
+						h3 {
+							font-size: $index-about-item-header-font-size;
+							font-weight: bold;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: $site-width) {
+	#index {
+		width: 100% !important;
+		margin: 0px;
+		padding: 0px;
+
+		#register-buttons {
+			width: 100% !important;
+
+			#register-buttons-inner {
+				width: 100% !important;
+				margin: 0px;
+				overflow: hidden;
+
+				#register-button {
+					display: block;
+					width: $small-top-layer-width !important;
+					margin: $small-top-layer-vertical-margin auto !important;
+				}
+
+				#login-button {
+					display: block;
+					width: $small-top-layer-width !important;
+					margin: $small-top-layer-vertical-margin auto !important;
+				}
+			}
+		}
+
+		#about {
+			width: 100% !important;
+			margin: 0px auto;
+
+			#about-inner {
+				width: 100% !important;
+				margin: 0px auto;
+
+				ul {
+					list-style-type: none;
+
+					li {
+						display: block;
+						clear: both;
+						width: $small-top-layer-width !important;
+						margin: $small-top-layer-vertical-margin auto !important;
+						padding: 0px;
+					}
+				}
+			}
+		}
+	}
+}

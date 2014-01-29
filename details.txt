@@ -1,0 +1,42 @@
+Project:
+	A twitter-like website where users can create an account, search for their friends and choose to follow them. Any post that their friend posts will be visible to this user and they have the option to reply to it, to which the friend can reply and so on, generating a tree data structure. Depending on time, other features include customizing profile (adding an about-me section, avatar), direct mentioning of another user (@username), private messages (and emails?) either from other users or from the system, informing a user that their post was replied to or somebody now follows them.
+
+
+Languages and Technologies:
+	Python + Django on server
+	HTML + Django templating language
+	SASS/CSS
+	CoffeeScript/JavaScript + jQuery + AJAX + JSON
+	Simple parameterized regex for url matching such as url(r"^profile/(?P<username>\w+)/$", views.Profile.as_view(), name = "profile")
+
+
+On Server:
+	Has 4 tables: UserProfile, Post, Reply and Following, all defined as Python classes extending django.db.models.model.Model
+	http://pastebin.com/bvdVy7wL
+	UserProfile has a one-to-one relationship with Django User table
+	Reply and Following tables work by having 2 columns (+ implicit id pk)
+		- First post 		Reply post
+		and:
+		- Followed user		Follower user
+
+	Given an id of a post in the Post table, the first_post column in Reply can be queried to get a list of all the reply_posts.
+	These replies can then also be fed into the algorithm to find their replies.
+	The algorithm that finds and orders replies will also take in to account:
+		- Date reply was posted
+		- Popularity of replier (i.e. those with more followers will be favoured)
+		- Whether the original poster and the replier follow each other or not (so you're more likely to see what your friend replied, rather than somebody random, unless they are have a lot of followers as then they could be a celebrity)
+		- If this post was posted by person A as a reply to a post by person B, who was replying to person A (i.e. a conversation), then this post will come first (if multiple fit this, order by date)
+
+	There will be a HTTP GET API that returns all the replies for a certain post as JSON to the client, as well get posts by user, get conversation
+
+
+On Client:
+	This API is called by the CoffeeScript on the client via AJAX when the page loads or when the user clicks a button to view replies.
+	The client side code will parse this JSON to generate the correct HTML, where each post has its own view replies button that is connected to the same click event code that generated it, so the tree of replies can be generated recursively
+
+	The client also has animations written in CoffeeScript and jQuery, such as this one on the index page that uses events, callbacks and a state system http://pastebin.com/XhwGMCgB
+
+
+No SQL:
+	Because the database tables are modeled as classes extending from the Django Model class, they can be interacted with as objects to perfom queries, instead of using SQL, such as in my code for the profile page: http://pastebin.com/tmw8wUA0
+	Django does allow you to write raw SQL if necessary though.

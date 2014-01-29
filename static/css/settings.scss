@@ -1,0 +1,49 @@
+form {
+	width: 100%;
+	max-width: $settings-form-width;
+	margin: auto;
+	padding: $settings-form-padding;
+
+	h1 {
+		font-size: $settings-title-font-size;
+		text-align: center;
+		margin-bottom: $settings-form-input-margin-bottom;
+	}
+
+	input {
+		@extend %text-input-field;
+		
+		&#id_profile_image {
+			width: auto;
+			margin: 0px;
+			border-bottom: 0px;
+		}
+
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
+
+	textarea {
+		min-width: 100%;
+		width: 100%;
+		max-width: 100%;
+		min-height: $post-text-box-one-line-height * 1;
+		height: $post-text-box-one-line-height * 2;
+		max-height: $post-text-box-one-line-height * 3;
+		border: $global-dark-border;
+		margin-bottom: $index-input-margin-bottom;
+	}
+
+	#settings-form-change-button {
+		@extend %clickable;
+		display: block;
+		width: $settings-form-change-button-width;
+		height: $settings-form-change-button-height;
+		margin: $settings-form-input-margin-bottom auto;
+		border: 0px;
+		line-height: $settings-form-change-button-height;
+		vertical-align: middle;
+		font-size: $settings-form-change-button-font-size;
+	}
+}

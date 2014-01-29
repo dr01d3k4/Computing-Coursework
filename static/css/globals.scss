@@ -1,0 +1,217 @@
+/*
+Order of properties:
+- position
+- display
+- float
+- clear
+- width
+- height
+- top
+- right
+- bottom
+- left
+- margin
+- padding
+- border
+- other layout
+- colour
+- font
+*/
+
+
+
+$site-width: 960px;
+$border-thickness: 1px;
+
+$black: #000000;
+$white: #fefefe;
+$cyan: #1e90ff;
+$background-colour: $cyan;
+$dark-grey: #3a3a3a;
+$button-lighter-grey: lighten($dark-grey, 10%);
+$light-grey: #dcdcdc;
+$blue: darken($cyan, 20%);
+$red: #ff0000;
+
+$font-family: "lucidia", sans-serif;
+
+$global-light-border: $border-thickness solid $white;
+$global-dark-border: $border-thickness solid $black;
+
+
+$background-shadow-size: 1px;
+$background-shadow-spread: 6px;
+$background-shadow-colour: $dark-grey;
+
+
+
+$small-top-layer-margin: 3%;
+$small-top-layer-width: 100% - (2 * $small-top-layer-margin);
+$small-top-layer-vertical-margin: 16px;
+
+
+
+$header-height: 38px;
+$header-z-index: 2;
+$header-title-font-size: 1.8em;
+$header-title-small-top: 0px;
+$header-title-small-font-size: 0.9em;
+$header-nav-button-width: 112px;
+$header-nav-button-margin: 6px;
+$header-nav-button-height: $header-height - ($header-nav-button-margin * 2);
+$heaver-nav-button-font-size: 1.1em;
+$header-background-colour: $dark-grey;
+
+$small-nav-width: 1.2 * $header-nav-button-width;
+$small-nav-height: 2 * $header-nav-button-height;
+$total-height: 4 * $small-nav-height + $header-nav-button-height + $header-nav-button-margin;
+
+
+
+$index-title-height: 440px;
+$index-title-font-size: 5em;
+$index-form-width: $site-width / 2.2;
+$index-form-top-margin: 8px;
+$index-form-height: $index-title-height - $header-height - (2 * $index-form-top-margin);
+$index-form-header-margin-top: 12px;
+$index-inner-form-width: $index-form-width * 0.7;
+$index-form-button-container-margin-top: 0px;
+$index-input-margin-top: 2px;
+$index-input-margin-bottom: 16px;
+$index-input-focus-background-colour: #faff7e;
+$index-form-button-width: 108px;
+$index-form-button-height: 24px;
+$index-form-button-inner-margin: 16px;
+$index-form-button-margin-left: (($index-inner-form-width / 2) - $index-form-button-width) / 2;
+$index-form-button-font-size: 1em;
+$index-error-list-font-size: 1em;
+$index-incorrect-login-font-size: 1em;
+$index-incorrect-login-margin-bottom: 16px;
+
+$index-register-height: 100px;
+$index-register-button-margin: 32px;
+$index-register-button-height: $index-register-height * 0.5;
+$index-register-button-width: floor(($site-width - (4 * $index-register-button-margin)) / 2);
+
+$index-about-item-container-padding-top: 22px;
+$index-about-item-margin: 16px;
+$index-about-item-width: floor(($site-width - (6 * $index-about-item-margin)) / 3);
+$index-about-item-header-margin-bottom: 12px;
+$index-about-item-header-font-size: 1.6em;
+
+
+
+
+$content-top-margin: 16px;
+$content-background-colour: $white;
+
+$content-inner-margins: $site-width * 0.01;
+
+$profile-about-width: 220px;
+$profile-about-padding: 12px;
+$profile-about-inner-width: $profile-about-width - (2 * $profile-about-padding);
+$profile-about-background-colour: $light-grey;
+$profile-about-fullname-font-size: 1.4em;
+$profile-about-about-font-size: 0.8em;
+$profile-about-button-padding: 4px;
+$profile-about-more-line-height: 1.3;
+
+
+$posts-width: $site-width - $profile-about-width - (3 * $content-inner-margins);
+$posts-padding: 8px;
+$posts-inner-width: $posts-width - (2 * $posts-padding);
+$posts-background-colour: $light-grey;
+
+$post-inset: 22px;
+$post-gap: 16px;
+$post-min-height: 18px;
+$post-content-padding: 6px;
+$post-content-background-colour: $white;
+$post-header-height: auto;
+$post-header-padding-vertical: 2px;
+$post-header-padding-horizontal: 2px;
+$post-horizontal-strip-text-padding: 0px 4px;		
+$post-horizontal-strip-text-height: 18px;
+$post-horizontal-strip-text-font-size: 0.9em;
+$post-horizontal-strip-text-margin-vertical: 2px;
+$post-horizontal-strip-text-margin-horizontal: 6px;
+$post-text-box-one-line-height: 17px;
+$post-small-text-font-size: 0.8em;
+$post-small-text-margin: 4px;
+
+
+
+$footer-height: 32px;
+
+
+
+$dialogue-background-colour: rgba(0, 0, 0, 0.9);
+$dialogue-width: $site-width / 2.2;
+$dialogue-header-height: $header-height;
+$dialogue-header-font-size: 2em;
+$dialogue-content-padding: 16px;
+$dialogue-content-paragraph-margin-vertical: 14px;
+$dialogue-content-paragraph-line-height: 1.2em;
+$dialogue-content-inner-width: $dialogue-width - (2 * $dialogue-content-padding);
+$dialogue-figure-padding: 1.5%;
+$dialogue-figure-gutter: 4%;
+$dialogue-figure-width: 50% - (2 * $dialogue-figure-padding);
+$dialogue-figure-image-size: 64px;
+$dialogue-figure-caption-margin-top: 4px;
+
+
+
+$settings-title-font-size: 2em;
+$settings-form-width: $site-width * 0.7;
+$settings-form-padding: 16px;
+$settings-form-input-margin-bottom: 24px;
+$settings-form-change-button-width: 128px;
+$settings-form-change-button-height: 24px;
+$settings-form-change-button-font-size: 1em;
+
+%clickable {
+	color: $white;
+	text-align: center;
+	background-color: $dark-grey;
+	text-decoration: none;
+	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+
+	&:hover, &:active {
+		cursor: pointer;
+		box-shadow: inset 2 * $background-shadow-size 2 * $background-shadow-size $background-shadow-spread $background-shadow-colour;
+		background-color: $button-lighter-grey;
+
+	}
+}
+
+.invisible {
+	display: none !important;
+}
+
+%text-input-field {
+	width: 100%;
+	margin: {
+		top: $index-input-margin-top;
+		bottom: $index-input-margin-bottom;
+	}
+	border-bottom: $global-dark-border;
+	line-height: 1;
+	text-align: left;
+
+	&:focus {
+		background-color: $index-input-focus-background-colour;
+	}
+}
+
+
+.errorlist {
+	list-style-type: none;
+	display: inline-block;
+	float: right;
+	color: $red;
+	font-weight: bold;
+	font-size: $index-error-list-font-size;
+	li {
+		color: $red;
+	}
+}

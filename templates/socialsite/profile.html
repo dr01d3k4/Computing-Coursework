@@ -1,0 +1,80 @@
+{% extends "socialsite/header_base.html" %}
+{% load static %}
+{% block title %}{{ viewingProfile.fullName }}{% endblock %}
+{% block content %}
+	<aside id="profile-about">
+		<img id="profile-picture" src="{{ profileImage }}" alt="Profile">
+		<h2 id="profile-viewing-fullname">
+			{{ viewingProfile.fullName }}
+		</h2>
+		<h3 id="profile-viewing-username">
+			@{{ viewingUser.username }}
+		</h3>
+		<section id="profile-about-content">
+			{% if viewingProfile.description %}
+				{{ viewingProfile.description }}
+			{% else %}
+				<i>{{ viewingProfile.first_name }} doesn't have a description.</i>
+			{% endif %}
+		</section>
+		{% if user != viewingUser %}
+			<div id="profile-follow-button" class="clickable
+				{% if isFollowing %}
+					profile-follow-button-followed
+				{% else %}
+					profile-follow-button-not-followed
+				{% endif %}">
+				{% if isFollowing %}
+					Following!
+				{% else %}
+					Follow
+				{% endif %}
+			</div>
+		{% endif %}
+		<div id="profile-view-followers-button">
+			View Followers
+		</div>
+		<div id="profile-view-followed-button">
+			View Followed
+		</div>
+		<div id="profile-about-more-button">
+			About
+		</div>
+		<section id="profile-about-more">
+			<ul>
+				{% if viewingProfile.website %}<li>Website: <a href="{{ viewingProfile.website }}" target="_blank">{{ viewingProfile.website }}</a></li>{% endif %}
+				<li id="profile-about-follower-count">Followers: 0</li>
+				<li id="profile-about-followed-count">Follows: 0</li>
+			</ul>
+		</section>
+	</aside>
+	<section id="posts">
+		{% if viewingUser == user %}
+			<div id="post-new-post-button-outer-container">
+				<div class="post-id-meta">NEW</div>
+				<div id="post-new-post-button-container">
+					<div id="post-new-post-button">
+						Post a new post
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<div id="posts-inner">
+			<div id="post-top-layer"></div>
+		</div>
+	</section>
+	<footer id="footer">
+		&copy; Ben Cooper ・ 2014
+	</footer>
+{% endblock %}
+{% block script %}
+	<script>
+		window.loggedInUsername = "{{ user.username }}";
+		window.viewingUsername = "{{ viewingUser.username }}";
+		window.viewingFirstName = "{{ viewingProfile.first_name }}";
+		window.viewingSelf = {% if user == viewingUser %}true{% else %}false{% endif %};
+	</script>
+	<script src="{% static 'js/create_dialogue.js' %}"></script>
+	<script src="{% static 'js/profile_get_posts.js' %}"></script>
+	<script src="{% static 'js/profile_buttons.js' %}"></script>
+{% endblock %}

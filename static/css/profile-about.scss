@@ -1,0 +1,87 @@
+#profile-about {
+	display: inline-block;
+	float: left;
+	width: $profile-about-inner-width;
+	margin-left: $content-inner-margins;
+	padding: $profile-about-padding;
+	background-color: $profile-about-background-colour;
+	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+
+	#profile-picture {
+		width: $profile-about-inner-width;
+		height: $profile-about-inner-width;
+		margin: auto auto;
+		background-color: $dark-grey;
+		color: $white;
+		line-height: $profile-about-inner-width;
+		text-align: center;
+	}
+
+	#profile-viewing-fullname {
+		margin: $profile-about-padding / 2 0px;
+		font: {
+			size: $profile-about-fullname-font-size;
+			weight: bold;
+		}
+		text-align: center;
+	}
+
+	#profile-viewing-username {
+		margin-bottom: $profile-about-padding / 2;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	#profile-about-content {
+		font-size: $profile-about-about-font-size;
+		text-align: justify;
+	}
+
+	%profile-button {
+		@extend %clickable;
+		display: block;
+		margin: $profile-about-padding auto ($profile-about-padding / 2);
+		padding: $profile-about-button-padding;
+		font-size: $profile-about-about-font-size;
+		text-align: center;
+	}
+
+	#profile-follow-button {
+		@extend %profile-button;
+	}
+
+	.profile-follow-button-followed {
+		background-color: $background-colour !important;
+	}
+
+	#profile-view-followers-button {
+		@extend %profile-button;
+	}
+
+	#profile-view-followed-button {
+		@extend %profile-button;
+	}
+
+	#profile-about-more-button {
+		@extend %profile-button;
+		margin-bottom: 0px;
+	}
+
+	#profile-about-more {
+		@extend #profile-about-content;
+		padding: $profile-about-button-padding;
+		border: $global-dark-border;
+
+		li {
+			line-height: $profile-about-more-line-height;
+
+			a {
+				color: $blue;
+
+				&:hover, &:active {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

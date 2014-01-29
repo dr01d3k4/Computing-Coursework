@@ -1,0 +1,220 @@
+#posts {
+	display: inline-block;
+	float: right;
+	width: $posts-inner-width;
+	margin-right: $content-inner-margins;
+	padding: $posts-padding;
+	background-color: $posts-background-colour;
+
+	%post-horizontal-strip {
+		display: block;
+		height: $post-header-height;
+		padding: $post-header-padding-vertical $post-header-padding-horizontal;
+		line-height: $post-header-height;
+		vertical-align: middle;
+		overflow: hidden;
+		background-color: $posts-background-colour;
+	}
+
+	%post-horizontal-strip-text-base {
+		display: inline-block;
+		height: $post-horizontal-strip-text-height;
+		margin: $post-horizontal-strip-text-margin-vertical auto;
+		padding: $post-horizontal-strip-text-padding;
+		line-height: $post-horizontal-strip-text-height;
+		font-size: $post-horizontal-strip-text-font-size;
+	}
+
+	%post-horizontal-strip-text-left {
+		@extend %post-horizontal-strip-text-base;
+		float: left;
+		margin-left: $post-horizontal-strip-text-margin-horizontal;
+	}
+
+	%post-horizontal-strip-text-right {
+		@extend %post-horizontal-strip-text-base;
+		float: right;
+		margin-right: $post-horizontal-strip-text-margin-horizontal;
+	}
+
+	%post-horizontal-strip-button-left {
+		@extend %post-horizontal-strip-text-left;
+		@extend %clickable;
+	}
+
+	%post-horizontal-strip-button-right {
+		@extend %post-horizontal-strip-text-right;
+		@extend %clickable;
+	}
+
+	.post-small-text-left {
+		@extend %post-horizontal-strip-text-left;
+		display: inline;
+		margin-left: $post-small-text-margin;
+		font-size: $post-small-text-font-size;
+	}
+
+	.post-small-text-right {
+		@extend %post-horizontal-strip-text-right;
+		display: inline;
+		margin-right: $post-small-text-margin;
+		font-size: $post-small-text-font-size;
+	}
+
+	#post-new-post-button-outer-container {
+		border: $global-dark-border;
+		border-bottom: 0px;
+		margin-bottom: $post-inset;
+
+		#post-new-post-button-container {
+			@extend %post-horizontal-strip;
+			border-bottom: $global-dark-border;
+			background-color: $background-colour;
+
+			#post-new-post-button {
+				@extend %post-horizontal-strip-button-right;
+			}
+		}
+
+		#post-reply-box {
+			border-bottom: $global-dark-border;
+		}
+	}
+
+	#posts-inner {
+		#post-top-layer {
+			margin-left: -$post-inset;
+
+			&:empty {
+				&:after {
+					margin-left: $post-inset;
+					content: "No posts";
+				}
+			}
+		}
+
+		.post-container {
+			margin: {
+				bottom: $post-gap;
+				left: $post-inset;
+			}
+
+			&:last-child {
+				margin-bottom: 0px;
+			}
+		}
+
+		.post {
+			border: $global-dark-border;
+			background-color: $posts-background-colour;
+
+			.post-header {
+				@extend %post-horizontal-strip;
+
+				.post-poster-link {
+					@extend %post-horizontal-strip-button-left;
+				}
+
+				.post-view-conversation {
+					@extend %post-horizontal-strip-button-left;
+
+					.post-is-reply-to-id {
+						display: none;
+					}
+				}
+
+				.post-date {
+					@extend %post-horizontal-strip-text-right;
+					padding: 0px;
+				}
+			}
+
+			.post-content {
+				display: block;
+				min-height: $post-min-height;
+				padding: $post-content-padding;
+				background-color: $post-content-background-colour;
+
+				.post-reply-to-username {
+					color: $blue;
+
+					&:hover, &:active {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.post-footer {
+				@extend %post-horizontal-strip;
+
+				.post-view-reply {
+					@extend %post-horizontal-strip-button-left;
+				}
+
+				.post-post-reply {
+					@extend %post-horizontal-strip-button-right;
+				}
+
+				.post-delete {
+					@extend %post-horizontal-strip-button-right;
+				}
+			}
+		}
+
+		.post-replies {
+			&:not(:empty) {
+				padding-bottom: $post-gap;
+				box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+			}
+
+			&>.post-container:first-child>.post {
+				border-top: 0px solid !important;
+			}
+		}
+
+		#post-reply-box {
+			border-top: 1px solid $black;
+		}
+	}
+
+	.post-id-meta {
+		display: none;
+	}
+
+	#post-reply-box {
+		display: block;
+		background-color: $posts-background-colour;
+
+		#post-reply-box-content {
+			display: block;
+			padding: $post-content-padding;
+			background-color: $post-content-background-colour;
+
+			#post-reply-box-text-box {
+				display: block;
+				min-width: 100%;
+				width: 100%;
+				max-width: 100%;
+				margin: 0px;
+				padding: 0px;
+				min-height: $post-text-box-one-line-height;
+				height: 2 * $post-text-box-one-line-height;
+				max-height: 4 * $post-text-box-one-line-height;
+				font-family: sans-serif;
+			}
+		}
+
+		#post-reply-box-footer {
+			@extend %post-horizontal-strip;
+
+			#post-reply-box-post-container {
+				display: inline;
+				float: right;
+
+				#post-reply-box-post {
+					@extend %post-horizontal-strip-button-right;
+				}
+			}
+		}
+	}
+}
