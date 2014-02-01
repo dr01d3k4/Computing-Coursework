@@ -101,28 +101,47 @@
       });
     });
     viewFollowersFollowedButtonClicked = function(title, url) {
-      var $dialogueContent;
-      $dialogueContent = createDialogue({
+      var dialogue;
+      dialogue = new Dialogue({
         title: title
       });
-      if (!$dialogueContent) {
+      if (!dialogue) {
         return;
       }
       return $.getJSON(url, function(data) {
-        var user, _i, _len, _ref, _results;
+        var $fullName, $profileImage, $profileView, $userItem, $username, user, _i, _len, _ref, _results;
         _ref = data.users;
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           user = _ref[_i];
-          $dialogueContent.append(user.fullName);
-          _results.push($dialogueContent.append("<br>"));
+          $userItem = $("<div>");
+          $userItem.addClass("user-item");
+          $profileImage = $("<img>");
+          $profileImage.addClass("user-item-profile-image");
+          $profileImage.attr("src", user.profileImage);
+          $profileImage.attr("alt", "No profile image");
+          $userItem.append($profileImage);
+          $fullName = $("<div>");
+          $fullName.addClass("user-item-full-name");
+          $fullName.text(user.fullName);
+          $userItem.append($fullName);
+          $username = $("<div>");
+          $username.addClass("user-item-username");
+          $username.text("@" + user.username);
+          $userItem.append($username);
+          $profileView = $("<a>");
+          $profileView.addClass("user-item-view");
+          $profileView.attr("href", user.absoluteUrl);
+          $profileView.text("View");
+          $userItem.append($profileView);
+          _results.push($userItem.hide().appendTo(dialogue.$dialogueContent).slideDown(200));
         }
         return _results;
       });
     };
     $viewFollowersButton = $("#profile-view-followers-button");
     $viewFollowersButton.click(function() {
-      return viewFollowersFollowedButtonClicked("" + (wordToGenitiveCase(viewingFirstName)) + " Followers", "/social/api/get-followers/" + viewingUsername);
+      return viewFollowersFollowedButtonClicked("" + (viewingSelf ? 'Your' : wordToGenitiveCase(viewingFirstName)) + " Followers", "/social/api/get-followers/" + viewingUsername);
     });
     $viewFollowedButton = $("#profile-view-followed-button");
     return $viewFollowedButton.click(function() {

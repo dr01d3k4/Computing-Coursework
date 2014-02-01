@@ -58,7 +58,11 @@
       $postReplyBox.slideUp(showSpeed, function() {
         return $postReplyBox.detach();
       });
-      $button.text("Post reply");
+      if (postReplyBoxAppendedToId === "NEW") {
+        $button.text("Post a new post");
+      } else {
+        $button.text("Post reply");
+      }
       $postReplyBoxAppendedToButton = null;
       return postReplyBoxAppendedToId = -1;
     };
@@ -70,7 +74,11 @@
         return closePostReplyBox($button);
       } else {
         if ($postReplyBoxAppendedToButton != null) {
-          $postReplyBoxAppendedToButton.text("Post reply");
+          if (postReplyBoxAppendedToId === "NEW") {
+            $postReplyBoxAppendedToButton.text("Post a new post");
+          } else {
+            $postReplyBoxAppendedToButton.text("Post reply");
+          }
         }
         $button.text("Close");
         $postReplyBoxAppendedToButton = $button;
@@ -218,11 +226,12 @@
       $button = $(this);
       $post = $button.parent().parent();
       id = $post.children(".post-id-meta").text();
-      return createConfirmDialogue({
+      return new ConfirmDialogue({
         title: "Delete Post",
         body: "Are you sure you want to delete this post",
-        yesFunction: function() {
-          $.ajax({
+        yesFunction: function(dialogue) {
+          dialogue.close();
+          return $.ajax({
             type: "POST",
             url: "/social/api/delete-post/",
             data: {
@@ -245,7 +254,6 @@
               }
             });
           });
-          return true;
         }
       });
     };

@@ -3,7 +3,7 @@
 {% block title %}{{ viewingProfile.fullName }}{% endblock %}
 {% block content %}
 	<aside id="profile-about">
-		<img id="profile-picture" src="{{ profileImage }}" alt="Profile">
+		<img id="profile-about-image" src="{{ profileImage }}" alt="No profile image">
 		<h2 id="profile-viewing-fullname">
 			{{ viewingProfile.fullName }}
 		</h2>
@@ -74,7 +74,7 @@
 		window.viewingFirstName = "{{ viewingProfile.first_name }}";
 		window.viewingSelf = {% if user == viewingUser %}true{% else %}false{% endif %};
 	</script>
-	<script src="{% static 'js/create_dialogue.js' %}"></script>
+	<script src="{% static 'js/dialogue.js' %}"></script>
 	<script src="{% static 'js/profile_get_posts.js' %}"></script>
 	<script src="{% static 'js/profile_buttons.js' %}"></script>
 {% endblock %}

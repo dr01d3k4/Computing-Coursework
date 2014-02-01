@@ -37,6 +37,7 @@ $font-family: "lucidia", sans-serif;
 
 $global-light-border: $border-thickness solid $white;
 $global-dark-border: $border-thickness solid $black;
+$global-light-grey-border: $border-thickness solid $light-grey;
 
 
 $background-shadow-size: 1px;
@@ -122,9 +123,9 @@ $posts-padding: 8px;
 $posts-inner-width: $posts-width - (2 * $posts-padding);
 $posts-background-colour: $light-grey;
 
-$post-inset: 22px;
-$post-gap: 16px;
-$post-min-height: 18px;
+$post-inset: 16px;
+$post-gap: 14px;
+$post-min-height: 0px;
 $post-content-padding: 6px;
 $post-content-background-colour: $white;
 $post-header-height: auto;
@@ -145,11 +146,12 @@ $footer-height: 32px;
 
 
 
+$dialogue-z-index: 100;
 $dialogue-background-colour: rgba(0, 0, 0, 0.9);
 $dialogue-width: $site-width / 2.2;
 $dialogue-header-height: $header-height;
 $dialogue-header-font-size: 2em;
-$dialogue-content-padding: 16px;
+$dialogue-content-padding: 18px;
 $dialogue-content-paragraph-margin-vertical: 14px;
 $dialogue-content-paragraph-line-height: 1.2em;
 $dialogue-content-inner-width: $dialogue-width - (2 * $dialogue-content-padding);
@@ -169,10 +171,24 @@ $settings-form-change-button-width: 128px;
 $settings-form-change-button-height: 24px;
 $settings-form-change-button-font-size: 1em;
 
+
+
+$user-list-item-profile-image-size: 64px;
+$user-list-item-padding-vertical: 8px;
+$user-list-item-height: $user-list-item-profile-image-size;
+$user-list-item-profile-image-line-height: 18px;
+$user-list-item-text-padding-left: $user-list-item-profile-image-size + 8px;
+$user-list-item-full-name-line-height: 20px;
+$user-list-item-username-font-size: 0.8em;
+$user-list-item-view-width: 38px;
+$user-list-item-view-padding: 4px;
+
+
+
 %clickable {
+	background-color: $dark-grey;
 	color: $white;
 	text-align: center;
-	background-color: $dark-grey;
 	text-decoration: none;
 	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
 
@@ -214,4 +230,14 @@ $settings-form-change-button-font-size: 1em;
 	li {
 		color: $red;
 	}
+}
+
+%profile-image {
+	width: $profile-about-inner-width;
+	height: $profile-about-inner-width;
+	margin: auto auto;
+	border: $global-dark-border;
+	color: $white !important;
+	line-height: $profile-about-inner-width;
+	text-align: center;
 }

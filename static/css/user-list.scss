@@ -1,0 +1,45 @@
+.user-item {
+	display: block;
+	height: $user-list-item-height;
+	padding: $user-list-item-padding-vertical 0px;
+	border-bottom: $global-light-grey-border;
+	z-index: $dialogue-z-index;
+
+	&:last-child {
+		border-bottom: 0px;
+	}
+
+	.user-item-profile-image {
+		@extend %profile-image;
+		display: inline-block;
+		float: left;
+		width: $user-list-item-profile-image-size;
+		height: $user-list-item-profile-image-size;
+		line-height: $user-list-item-profile-image-line-height;
+		vertical-align: text-top;
+	}
+
+	.user-item-full-name {
+		padding-left: $user-list-item-text-padding-left;
+		line-height: $user-list-item-full-name-line-height;
+		font-weight: bold;
+	}
+
+	.user-item-username {
+		padding-left: $user-list-item-text-padding-left;
+		font-size: $user-list-item-username-font-size;
+	}
+
+	a {
+		@extend %clickable;
+		display: block;
+		width: $user-list-item-view-width;
+		float: right;
+		padding: $user-list-item-view-padding;
+	}
+
+	// &:hover {
+	// 	cursor: pointer;
+	// 	box-shadow: inset 2 * $background-shadow-size 2 * $background-shadow-size $background-shadow-spread $light-grey;
+	// }
+}

@@ -2,9 +2,61 @@ from django.contrib.auth.models import User;
 from django.db import models;
 from django.core.urlresolvers import reverse;
 from django.core.exceptions import ValidationError;
+from ComputingCoursework import settings;
+import re;
+import os;
 
 
-profileImageMegabyteLimit = 0.1;
+
+profileImageMegabyteLimit = 2;
+
+
+
+def buildUrlPattern():
+	protocol = "https?://";
+
+	validLetter = "[\w\-_]";
+
+	ipDigit = "(" \
+		+ "(0|1)?\d?\d" \
+		+ "|" \
+		+ "(" \
+			+ "2[0-4]\d"\
+			+ "|" \
+			+ "25[0-5]" \
+		+ ")" \
+		+ ")";
+	ip = "(" + ipDigit + "\.){3}" + ipDigit;
+	port = "(:\d{4})?"
+
+	domain = "(" + validLetter + "+\.)*";
+	lastDomain = "(" + validLetter + "+)";
+
+	folder = "(/" + validLetter + "+)*";
+
+	parameter = validLetter + "+=" + validLetter + "+";
+
+	parameterList = "\?" + parameter + "(&" + parameter + ")*";
+
+	parameters = "(/" + validLetter + "*" + parameterList + ")?"
+
+	urlPattern = r"^" \
+		+ protocol \
+		+ "(" \
+			+ ip \
+			+ port \
+		+ "|" \
+			+ domain \
+			+ lastDomain \
+		+ ")" \
+		+ folder \
+		+ parameters \
+		+ "/?" \
+		+ "$";
+
+	return urlPattern;
+
+urlPattern = re.compile(buildUrlPattern());
 
 
 
@@ -14,15 +66,41 @@ class UserProfile(models.Model):
 	middle_name = models.CharField(max_length = 256, blank = True);
 	last_name = models.CharField(max_length = 256, blank = True);
 	description = models.CharField(max_length = 256, blank = True);
-	website = models.URLField(blank = True);
+
+
+
+	def validateWebsite(urlObject):
+		print("Validating model");
+		print("Url object %s" % urlObject);
+		if (not re.match(urlPattern, urlObject)):
+			raise ValidationError("Invalid address");
+
+
+
+	website = models.CharField(blank = True, max_length = 256, validators = [validateWebsite]);
+
+
 
 	def validateProfileImage(fieldFileObject):
-		print("Validating");
 		fileSize = fieldFileObject.file.size;
 		if (fileSize > profileImageMegabyteLimit * 1024 * 1024):
-			raise ValidationError("Max file size is %sMb" % str(profileImageMegabyteLimit));
+			raise ValidationError("This file is too large.  Max size is %(size)Mb", params = {size: str(profileImageMegabyteLimit)}, code = "large");
 
-	profile_image = models.ImageField(upload_to = "profile_images", blank = True, validators = [validateProfileImage]);
+
+
+	def generateNewFilename(instance, filename):
+		file, extension = os.path.splitext(filename);
+		newFileName = "/".join(("profile-images", "%s-profile-image%s" % (instance.user.username, extension)));
+
+		existingFile = "/".join((settings.MEDIA_ROOT, newFileName));
+		if (os.path.exists(existingFile)):
+			os.remove(existingFile);
+
+		return newFileName;
+
+
+
+	profile_image = models.ImageField(upload_to = generateNewFilename, blank = True, validators = [validateProfileImage]);
 
 
 
@@ -96,19 +174,23 @@ class UserProfile(models.Model):
 
 
 
-
-
-
 	def toDictionary(self):
-		return {
+		dictionary = {
 			"id": self.user.id,
 			"username": self.user.username,
 			"firstName": self.first_name,
 			"middleName": self.middle_name,
 			"lastName": self.last_name,
 			"fullName": self.fullName,
-			"absoluteUrl": self.get_absolute_url()
+			"absoluteUrl": self.get_absolute_url(),
 		};
+
+		if (self.profile_image):
+			dictionary["profileImage"] = self.profile_image.url;
+		else:
+			dictionary["profileImage"] = "";
+
+		return dictionary;
 
 
 

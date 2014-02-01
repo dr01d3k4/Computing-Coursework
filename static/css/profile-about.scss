@@ -7,14 +7,8 @@
 	background-color: $profile-about-background-colour;
 	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
 
-	#profile-picture {
-		width: $profile-about-inner-width;
-		height: $profile-about-inner-width;
-		margin: auto auto;
-		background-color: $dark-grey;
-		color: $white;
-		line-height: $profile-about-inner-width;
-		text-align: center;
+	#profile-about-image {
+		@extend %profile-image;
 	}
 
 	#profile-viewing-fullname {

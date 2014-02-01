@@ -68,7 +68,10 @@ $(document).ready ->
 	closePostReplyBox = ($button) ->
 		return unless $postReplyBoxAppendedToButton?
 		$postReplyBox.slideUp showSpeed, -> $postReplyBox.detach()
-		$button.text "Post reply"
+		if postReplyBoxAppendedToId is "NEW"
+			$button.text "Post a new post"
+		else
+			$button.text "Post reply"
 
 		$postReplyBoxAppendedToButton = null
 		postReplyBoxAppendedToId = -1
@@ -84,7 +87,10 @@ $(document).ready ->
 
 		else
 			if $postReplyBoxAppendedToButton?
-			 	$postReplyBoxAppendedToButton.text "Post reply"
+				if postReplyBoxAppendedToId is "NEW"
+					$postReplyBoxAppendedToButton.text "Post a new post"
+				else
+					$postReplyBoxAppendedToButton.text "Post reply"
 
 			$button.text "Close"
 
@@ -228,10 +234,11 @@ $(document).ready ->
 		$post = $button.parent().parent()
 		id = $post.children(".post-id-meta").text()
 
-		createConfirmDialogue
+		new ConfirmDialogue
 			title: "Delete Post"
 			body: "Are you sure you want to delete this post"
-			yesFunction: ->
+			yesFunction: (dialogue) ->
+				dialogue.close();
 				$.ajax
 					type: "POST"
 					url: "/social/api/delete-post/"
@@ -248,7 +255,7 @@ $(document).ready ->
 								if $replies.hasClass("post-replies") and $replies.children().length is 0
 									$replies.parent().children(".post").children(".post-footer").children(".post-view-reply").text("View replies")
 
-				return yes
+
 
 
 	buildPostHtml = (post, $parent, isTopLayer = no, attachToParent = no, animate = yes, prepend = no, showViewConversation = no) ->
@@ -316,7 +323,7 @@ $(document).ready ->
 		$postFooter.append $postPostReply
 		$postPostReply.click onPostReplyOpenClicked
 
-		if post.isDeletableByLoggedInUser # poster.username is loggedInUsername
+		if post.isDeletableByLoggedInUser
 			$postDelete = $ "<div>"
 			$postDelete.addClass "post-delete"
 			$postDelete.text "Delete"

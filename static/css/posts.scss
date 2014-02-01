@@ -84,10 +84,13 @@
 	#posts-inner {
 		#post-top-layer {
 			margin-left: -$post-inset;
+			text-align: center;
 
 			&:empty {
+				text-align: center;
 				&:after {
 					margin-left: $post-inset;
+					text-align: center;
 					content: "No posts";
 				}
 			}
@@ -134,6 +137,7 @@
 				min-height: $post-min-height;
 				padding: $post-content-padding;
 				background-color: $post-content-background-colour;
+				word-break: break-all;
 
 				.post-reply-to-username {
 					color: $blue;

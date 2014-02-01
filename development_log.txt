@@ -105,6 +105,11 @@
 - Now displays error message if profile image too large
 
 
+2014/01/30 Thursday
+- Profile image upload renames the files and deletes previous
+- Dialogue system now uses a class
+
+
 
 Plan for what to do next:
 - Maybe change view full conversation to be recursive and actually show the full conversation (both up and down), rather than just 1 layer up

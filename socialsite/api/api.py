@@ -156,6 +156,7 @@ def getFollowedCount(request, user):
 @returnHttpJson
 @requiresUserFromUsername
 def getFollowers(request, user):
+	print("api");
 	return {"users": [following.follower.user_profile.toDictionary() for following in user.user_profile.getFollowersQS()]};
 
 

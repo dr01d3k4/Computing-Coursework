@@ -1,12 +1,14 @@
-unless typeof String.prototype.endsWith is "function"
-	String.prototype.endsWith = (suffix) -> @indexOf(suffix, @length - suffix.length) isnt -1
+unless typeof String::endsWith is "function"
+	String::endsWith = (suffix) -> @indexOf(suffix, @length - suffix.length) isnt -1
 
 
 
 wordToGenitiveCase = (word) -> "#{word}\'#{unless word.endsWith 's' then 's'}"
 
 
+
 pluralPersonWord = (count) -> if count is 1 then "person" else "people"
+
 
 
 $(document).ready ->
@@ -90,21 +92,55 @@ $(document).ready ->
 
 
 	viewFollowersFollowedButtonClicked = (title, url) ->
-		$dialogueContent = createDialogue title: title
-		return unless $dialogueContent
+		dialogue = new Dialogue title: title
+		return unless dialogue
+
 		$.getJSON url, (data) ->
+			# [{fullName: "Ben", username: "Ben", profileImage: ""}, {fullName: "Testy", username: "Test", profileImage: ""}, {fullName: "A", username: "a", profileImage: ""}]
 			for user in data.users
-				$dialogueContent.append user.fullName
-				$dialogueContent.append "<br>"
+				$userItem = $ "<div>"
+				$userItem.addClass "user-item"
+
+				$profileImage = $ "<img>"
+				$profileImage.addClass "user-item-profile-image"
+				$profileImage.attr "src", user.profileImage
+				$profileImage.attr "alt", "No profile image"
+				$userItem.append $profileImage
+
+				$fullName = $ "<div>"
+				$fullName.addClass "user-item-full-name"
+				$fullName.text user.fullName
+				$userItem.append $fullName
+
+				$username = $ "<div>"
+				$username.addClass "user-item-username"
+				$username.text "@#{user.username}"
+				$userItem.append $username
+
+				$profileView = $ "<a>"
+				$profileView.addClass "user-item-view"
+				$profileView.attr "href", user.absoluteUrl
+				$profileView.text "View"
+
+				$userItem.append $profileView
+
+				# $profileUrlMeta = $ "<div>"
+				# $profileUrlMeta.addClass "invisible"
+				# $profileUrlMeta.hide()
+
+				$userItem.hide().appendTo(dialogue.$dialogueContent).slideDown(200) # dialogue.$dialogueContent.append $userItem
 
 
 
 	$viewFollowersButton = $ "#profile-view-followers-button"
 	$viewFollowersButton.click ->
-		viewFollowersFollowedButtonClicked "#{wordToGenitiveCase viewingFirstName} Followers",
+		viewFollowersFollowedButtonClicked "#{if viewingSelf then 'Your' else wordToGenitiveCase viewingFirstName} Followers",
 			"/social/api/get-followers/#{viewingUsername}"
 
 	$viewFollowedButton = $ "#profile-view-followed-button"
 	$viewFollowedButton.click ->
 		viewFollowersFollowedButtonClicked "Who #{if viewingSelf then 'you' else viewingFirstName} follow#{unless viewingSelf then 's' else ''}",
 			"/social/api/get-users-followed-by/#{viewingUsername}"
+
+
+	# viewFollowersFollowedButtonClicked "Your followers", "/social/api/get-followers/#{viewingUsername}"

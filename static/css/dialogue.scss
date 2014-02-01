@@ -5,16 +5,19 @@
 	height: 100%;
 	top: 0px;
 	left: 0px;
-	z-index: 1000;
+	bottom: 0px;
+	right: 0px;
+	z-index: $dialogue-z-index;
 	background-color: $dialogue-background-colour;
 
 	.dialogue-vertical-center-container {
+		display: table-cell;
 		width: 100%;
 		height: 100%;
-		display: table-cell;
 		vertical-align: middle;
 
 		.dialogue-container {
+			display: block;
 			width: 90%;
 			max-width: $dialogue-width;
 			margin: {
@@ -25,6 +28,10 @@
 			background-color: $white;
 
 			.dialogue-header {
+				position: relative;
+				top: 0px;
+				left: 0px;
+				z-index: 10000;
 				height: $dialogue-header-height;
 				background-color: $dark-grey;
 				box-shadow: 0px $background-shadow-size $background-shadow-spread $background-shadow-colour;
@@ -50,11 +57,13 @@
 			}
 
 			.dialogue-content {
+				display: block;
+				height: 100%;
 				padding: $dialogue-content-padding;
-				padding-top: 0px;
+				// padding-top: 0px;
 
 				p {
-					margin-top: $dialogue-content-paragraph-margin-vertical;
+					// margin-top: $dialogue-content-paragraph-margin-vertical;
 					line-height: $dialogue-content-paragraph-line-height;
 					text-align: center;
 				}
@@ -100,5 +109,9 @@
 				}
 			}
 		}
+	}
+
+	a {
+		z-index: $dialogue-z-index + 1;
 	}
 }

@@ -1,0 +1,1113 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"profile",
+				"profile"
+			],
+			[
+				"user-list",
+				"user-list-item-profile-image-size"
+			],
+			[
+				"user-item",
+				"user-list-item-profile-image-size"
+			],
+			[
+				"use",
+				"userItem"
+			],
+			[
+				"dialo",
+				"dialogue"
+			],
+			[
+				"over-",
+				"overflow-y"
+			],
+			[
+				"dial",
+				"dialogue-content-padding"
+			],
+			[
+				"dia",
+				"dialogue-header-height"
+			],
+			[
+				"dialog",
+				"dialogueContent"
+			],
+			[
+				"dialogu",
+				"dialogueContainer"
+			],
+			[
+				"pa",
+				"parameters"
+			],
+			[
+				"ip",
+				"ipDigit"
+			],
+			[
+				"Vali",
+				"ValidationError"
+			],
+			[
+				"viewF",
+				"viewFollowersDialogue"
+			],
+			[
+				"close",
+				"closeButtonClicked"
+			],
+			[
+				"diag",
+				"dialogueVerticalCenterContainer"
+			],
+			[
+				"profil",
+				"profileImage"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"postCo",
+				"postContentContainer"
+			],
+			[
+				"posts",
+				"posts-background-colour"
+			],
+			[
+				"exist",
+				"existingFile"
+			],
+			[
+				"userProfil",
+				"userProfileSettingsForm"
+			],
+			[
+				"userP",
+				"userProfile"
+			],
+			[
+				"Profil",
+				"profileImage"
+			],
+			[
+				"valida",
+				"validateProfileImage"
+			],
+			[
+				"show",
+				"showNextConversationLayer"
+			],
+			[
+				"social",
+				"socialsite"
+			],
+			[
+				"urlL",
+				"urllib2"
+			],
+			[
+				"userPR",
+				"userProfile"
+			],
+			[
+				"userPr",
+				"userProfileSettingsForm"
+			],
+			[
+				"userPRof",
+				"userProfileSettingsForm"
+			],
+			[
+				"UserProfile",
+				"UserProfileSettingsForm"
+			],
+			[
+				"user",
+				"userProfileSettingsForm"
+			],
+			[
+				"initial",
+				"initialFormFields"
+			],
+			[
+				"ini",
+				"initialFormFields"
+			],
+			[
+				"sett",
+				"settings-form-input-margin-bottom"
+			],
+			[
+				"Http",
+				"HttpResponseRedirect"
+			],
+			[
+				"profi",
+				"profile_image"
+			],
+			[
+				"f",
+				"furl	URLField (furl)"
+			],
+			[
+				"m",
+				"unique_for_month"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"follo",
+				"followerCount"
+			],
+			[
+				"viewFoll",
+				"viewFollowedButton"
+			],
+			[
+				"view",
+				"viewFollowersFollowedButtonClicked"
+			],
+			[
+				"return",
+				"returnHttpJson"
+			],
+			[
+				"dialog-conte",
+				"dialog-content-paragraph-margin-vertical"
+			],
+			[
+				"dialogConte",
+				"dialogContentBody"
+			],
+			[
+				"di",
+				"dialogContainer"
+			],
+			[
+				"register",
+				"registerForm"
+			],
+			[
+				"replyToId",
+				"replyToIdInteger"
+			],
+			[
+				"isD",
+				"isDeletableByLoggedInUser"
+			],
+			[
+				"requires",
+				"requiresUserFromUsername"
+			],
+			[
+				"getPost",
+				"getPostFromId"
+			],
+			[
+				"folower",
+				"followerCount"
+			],
+			[
+				"viewing",
+				"viewingUsername"
+			],
+			[
+				"getFo",
+				"getFollowedQS"
+			],
+			[
+				"getFollo",
+				"getFollowersQS"
+			],
+			[
+				"nosc",
+				"noscript-figure-padding"
+			],
+			[
+				"noscr",
+				"noscript-width"
+			],
+			[
+				"noscript-fi",
+				"noscript-figure-width"
+			],
+			[
+				"noscript",
+				"noscript-figure-gutter"
+			],
+			[
+				"noscri",
+				"noscript-content-padding"
+			],
+			[
+				"postheader-",
+				"post-header-padding-vertical"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"list-styl",
+				"list-style-type"
+			],
+			[
+				"index-register-",
+				"index-register-button-height"
+			],
+			[
+				"post-horizonta",
+				"post-horizontal-strip-button-right"
+			],
+			[
+				"post-conte",
+				"post-content-padding"
+			],
+			[
+				"post-ho",
+				"post-horizontal-strip-text-left"
+			],
+			[
+				"post-bac",
+				"posts-background-colour"
+			],
+			[
+				"header",
+				"header-height"
+			],
+			[
+				"about",
+				"aboutSlideTime"
+			],
+			[
+				"abou",
+				"aboutSliding"
+			],
+			[
+				"profile-ab",
+				"profile-about-padding"
+			],
+			[
+				"content",
+				"content-inner-margins"
+			],
+			[
+				"header-nav",
+				"header-nav-button-width"
+			],
+			[
+				"profile-abou",
+				"profile-about-padding"
+			],
+			[
+				"border",
+				"border-thickness"
+			],
+			[
+				"bo",
+				"border-thickness"
+			],
+			[
+				"autoc",
+				"autocapitalize"
+			],
+			[
+				"small",
+				"small-padding"
+			],
+			[
+				"index",
+				"index-title-height"
+			],
+			[
+				"regis",
+				"register-buttons-inner"
+			],
+			[
+				"no-ja",
+				"no-javascript-content"
+			],
+			[
+				"nav-",
+				"nav-button-height"
+			],
+			[
+				"nav",
+				"nav-button-height"
+			],
+			[
+				"navbu",
+				"nav-button-margin"
+			],
+			[
+				"smal",
+				"small-nav-height"
+			],
+			[
+				"nav-but",
+				"nav-button-margin"
+			],
+			[
+				"nav-bu",
+				"nav-button-margin"
+			],
+			[
+				"nav-butt",
+				"nav-button-height"
+			],
+			[
+				"nav-b",
+				"nav-button-width"
+			],
+			[
+				"post",
+				"post-inset"
+			],
+			[
+				"co",
+				"container"
+			],
+			[
+				"postRepl",
+				"postReplyBoxPost"
+			],
+			[
+				"postReplyBoxAp",
+				"postReplyBoxAppendedToId"
+			],
+			[
+				"postContent",
+				"postContent"
+			],
+			[
+				"postReply",
+				"postReplyBoxTextBox"
+			],
+			[
+				"postReplyBoxF",
+				"postReplyBoxFooter"
+			],
+			[
+				"postReplyBox",
+				"postReplyBoxPost"
+			],
+			[
+				"postRep",
+				"postReplyBoxTextBox"
+			],
+			[
+				"chara",
+				"charactersRemaining"
+			],
+			[
+				"characters",
+				"charactersRemaining"
+			],
+			[
+				"max",
+				"maximumReplyLengthCharacters"
+			],
+			[
+				"postREply",
+				"postReplyBoxCharactersRemaining"
+			],
+			[
+				"post-rel",
+				"post-reply-box"
+			],
+			[
+				"postReplyB",
+				"postReplyBoxAppendedToButton"
+			],
+			[
+				"HttpRes",
+				"HttpResponseRedirect"
+			],
+			[
+				"click",
+				"clickedFollowButton"
+			],
+			[
+				"profile-follo",
+				"profile-follow-button-followed"
+			],
+			[
+				"reply",
+				"replyQuerySet"
+			],
+			[
+				"i",
+				"ife	if … else"
+			],
+			[
+				"deb",
+				"debugm	debug(module) { … }"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"noPo",
+				"noPostsTime"
+			],
+			[
+				"butt",
+				"buttonPressed"
+			],
+			[
+				"hide",
+				"hideChildren"
+			],
+			[
+				"firstPost",
+				"firstPostUserLink"
+			],
+			[
+				"first",
+				"firstPostUserLink"
+			],
+			[
+				"firstPo",
+				"firstPosterUserLink"
+			],
+			[
+				"postVie",
+				"postViewRepliesClicked"
+			],
+			[
+				"postRe",
+				"postReplyContainer"
+			],
+			[
+				"postFooter",
+				"postFooter"
+			],
+			[
+				"json",
+				"jsonObject"
+			],
+			[
+				"requ",
+				"request"
+			],
+			[
+				"followe",
+				"followedUser"
+			],
+			[
+				"foll",
+				"followedUser"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "ComputingCoursework/static/css/globals.scss",
+			"settings":
+			{
+				"buffer_size": 6441,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ComputingCoursework/static/css/dialogue.scss",
+			"settings":
+			{
+				"buffer_size": 2522,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ComputingCoursework/static/js/profile_buttons.coffee",
+			"settings":
+			{
+				"buffer_size": 4013,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ComputingCoursework/static/js/profile_get_posts.coffee",
+			"settings":
+			{
+				"buffer_size": 10825,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ComputingCoursework/static/css/user-list.scss",
+			"settings":
+			{
+				"buffer_size": 1086,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 526.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_buttons.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/dialogue.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/dialogue.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/settings.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_get_posts.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/models.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/api/api.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/forms.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/url_test.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/settings.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/posts.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/globals.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/development_log.txt",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/views.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/profile.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/dialogue.js",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/create_dialogue.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/create_dialogue.js",
+		"/home/ben/DjangoProjects/ComputingCoursework/media/profile-images/Ben_profile_image.png",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/settings_preview_profile_image.js",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/settings_preview_profile_image.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/settings.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/profile-about.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/media/profile_images/IMG_17012014_163050.png",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/content.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style_old.css",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/search.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/index.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style.css",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/testLineCount.py",
+		"/home/ben/.config/sublime-text-2/Packages/Prefixr/Default (OSX).sublime-keymap",
+		"/home/ben/.config/sublime-text-2/Packages/User/line_count.py",
+		"/home/ben/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/ben/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"border",
+			"image",
+			"\n",
+			"parameters",
+			";\n",
+			"userProfileForm",
+			"UserProfileForm",
+			"<a>",
+			"div",
+			"255",
+			"dialog",
+			"Dialog",
+			"dialog",
+			"unless",
+			"Dialog",
+			"dialog",
+			"class",
+			".",
+			"noscript",
+			"animateTime",
+			"toIn",
+			"toInteger",
+			"auto",
+			"loggedIn",
+			"print",
+			"len",
+			"0px",
+			";",
+			"#register",
+			"post-small-text\"",
+			"horizontal-text",
+			"post-header-([tb])",
+			"post-header-t",
+			"post-header-([tb])",
+			"post-header-",
+			"{\n",
+			"header",
+			"><!-- ([^>]*) -->",
+			"size",
+			";\n",
+			"\"><!--",
+			"div",
+			"@",
+			"( id=\"[^>]*\")>",
+			"( class=\"[^>]*\")>",
+			"( class=\".*\")>",
+			"( id=\".*\")>",
+			"(id=\".*\")",
+			"//",
+			"delete",
+			"footer",
+			"append",
+			"#",
+			"buttonPressed",
+			"no",
+			"#",
+			"userFromUsername",
+			"#",
+			"show",
+			"div",
+			"#",
+			"get",
+			"print",
+			"console.log",
+			"admin",
+			"ul",
+			"li",
+			"post",
+			"//",
+			"lighter-grey",
+			"box-shadow",
+			"/*",
+			"//",
+			"colour",
+			"#\\d",
+			"#",
+			"@include",
+			"border",
+			"hover",
+			"'",
+			"print",
+			">\n",
+			"print",
+			"Register",
+			"/*",
+			"#",
+			"article",
+			"'(.+)'",
+			"print",
+			"bodyBlock",
+			"setColourAt",
+			"setCellWorth",
+			"setColourAt",
+			"getColourPoints",
+			"setColour",
+			"getColourPoints",
+			"colour",
+			"point",
+			"points",
+			"isColourAt",
+			"fall",
+			"isEmptyAt",
+			"Name",
+			"=",
+			"landedCells",
+			"multiplier",
+			"multplier",
+			"!==",
+			"([^=])==([^=])",
+			"[^=]==[^=]",
+			"==[^=]",
+			"==",
+			"multiplier",
+			"multiplir",
+			"nextFallingPieceColour",
+			"Cat",
+			"cat",
+			"admin",
+			"scoreChange",
+			"'",
+			"\"",
+			"'",
+			"url.path",
+			"badArg",
+			"badARg",
+			"@html",
+			"type=\"text/javascript\"",
+			"article"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"context",
+			"userProfileRegisterForm",
+			"UserProfileRegisterForm",
+			"256",
+			"dialogue",
+			"Dialogue",
+			"dialogue",
+			"Dialogue",
+			"dialogue",
+			"#",
+			"dialog",
+			"0",
+			" !important;",
+			"post-small-text-left\"",
+			"horizontal-strip-text",
+			"post-horizontal-strip-$1",
+			"post-horizontal-strip-%1",
+			"post-horizontal-strip-",
+			"post-horizontal-strip",
+			" $1>",
+			" %1>",
+			"><!--$1 -->",
+			"><!--$1 --",
+			"<!--\\n$1\\n-->\\n",
+			"<!--$1-->",
+			"viewRepliesPressed",
+			"getUserFromUsername",
+			"div",
+			"article",
+			"button-lighter-grey",
+			"post",
+			"\"$1\"",
+			"Url",
+			" = ",
+			"!=",
+			"$1===$2",
+			"===",
+			"Category",
+			"category",
+			"\"",
+			"'",
+			"\"",
+			"@root",
+			"",
+			"Link",
+			"about",
+			"mainMargin",
+			"",
+			":",
+			"",
+			"StartHeight",
+			"addContent",
+			"addChild",
+			"selection",
+			"up",
+			"\\n",
+			": ",
+			"\";",
+			"\"",
+			"response",
+			"request",
+			"str",
+			"",
+			"this.gridHeight",
+			"this.gridWidth",
+			"changeState",
+			"",
+			"\\n",
+			"",
+			"@",
+			"",
+			"isKeyDownIn",
+			"setColourAt",
+			"etColourAt",
+			"setColourAt",
+			"getColourAt",
+			"setColourAt",
+			"getColourAt",
+			"setAt",
+			"getAt",
+			"GameState",
+			"array"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ComputingCoursework/static/css/globals.scss",
+					"settings":
+					{
+						"buffer_size": 6441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3994,
+								3994
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1521.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ComputingCoursework/static/css/dialogue.scss",
+					"settings":
+					{
+						"buffer_size": 2522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2516,
+								2516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1287.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ComputingCoursework/static/js/profile_buttons.coffee",
+					"settings":
+					{
+						"buffer_size": 4013,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3914,
+								3914
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1846.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "ComputingCoursework/static/js/profile_get_posts.coffee",
+					"settings":
+					{
+						"buffer_size": 10825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9627,
+								9627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3939.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "ComputingCoursework/static/css/user-list.scss",
+					"settings":
+					{
+						"buffer_size": 1086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 297.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"s",
+				"/home/ben/Documents/LuaServer/server.lua"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 230.0,
+	"status_bar_visible": true
+}

@@ -178,23 +178,10 @@ class Settings(View):
 
 	def post(self, request):
 		userProfile = request.user.user_profile;
-		userProfileSettingsForm = UserProfileSettingsForm(data = request.POST, instance = userProfile);
+		userProfileSettingsForm = UserProfileSettingsForm(request.POST, request.FILES, instance = userProfile);
 
 		if (userProfileSettingsForm.is_valid()):
-			newUserProfile = userProfileSettingsForm.save(commit = False);
-
-			if ("profile_image" in request.FILES):
-				if (request.FILES["profile_image"]._size > 0.2 * 1024 * 1024):
-					context = { };
-					context["userProfile"] = userProfile;
-					context["userProfileSettingsForm"] = userProfileSettingsForm;
-					context["profileImageTooLarge"] = True;
-					return render(request, "socialsite/settings.html", context);
-
-				newUserProfile.profile_image = request.FILES["profile_image"];
-
-			newUserProfile.save();
-
+			userProfileSettingsForm.save();
 			return HttpResponseRedirect(reverse("social:index"));
 
 		else:

@@ -1,4 +1,4 @@
-form {
+#settings-form {
 	width: 100%;
 	max-width: $settings-form-width;
 	margin: auto;
@@ -13,7 +13,7 @@ form {
 	input {
 		@extend %text-input-field;
 		
-		&#id_profile_image {
+		&#profile-image-field {
 			width: auto;
 			margin: 0px;
 			border-bottom: 0px;
@@ -33,6 +33,11 @@ form {
 		max-height: $post-text-box-one-line-height * 3;
 		border: $global-dark-border;
 		margin-bottom: $index-input-margin-bottom;
+	}
+
+	#profile-image-view {
+		@extend %profile-image;
+		margin: $index-input-margin-bottom 0px;
 	}
 
 	#settings-form-change-button {
