@@ -1,3 +1,5 @@
+/* From Django website */
+
 $(document).ajaxSend(function(event, xhr, settings) {
 	function getCookie(name) {
 		var cookieValue = null;
@@ -38,6 +40,8 @@ $(document).ajaxSend(function(event, xhr, settings) {
 
 
 /*
+Personal CoffeeScript port
+
 $(document).ajaxSend (event, xjr, settings) ->
 	getCookie = (name) ->
 		cookieValue = null
@@ -59,7 +63,7 @@ $(document).ajaxSend (event, xjr, settings) ->
 
 		return (url is origin or url.slice(0, origin.length + 1) is origin + "/")
 			or (url is srOrigin or url.slice(0, srOrigin.length + !) is srOrgin + "/")
-			or not (/^(\/\/|http:|https:).*//*.test url // Remove the /*
+			or not (/^(\/\/|http:|https:).*//*.test url /////////////////////////////////////////////////////////////////////////////// Remove the /*
 
 
 

@@ -130,7 +130,7 @@ $post-content-padding: 6px;
 $post-content-background-colour: $white;
 $post-header-height: auto;
 $post-header-padding-vertical: 2px;
-$post-header-padding-horizontal: 2px;
+$post-header-padding-horizontal: 0px;
 $post-horizontal-strip-text-padding: 0px 4px;		
 $post-horizontal-strip-text-height: 18px;
 $post-horizontal-strip-text-font-size: 0.9em;
@@ -173,16 +173,26 @@ $settings-form-change-button-font-size: 1em;
 
 
 
-$user-list-item-profile-image-size: 64px;
+$user-list-item-profile-image-size: 82px;
 $user-list-item-padding-vertical: 8px;
 $user-list-item-height: $user-list-item-profile-image-size;
-$user-list-item-profile-image-line-height: 18px;
+$user-list-item-full-name-font-size: 1.2em;
+$user-list-item-profile-image-line-height: 22px;
 $user-list-item-text-padding-left: $user-list-item-profile-image-size + 8px;
 $user-list-item-full-name-line-height: 20px;
-$user-list-item-username-font-size: 0.8em;
-$user-list-item-view-width: 38px;
+$user-list-item-username-font-size: 1em;
+$user-list-item-view-width: 90px;
+$user-list-item-view-height: 14px;
 $user-list-item-view-padding: 4px;
+$user-list-item-view-margin-top: $user-list-item-height - $user-list-item-view-height - $user-list-item-padding-vertical;
 
+
+
+$search-header-font-size: 2em;
+$search-header-margin-left: 2%;
+$search-header-padding: 8px;
+$search-user-list-width: $site-width * 0.9;
+$search-user-list-padding: 16px;
 
 
 %clickable {
@@ -200,9 +210,13 @@ $user-list-item-view-padding: 4px;
 	}
 }
 
+
+
 .invisible {
 	display: none !important;
 }
+
+
 
 %text-input-field {
 	width: 100%;
@@ -220,6 +234,7 @@ $user-list-item-view-padding: 4px;
 }
 
 
+
 .errorlist {
 	list-style-type: none;
 	display: inline-block;
@@ -231,6 +246,8 @@ $user-list-item-view-padding: 4px;
 		color: $red;
 	}
 }
+
+
 
 %profile-image {
 	width: $profile-about-inner-width;

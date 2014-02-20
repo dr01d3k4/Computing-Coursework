@@ -3,60 +3,13 @@ from django.db import models;
 from django.core.urlresolvers import reverse;
 from django.core.exceptions import ValidationError;
 from ComputingCoursework import settings;
+from socialsite.url_matcher import urlPattern;
 import re;
 import os;
 
 
 
 profileImageMegabyteLimit = 2;
-
-
-
-def buildUrlPattern():
-	protocol = "https?://";
-
-	validLetter = "[\w\-_]";
-
-	ipDigit = "(" \
-		+ "(0|1)?\d?\d" \
-		+ "|" \
-		+ "(" \
-			+ "2[0-4]\d"\
-			+ "|" \
-			+ "25[0-5]" \
-		+ ")" \
-		+ ")";
-	ip = "(" + ipDigit + "\.){3}" + ipDigit;
-	port = "(:\d{4})?"
-
-	domain = "(" + validLetter + "+\.)*";
-	lastDomain = "(" + validLetter + "+)";
-
-	folder = "(/" + validLetter + "+)*";
-
-	parameter = validLetter + "+=" + validLetter + "+";
-
-	parameterList = "\?" + parameter + "(&" + parameter + ")*";
-
-	parameters = "(/" + validLetter + "*" + parameterList + ")?"
-
-	urlPattern = r"^" \
-		+ protocol \
-		+ "(" \
-			+ ip \
-			+ port \
-		+ "|" \
-			+ domain \
-			+ lastDomain \
-		+ ")" \
-		+ folder \
-		+ parameters \
-		+ "/?" \
-		+ "$";
-
-	return urlPattern;
-
-urlPattern = re.compile(buildUrlPattern());
 
 
 
@@ -70,8 +23,6 @@ class UserProfile(models.Model):
 
 
 	def validateWebsite(urlObject):
-		print("Validating model");
-		print("Url object %s" % urlObject);
 		if (not re.match(urlPattern, urlObject)):
 			raise ValidationError("Invalid address");
 
@@ -182,7 +133,9 @@ class UserProfile(models.Model):
 			"middleName": self.middle_name,
 			"lastName": self.last_name,
 			"fullName": self.fullName,
-			"absoluteUrl": self.get_absolute_url(),
+			"absoluteUrl": self.absoluteUrl,
+			"description": self.description,
+			"website": self.website
 		};
 
 		if (self.profile_image):
@@ -203,11 +156,13 @@ class UserProfile(models.Model):
 	def get_absolute_url(self):
 		return reverse("social:profile", args = [self.user.username]);
 
+	absoluteUrl = property(get_absolute_url);
+
 
 
 class Post(models.Model):
-	content = models.CharField(max_length = 256);
 	user = models.ForeignKey(User, db_index = True, related_name = "post");
+	content = models.CharField(max_length = 256);
 	date = models.DateTimeField(db_index = True, auto_now_add = True);
 
 

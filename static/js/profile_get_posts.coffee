@@ -1,9 +1,26 @@
 $(document).ready ->
+	$("html, body").animate scrollTop: "0px"
+
+
+	GET_POSTS_LENGTH = 10
+	gotAmount = 0
+	UPDATE_TIME_SECONDS = 60
+	WINDOW_BOTTOM_LOAD_NEW_POSTS_SCROLL = 64
+	topLayerVisiblePosts = [ ]
+
+	isTopLayerVisiblePost = (id) ->
+		for i in topLayerVisiblePosts
+			if id is i
+				return yes
+		return no
+
+
+
 	$postTopLayer = $ "#post-top-layer"
 
 
-	showSpeed = 250
-	noPostsTime = 600
+	SHOW_TIME = 250
+	NO_POSTS_TIME = 600
 	viewRepliesPressed = no
 
 	maximumReplyLengthCharacters = 255
@@ -67,7 +84,7 @@ $(document).ready ->
 
 	closePostReplyBox = ($button) ->
 		return unless $postReplyBoxAppendedToButton?
-		$postReplyBox.slideUp showSpeed, -> $postReplyBox.detach()
+		$postReplyBox.slideUp SHOW_TIME, -> $postReplyBox.detach()
 		if postReplyBoxAppendedToId is "NEW"
 			$button.text "Post a new post"
 		else
@@ -80,7 +97,7 @@ $(document).ready ->
 
 	onPostReplyOpenClicked = ->
 		$button = $(this)
-		id = $button.parent().parent().children(".post-id-meta").text()
+		id = $button.parent().parent().data("post-id")
 
 		if $postReplyBoxAppendedToButton?.is $button
 			closePostReplyBox $button
@@ -97,8 +114,8 @@ $(document).ready ->
 			$postReplyBoxAppendedToButton = $button
 			postReplyBoxAppendedToId = id
 
-			$postReplyBox.slideUp showSpeed, ->
-				$postReplyBox.appendTo($button.parent().parent()).hide().slideDown showSpeed, ->
+			$postReplyBox.slideUp SHOW_TIME, ->
+				$postReplyBox.appendTo($button.parent().parent()).hide().slideDown SHOW_TIME, ->
 					$postReplyBoxTextBox.focus()
 
 
@@ -117,7 +134,7 @@ $(document).ready ->
 			$blankPost.text "Please enter a reply"
 			$blankPost.hide()
 			$button.after $blankPost
-			$blankPost.show(showSpeed).delay(noPostsTime).hide showSpeed, ->
+			$blankPost.show(SHOW_TIME).delay(NO_POSTS_TIME).hide SHOW_TIME, ->
 				$blankPost.remove()
 				postReplyClicked = no
 			return
@@ -130,16 +147,18 @@ $(document).ready ->
 				content: postContent
 				replyToId: id
 		.done (data) ->
-			$postReplyBoxTextBox.val("");
-			$postReplyBoxTextBox.text("");
+			$postReplyBoxTextBox.val("")
+			$postReplyBoxTextBox.text("")
 
 			closePostReplyBox $postReplyBoxAppendedToButton
+			console.log id
 			if id is "NEW" or viewingSelf
-				buildPostHtml data.post, $postTopLayer, yes, no, yes, yes
+				console.log "ok"
+				buildPostHtml data.post, $postTopLayer, isTopLayer: yes, prepend: yes
 			
 			if id isnt "NEW"
-				$parent = $button.parent().parent().parent().parent().parent().children(".post-replies");
-				buildPostHtml data.post, $parent, no, no, yes, yes
+				$parent = $button.parent().parent().parent().parent().parent().children(".post-replies")
+				buildPostHtml data.post, $parent, prepend: yes
 				$button.parent().parent().parent().parent().children(".post-footer").children(".post-view-reply").text("Close")
 			postReplyClicked = no
 
@@ -150,7 +169,7 @@ $(document).ready ->
 
 	hideChildren = ($container, func) ->
 		$postReplies = $container.children ".post-replies"
-		$postReplies.slideUp showSpeed, ->
+		$postReplies.slideUp SHOW_TIME, ->
 			$postReplies.children().remove()
 			$postReplies.slideDown()
 			func()
@@ -165,7 +184,7 @@ $(document).ready ->
 		$postReplyContainer = $button.parent().parent().parent().children(".post-replies")
 
 		if $postReplyContainer.children().length is 0
-			id = $button.parent().parent().children(".post-id-meta").text()
+			id = $button.parent().parent().data("post-id")
 
 			$.getJSON "/social/api/get-replies-to/#{id}/", (data) ->
 				if data.posts.length is 0
@@ -174,7 +193,7 @@ $(document).ready ->
 					$noPosts.text "No posts to display"
 					$noPosts.hide()
 					$button.after $noPosts
-					$noPosts.show(showSpeed).delay(noPostsTime).hide showSpeed, ->
+					$noPosts.show(SHOW_TIME).delay(NO_POSTS_TIME).hide SHOW_TIME, ->
 						$noPosts.remove()
 						viewRepliesPressed = no
 				else
@@ -193,11 +212,12 @@ $(document).ready ->
 	onViewConversationClicked = ->
 		$button = $(this)
 		showNextConversationLayer = ->
-			id = $button.children(".post-is-reply-to-id").text()
-			if id is ""
+			$post = $button.parent().parent()
+			id = $post.data "post-is-reply-to-id"
+
+			if not id? or id is ""
 				return
 
-			$post = $button.parent().parent()
 			$container = $post.parent()	
 			$replies = $container.children ".post-replies"
 
@@ -205,9 +225,9 @@ $(document).ready ->
 				$post.detach()
 				$replies.detach()
 
-				buildPostHtml data.post, $container, no, yes, no, no, yes
+				buildPostHtml data.post, $container, attachToParent: yes, animate: no, showViewConversation: yes
 
-				$container.children(".post").hide().slideDown(showSpeed)
+				$container.children(".post").hide().slideDown(SHOW_TIME)
 				$container.children(".post").children(".post-footer").children(".post-view-reply").text("Close")
 
 				$postContainer = $ "<div>"
@@ -219,11 +239,11 @@ $(document).ready ->
 				if data.post.isReplyTo
 					$button.remove()
 				else
-					$button.hide(showSpeed).remove()
+					$button.hide(SHOW_TIME).remove()
 
 				if data.post.isReplyTo
 					$button = $container.children(".post").children(".post-header").children(".post-view-conversation")
-					setTimeout showNextConversationLayer, showSpeed + 100
+					setTimeout showNextConversationLayer, SHOW_TIME + 100
 
 		showNextConversationLayer()
 
@@ -232,33 +252,44 @@ $(document).ready ->
 	onDeleteClicked = ->
 		$button = $(this)
 		$post = $button.parent().parent()
-		id = $post.children(".post-id-meta").text()
+		id = $post.data("post-id")
 
 		new ConfirmDialogue
 			title: "Delete Post"
 			body: "Are you sure you want to delete this post"
 			yesFunction: (dialogue) ->
-				dialogue.close();
+				dialogue.close()
 				$.ajax
 					type: "POST"
 					url: "/social/api/delete-post/"
 					data:
 						id: id
 				.done ->
-					$postTopLayer.find(".post-id-meta").each ->
-						$id = $(this)
-						if $id.text() is id
-							$container = $id.parent().parent()
-							$container.slideUp showSpeed, ->
+					$postTopLayer.find(".post").each ->
+						foundId = $(this).data("post-id")
+						if foundId is id
+							$container = $(this).parent()
+							$container.slideUp SHOW_TIME, ->
 								$replies = $container.parent()
 								$container.remove()
 								if $replies.hasClass("post-replies") and $replies.children().length is 0
 									$replies.parent().children(".post").children(".post-footer").children(".post-view-reply").text("View replies")
 
+					for i in [0...topLayerVisiblePosts.length]
+						if topLayerVisiblePosts[i] is id
+							topLayerVisiblePosts.splice i, 1
 
 
 
-	buildPostHtml = (post, $parent, isTopLayer = no, attachToParent = no, animate = yes, prepend = no, showViewConversation = no) ->
+	buildPostHtml = (post, $parent, options = { }) ->
+		isTopLayer = options.isTopLayer or no
+		attachToParent = options.attachToParent or no
+		animate = options.animate or yes
+		prepend = options.prepend or no
+		showViewConversation = options.showViewConversation or no
+
+		return if isTopLayer and isTopLayerVisiblePost post.id
+
 		$postContainer = null
 		if attachToParent
 			$postContainer = $parent
@@ -284,7 +315,7 @@ $(document).ready ->
 			$viewConversation.addClass "post-view-conversation"
 			$viewConversation.text "View conversation"
 			$viewConversation.click onViewConversationClicked
-			$viewConversation.append "<span class='post-is-reply-to-id'>#{firstPost.id}</span>"
+			$post.data "post-is-reply-to-id", firstPost.id
 			$postHeader.append $viewConversation
 
 		$postDate = $ "<div>"
@@ -333,10 +364,9 @@ $(document).ready ->
 
 		$post.append $postFooter
 
-		$postIdMeta = $ "<div>"
-		$postIdMeta.addClass "post-id-meta"
-		$postIdMeta.text post.id
-		$post.append $postIdMeta
+		$post.data "post-id", post.id
+		if isTopLayer
+			topLayerVisiblePosts.push post.id
 
 		$postContainer.prepend $post
 
@@ -345,33 +375,71 @@ $(document).ready ->
 			$postReplies.addClass "post-replies"
 			$postContainer.append $postReplies
 
-		if animate
-			$postContainer.hide()
-			if prepend
-				$parent.prepend $postContainer
-			else
-				$parent.append $postContainer
-			$postContainer.slideDown showSpeed
+		if prepend
+			$parent.prepend $postContainer
 		else
-			if prepend
-				$parent.prepend $postContainer
-			else
-				$parent.append $postContainer
+			$parent.append $postContainer
+
+		if animate
+			$postContainer.hide 0, -> $postContainer.slideDown SHOW_TIME
 
 		$postViewReplies.click onViewRepliesClicked
 
 
 
-	renderFirstPosts = (data) ->
+
+	getTopPostsApi = ""
+
+
+	renderFirstPosts = (data, prepend = no) ->
 		for post in data.posts
-			buildPostHtml post, $postTopLayer, yes, no, yes, no, yes
+			unless isTopLayerVisiblePost(post.id)
+				gotAmount += 1
+				buildPostHtml post, $postTopLayer, isTopLayer: yes, prepend: prepend, showViewConversation: yes
 		null
 
 
 
-	if viewingSelf
-		$.getJSON "/social/api/get-posts-by-users-followed-by/#{loggedInUsername}/", renderFirstPosts
+	getTopPostsApi = if viewingSelf
+		"/social/api/get-posts-by-users-followed-by/#{loggedInUsername}/"
+		
 	else
-		$.getJSON "/social/api/get-posts-by/#{viewingUsername}/", renderFirstPosts
+		"/social/api/get-posts-by/#{viewingUsername}/"
+
+	getTopPostsApi += "#{GET_POSTS_LENGTH}/"
+
+
+	$.getJSON getTopPostsApi, (data) -> renderFirstPosts data
 
 	$("#post-new-post-button").click onPostReplyOpenClicked
+
+
+
+	loadingNext = no
+	loadNextPosts = ->
+		return if loadingNext
+		loadingNext = yes
+
+		getApi = getTopPostsApi + (if gotAmount is 0 then "0" else gotAmount.toString()) + "/"
+
+		$.getJSON getApi, (data) ->
+			renderFirstPosts data
+			loadingNext = no
+		
+
+
+
+	$window = $(window)
+
+	detectScroll = ->
+		if $window.scrollTop() + $window.height() >= $(document).height() - WINDOW_BOTTOM_LOAD_NEW_POSTS_SCROLL
+			loadNextPosts()
+	
+	$window.scroll detectScroll
+
+
+
+	setInterval ->
+		$.getJSON getTopPostsApi, (data) ->
+			renderFirstPosts(data, yes)
+	, UPDATE_TIME_SECONDS * 1000

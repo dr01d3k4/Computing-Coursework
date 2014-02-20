@@ -39,7 +39,6 @@ class UserProfileSettingsForm(forms.ModelForm):
 
 
 	def clean(self):
-		print("Cleaning form");
 		cleanedData = self.cleaned_data;
 		website = cleanedData.get("website");
 

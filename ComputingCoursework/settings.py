@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os;
 BASE_DIR = os.path.dirname(os.path.dirname(__file__));
 SETTINGS_DIR = os.path.dirname(__file__);
-PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir);
-PROJECT_PATH = os.path.abspath(PROJECT_PATH);
+PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir));
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/

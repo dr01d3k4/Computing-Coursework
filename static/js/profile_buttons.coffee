@@ -97,9 +97,20 @@ $(document).ready ->
 
 		$.getJSON url, (data) ->
 			# [{fullName: "Ben", username: "Ben", profileImage: ""}, {fullName: "Testy", username: "Test", profileImage: ""}, {fullName: "A", username: "a", profileImage: ""}]
+
+			# for i in [0...255]
+			# 	dialogue.$dialogueContent.append i + "<br>"
+
+
 			for user in data.users
 				$userItem = $ "<div>"
 				$userItem.addClass "user-item"
+
+				$profileView = $ "<a>"
+				$profileView.addClass "user-item-view"
+				$profileView.attr "href", user.absoluteUrl
+				$profileView.text "View profile"
+				$userItem.append $profileView
 
 				$profileImage = $ "<img>"
 				$profileImage.addClass "user-item-profile-image"
@@ -117,18 +128,12 @@ $(document).ready ->
 				$username.text "@#{user.username}"
 				$userItem.append $username
 
-				$profileView = $ "<a>"
-				$profileView.addClass "user-item-view"
-				$profileView.attr "href", user.absoluteUrl
-				$profileView.text "View"
+				$description = $ "<div>"
+				$description.addClass "user-item-description"
+				$description.text user.description
+				$userItem.append $description
 
-				$userItem.append $profileView
-
-				# $profileUrlMeta = $ "<div>"
-				# $profileUrlMeta.addClass "invisible"
-				# $profileUrlMeta.hide()
-
-				$userItem.hide().appendTo(dialogue.$dialogueContent).slideDown(200) # dialogue.$dialogueContent.append $userItem
+				$userItem.hide().appendTo(dialogue.$dialogueContent).slideDown(200)
 
 
 

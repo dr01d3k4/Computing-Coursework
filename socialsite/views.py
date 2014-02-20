@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator;
 from django.contrib.auth.decorators import login_required;
 from django.contrib.auth.models import User;
 from django.core.urlresolvers import reverse;
+from django.db.models import Q;
 
 from socialsite.models import UserProfile, Following;
 from socialsite.forms import UserForm, UserProfileRegisterForm, UserProfileSettingsForm;
@@ -158,7 +159,15 @@ class Follow(View):
 
 class Search(View):
 	def get(self, request, searchTerm = ""):
-		return render_to_response("socialsite/search.html", { }, RequestContext(request));
+		userProfile = request.user.user_profile;
+
+		userProfiles = UserProfile.objects.filter(Q(user__username__icontains = searchTerm) | Q(first_name__icontains = searchTerm) | Q(last_name__icontains = searchTerm) | Q(middle_name__icontains = searchTerm));
+		context = { };
+		context["userProfile"] = userProfile;
+		context["userProfiles"] = userProfiles;
+		context["searchTerm"] = searchTerm;
+
+		return render(request, "socialsite/search.html", context);
 
 
 

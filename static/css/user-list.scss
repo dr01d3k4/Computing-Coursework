@@ -11,7 +11,6 @@
 
 	.user-item-profile-image {
 		@extend %profile-image;
-		display: inline-block;
 		float: left;
 		width: $user-list-item-profile-image-size;
 		height: $user-list-item-profile-image-size;
@@ -22,24 +21,30 @@
 	.user-item-full-name {
 		padding-left: $user-list-item-text-padding-left;
 		line-height: $user-list-item-full-name-line-height;
+		font-size: $user-list-item-full-name-font-size;
 		font-weight: bold;
 	}
 
 	.user-item-username {
 		padding-left: $user-list-item-text-padding-left;
+		line-height: $user-list-item-full-name-line-height;
+		font-size: $user-list-item-username-font-size;
+		font-weight: normal;
+	}
+
+	.user-item-description {
+		padding-left: $user-list-item-text-padding-left;
+		line-height: $user-list-item-full-name-line-height;
 		font-size: $user-list-item-username-font-size;
 	}
 
 	a {
 		@extend %clickable;
 		display: block;
-		width: $user-list-item-view-width;
 		float: right;
+		width: $user-list-item-view-width;
+		height: $user-list-item-view-height;
+		margin-top: $user-list-item-view-margin-top;
 		padding: $user-list-item-view-padding;
 	}
-
-	// &:hover {
-	// 	cursor: pointer;
-	// 	box-shadow: inset 2 * $background-shadow-size 2 * $background-shadow-size $background-shadow-spread $light-grey;
-	// }
 }

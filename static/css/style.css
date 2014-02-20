@@ -17,7 +17,7 @@ Order of properties:
 - colour
 - font
 */
-/* line 188, globals.scss */
+/* line 198, globals.scss */
 #index #top-bar .form-button-container #index-form-register-button, #index #top-bar .form-button-container #index-form-login-button, #index #top-bar .form-button-container .index-form-cancel-button, #index #register-buttons #register-buttons-inner #register-button, #index #register-buttons #register-buttons-inner #login-button, #header #inner-header #home-button, #header #inner-header #nav-container #nav #menu-icon, #header #inner-header #nav-container #nav ul li, #content-outer #content-inner #profile-about #profile-follow-button, #content-outer #content-inner #profile-about #profile-view-followers-button, #content-outer #content-inner #profile-about #profile-view-followed-button, #content-outer #content-inner #profile-about #profile-about-more-button, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button, #settings-form #settings-form-change-button, .user-item a {
   background-color: #3a3a3a;
   color: #fefefe;
@@ -25,19 +25,19 @@ Order of properties:
   text-decoration: none;
   box-shadow: 1px 1px 6px #3a3a3a;
 }
-/* line 195, globals.scss */
+/* line 205, globals.scss */
 #index #top-bar .form-button-container #index-form-register-button:hover, #index #top-bar .form-button-container #index-form-login-button:hover, #index #top-bar .form-button-container .index-form-cancel-button:hover, #index #register-buttons #register-buttons-inner #register-button:hover, #index #register-buttons #register-buttons-inner #login-button:hover, #header #inner-header #home-button:hover, #header #inner-header #nav-container #nav #menu-icon:hover, #header #inner-header #nav-container #nav ul li:hover, #content-outer #content-inner #profile-about #profile-follow-button:hover, #content-outer #content-inner #profile-about #profile-view-followers-button:hover, #content-outer #content-inner #profile-about #profile-view-followed-button:hover, #content-outer #content-inner #profile-about #profile-about-more-button:hover, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link:hover, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply:hover, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply:hover, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete:hover, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post:hover, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button:hover, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:hover, #settings-form #settings-form-change-button:hover, .user-item a:hover, #index #top-bar .form-button-container #index-form-register-button:active, #index #top-bar .form-button-container #index-form-login-button:active, #index #top-bar .form-button-container .index-form-cancel-button:active, #index #register-buttons #register-buttons-inner #register-button:active, #index #register-buttons #register-buttons-inner #login-button:active, #header #inner-header #home-button:active, #header #inner-header #nav-container #nav #menu-icon:active, #header #inner-header #nav-container #nav ul li:active, #content-outer #content-inner #profile-about #profile-follow-button:active, #content-outer #content-inner #profile-about #profile-view-followers-button:active, #content-outer #content-inner #profile-about #profile-view-followed-button:active, #content-outer #content-inner #profile-about #profile-about-more-button:active, #content-outer #content-inner #posts #posts-inner .post .post-header .post-poster-link:active, #content-outer #content-inner #posts #posts-inner .post .post-header .post-view-conversation:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-view-reply:active, #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container #post-new-post-button:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-post-reply:active, #content-outer #content-inner #posts #posts-inner .post .post-footer .post-delete:active, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer #post-reply-box-post-container #post-reply-box-post:active, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-header .dialogue-close-button:active, .dialogue .dialogue-vertical-center-container .dialogue-container .dialogue-content .dialogue-button-container .dialogue-button:active, #settings-form #settings-form-change-button:active, .user-item a:active {
   cursor: pointer;
   box-shadow: inset 2px 2px 6px #3a3a3a;
   background-color: #545454;
 }
 
-/* line 203, globals.scss */
+/* line 215, globals.scss */
 .invisible {
   display: none !important;
 }
 
-/* line 207, globals.scss */
+/* line 221, globals.scss */
 #index #top-bar input, #settings-form input {
   width: 100%;
   margin-top: 2px;
@@ -46,12 +46,12 @@ Order of properties:
   line-height: 1;
   text-align: left;
 }
-/* line 217, globals.scss */
+/* line 231, globals.scss */
 #index #top-bar input:focus, #settings-form input:focus {
   background-color: #faff7e;
 }
 
-/* line 223, globals.scss */
+/* line 238, globals.scss */
 .errorlist {
   list-style-type: none;
   display: inline-block;
@@ -60,12 +60,12 @@ Order of properties:
   font-weight: bold;
   font-size: 1em;
 }
-/* line 230, globals.scss */
+/* line 245, globals.scss */
 .errorlist li {
   color: red;
 }
 
-/* line 235, globals.scss */
+/* line 252, globals.scss */
 #content-outer #content-inner #profile-about #profile-about-image, #settings-form #profile-image-view, .user-item .user-item-profile-image {
   width: 196px;
   height: 196px;
@@ -89,46 +89,47 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* line 13, fix-elements.scss */
 body {
+  overflow-y: scroll;
   line-height: 1;
 }
 
-/* line 19, fix-elements.scss */
+/* line 20, fix-elements.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 25, fix-elements.scss */
+/* line 26, fix-elements.scss */
 blockquote, q {
   quotes: none;
 }
-/* line 28, fix-elements.scss */
+/* line 29, fix-elements.scss */
 blockquote:before, blockquote:after, q:before, q:after {
   content: "";
   content: none;
 }
 
-/* line 36, fix-elements.scss */
+/* line 37, fix-elements.scss */
 :focus {
   outline: 0;
 }
 
-/* line 42, fix-elements.scss */
+/* line 43, fix-elements.scss */
 ins {
   text-decoration: none;
 }
 
-/* line 48, fix-elements.scss */
+/* line 49, fix-elements.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 54, fix-elements.scss */
+/* line 55, fix-elements.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 84, fix-elements.scss */
+/* line 85, fix-elements.scss */
 * {
   margin: 0px;
   padding: 0px;
@@ -143,7 +144,7 @@ table {
   text-decoration: none;
   text-align: left;
 }
-/* line 87, fix-elements.scss */
+/* line 88, fix-elements.scss */
 *:before {
   margin: 0px;
   padding: 0px;
@@ -158,7 +159,7 @@ table {
   text-decoration: none;
   text-align: left;
 }
-/* line 91, fix-elements.scss */
+/* line 92, fix-elements.scss */
 *:after {
   margin: 0px;
   padding: 0px;
@@ -174,7 +175,7 @@ table {
   text-align: left;
 }
 
-/* line 98, fix-elements.scss */
+/* line 99, fix-elements.scss */
 html, body {
   position: absolute;
   background-color: dodgerblue;
@@ -182,13 +183,13 @@ html, body {
   height: 100%;
 }
 
-/* line 107, fix-elements.scss */
+/* line 108, fix-elements.scss */
 img {
   display: block;
 }
 
 @media only and (min-width: 0px) and (max-width: 960px) {
-  /* line 114, fix-elements.scss */
+  /* line 115, fix-elements.scss */
   body {
     background-color: #ffffff !important;
   }
@@ -643,7 +644,7 @@ img {
 #content-outer #content-inner #posts #post-new-post-button-outer-container #post-new-post-button-container, #content-outer #content-inner #posts #posts-inner .post .post-header, #content-outer #content-inner #posts #posts-inner .post .post-footer, #content-outer #content-inner #posts #post-reply-box #post-reply-box-footer {
   display: block;
   height: auto;
-  padding: 2px 2px;
+  padding: 2px 0px;
   line-height: auto;
   vertical-align: middle;
   overflow: hidden;
@@ -954,25 +955,24 @@ img {
   width: 100%;
   max-width: 672px;
   margin: auto;
-  padding: 16px;
 }
-/* line 7, settings.scss */
+/* line 6, settings.scss */
 #settings-form h1 {
   font-size: 2em;
   text-align: center;
   margin-bottom: 24px;
 }
-/* line 16, settings.scss */
+/* line 15, settings.scss */
 #settings-form input#profile-image-field {
   width: auto;
   margin: 0px;
   border-bottom: 0px;
 }
-/* line 22, settings.scss */
+/* line 21, settings.scss */
 #settings-form input:last-child {
   margin-bottom: 0px;
 }
-/* line 27, settings.scss */
+/* line 26, settings.scss */
 #settings-form textarea {
   min-width: 100%;
   width: 100%;
@@ -983,11 +983,11 @@ img {
   border: 1px solid black;
   margin-bottom: 16px;
 }
-/* line 38, settings.scss */
+/* line 37, settings.scss */
 #settings-form #profile-image-view {
   margin: 16px 0px;
 }
-/* line 43, settings.scss */
+/* line 42, settings.scss */
 #settings-form #settings-form-change-button {
   display: block;
   width: 128px;
@@ -1002,7 +1002,7 @@ img {
 /* line 1, user-list.scss */
 .user-item {
   display: block;
-  height: 64px;
+  height: 82px;
   padding: 8px 0px;
   border-bottom: 1px solid gainsboro;
   z-index: 100;
@@ -1013,28 +1013,51 @@ img {
 }
 /* line 12, user-list.scss */
 .user-item .user-item-profile-image {
-  display: inline-block;
   float: left;
-  width: 64px;
-  height: 64px;
-  line-height: 18px;
+  width: 82px;
+  height: 82px;
+  line-height: 22px;
   vertical-align: text-top;
 }
-/* line 22, user-list.scss */
+/* line 21, user-list.scss */
 .user-item .user-item-full-name {
-  padding-left: 72px;
+  padding-left: 90px;
   line-height: 20px;
+  font-size: 1.2em;
   font-weight: bold;
 }
 /* line 28, user-list.scss */
 .user-item .user-item-username {
-  padding-left: 72px;
-  font-size: 0.8em;
+  padding-left: 90px;
+  line-height: 20px;
+  font-size: 1em;
+  font-weight: normal;
 }
-/* line 33, user-list.scss */
+/* line 35, user-list.scss */
+.user-item .user-item-description {
+  padding-left: 90px;
+  line-height: 20px;
+  font-size: 1em;
+}
+/* line 41, user-list.scss */
 .user-item a {
   display: block;
-  width: 38px;
   float: right;
+  width: 90px;
+  height: 14px;
+  margin-top: 60px;
   padding: 4px;
+}
+
+/* line 1, search.scss */
+#search-results-for {
+  text-align: center;
+  font-size: 2em;
+}
+
+/* line 6, search.scss */
+#user-list {
+  width: 100%;
+  max-width: 864px;
+  margin: auto;
 }

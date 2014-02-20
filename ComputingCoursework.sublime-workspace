@@ -4,6 +4,126 @@
 		"selected_items":
 		[
 			[
+				"conte",
+				"content"
+			],
+			[
+				"sae",
+				"searchTerm"
+			],
+			[
+				"user",
+				"user-list-item-padding-vertical"
+			],
+			[
+				"user-item",
+				"user-list-item-height"
+			],
+			[
+				"search",
+				"searchTerm"
+			],
+			[
+				"userPr",
+				"userProfile"
+			],
+			[
+				"searc",
+				"searchTerm"
+			],
+			[
+				"end",
+				"endPost"
+			],
+			[
+				"start",
+				"startPost"
+			],
+			[
+				"comm",
+				"comment"
+			],
+			[
+				"projec",
+				"projectTotal"
+			],
+			[
+				"proj",
+				"projectTotal"
+			],
+			[
+				"code",
+				"codeLines"
+			],
+			[
+				"NEW",
+				"JSON_NEWLINE_CHARACTER"
+			],
+			[
+				"new",
+				"JSON_NEWLINE_SEPERATOR"
+			],
+			[
+				"JSON",
+				"JSON_NEWLINE_CHARACTER"
+			],
+			[
+				"json",
+				"JSON_TAB_CHARACTER"
+			],
+			[
+				"JSON_",
+				"JSON_TAB_CHARACTER"
+			],
+			[
+				"inde",
+				"indentFirstBrace"
+			],
+			[
+				"obje",
+				"object"
+			],
+			[
+				"jo",
+				"jsonToString"
+			],
+			[
+				"object",
+				"objectType"
+			],
+			[
+				"show",
+				"showViewConversation"
+			],
+			[
+				"isTo",
+				"isTopLayer"
+			],
+			[
+				"isTopLayer",
+				"isTopLayerVisiblePost"
+			],
+			[
+				"dial",
+				"dialogue"
+			],
+			[
+				"dialo",
+				"dialogueFloater"
+			],
+			[
+				"dialmax",
+				"dialogueMaxHeight"
+			],
+			[
+				"dialogmax",
+				"dialogueMaxHeight"
+			],
+			[
+				"dia",
+				"dialogueContent"
+			],
+			[
 				"profile",
 				"profile"
 			],
@@ -12,28 +132,12 @@
 				"user-list-item-profile-image-size"
 			],
 			[
-				"user-item",
-				"user-list-item-profile-image-size"
-			],
-			[
 				"use",
 				"userItem"
 			],
 			[
-				"dialo",
-				"dialogue"
-			],
-			[
 				"over-",
 				"overflow-y"
-			],
-			[
-				"dial",
-				"dialogue-content-padding"
-			],
-			[
-				"dia",
-				"dialogue-header-height"
 			],
 			[
 				"dialog",
@@ -104,10 +208,6 @@
 				"validateProfileImage"
 			],
 			[
-				"show",
-				"showNextConversationLayer"
-			],
-			[
 				"social",
 				"socialsite"
 			],
@@ -120,20 +220,12 @@
 				"userProfile"
 			],
 			[
-				"userPr",
-				"userProfileSettingsForm"
-			],
-			[
 				"userPRof",
 				"userProfileSettingsForm"
 			],
 			[
 				"UserProfile",
 				"UserProfileSettingsForm"
-			],
-			[
-				"user",
-				"userProfileSettingsForm"
 			],
 			[
 				"initial",
@@ -422,143 +514,11 @@
 			[
 				"postREply",
 				"postReplyBoxCharactersRemaining"
-			],
-			[
-				"post-rel",
-				"post-reply-box"
-			],
-			[
-				"postReplyB",
-				"postReplyBoxAppendedToButton"
-			],
-			[
-				"HttpRes",
-				"HttpResponseRedirect"
-			],
-			[
-				"click",
-				"clickedFollowButton"
-			],
-			[
-				"profile-follo",
-				"profile-follow-button-followed"
-			],
-			[
-				"reply",
-				"replyQuerySet"
-			],
-			[
-				"i",
-				"ife	if … else"
-			],
-			[
-				"deb",
-				"debugm	debug(module) { … }"
-			],
-			[
-				"margin",
-				"margin-bottom"
-			],
-			[
-				"margi",
-				"margin-bottom"
-			],
-			[
-				"noPo",
-				"noPostsTime"
-			],
-			[
-				"butt",
-				"buttonPressed"
-			],
-			[
-				"hide",
-				"hideChildren"
-			],
-			[
-				"firstPost",
-				"firstPostUserLink"
-			],
-			[
-				"first",
-				"firstPostUserLink"
-			],
-			[
-				"firstPo",
-				"firstPosterUserLink"
-			],
-			[
-				"postVie",
-				"postViewRepliesClicked"
-			],
-			[
-				"postRe",
-				"postReplyContainer"
-			],
-			[
-				"postFooter",
-				"postFooter"
-			],
-			[
-				"json",
-				"jsonObject"
-			],
-			[
-				"requ",
-				"request"
-			],
-			[
-				"followe",
-				"followedUser"
-			],
-			[
-				"foll",
-				"followedUser"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "ComputingCoursework/static/css/globals.scss",
-			"settings":
-			{
-				"buffer_size": 6441,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ComputingCoursework/static/css/dialogue.scss",
-			"settings":
-			{
-				"buffer_size": 2522,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ComputingCoursework/static/js/profile_buttons.coffee",
-			"settings":
-			{
-				"buffer_size": 4013,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ComputingCoursework/static/js/profile_get_posts.coffee",
-			"settings":
-			{
-				"buffer_size": 10825,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ComputingCoursework/static/css/user-list.scss",
-			"settings":
-			{
-				"buffer_size": 1086,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -595,11 +555,11 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
-		"height": 526.0
+		"height": 579.0
 	},
 	"distraction_free":
 	{
@@ -612,34 +572,56 @@
 	},
 	"file_history":
 	[
-		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_buttons.coffee",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/js/dialogue.coffee",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/css/dialogue.scss",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/css/settings.scss",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/base.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/views.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/urls.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/urls.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/settings.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework.sublime-project",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_get_posts.coffee",
-		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/models.py",
 		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/api/api.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/profile.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/index.html",
 		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/forms.py",
-		"/home/ben/DjangoProjects/ComputingCoursework/url_test.py",
-		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/settings.html",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/css/posts.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/models.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/fix-elements.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/todo.txt",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/globals.scss",
 		"/home/ben/DjangoProjects/ComputingCoursework/development_log.txt",
-		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/views.py",
-		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/profile.html",
+		"/home/ben/Documents/projects.txt",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/dialogue.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/search.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/settings.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/search.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/settings_preview_profile_image.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_buttons.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/ajax_send.js",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/user-list.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/js/profile_get_posts.js",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/json_writer.py",
+		"/home/ben/.config/sublime-text-2/Packages/LineCounter/line_counter.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/dialogue.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/url_matcher.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/json_writer.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/api/urls.py",
+		"/home/ben/DjangoProjects/ComputingCoursework/static/css/posts.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/settings.html",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/static/js/profile_get_posts.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/static/css/dialogue.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/static/css/globals.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/static/js/profile_buttons.coffee",
+		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/static/css/user-list.scss",
+		"/home/ben/DjangoProjects/ComputingCoursework/url_test.py",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/js/dialogue.js",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/js/create_dialogue.coffee",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/js/create_dialogue.js",
 		"/home/ben/DjangoProjects/ComputingCoursework/media/profile-images/Ben_profile_image.png",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/js/settings_preview_profile_image.js",
-		"/home/ben/DjangoProjects/ComputingCoursework/static/js/settings_preview_profile_image.coffee",
-		"/home/ben/DjangoProjects/ComputingCoursework/ComputingCoursework/settings.py",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/profile-about.scss",
 		"/home/ben/DjangoProjects/ComputingCoursework/media/profile_images/IMG_17012014_163050.png",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/content.scss",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style_old.css",
-		"/home/ben/DjangoProjects/ComputingCoursework/templates/socialsite/search.html",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/index.scss",
 		"/home/ben/DjangoProjects/ComputingCoursework/static/css/style.css",
 		"/home/ben/DjangoProjects/ComputingCoursework/socialsite/testLineCount.py",
@@ -664,6 +646,17 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"getJSON",
+			"%f",
+			"%d",
+			"newline",
+			";",
+			"prepend",
+			"buildPost",
+			"print",
+			"noPostsTime",
+			"showSpeed",
+			"id",
 			"border",
 			"image",
 			"\n",
@@ -780,18 +773,7 @@
 			"multiplir",
 			"nextFallingPieceColour",
 			"Cat",
-			"cat",
-			"admin",
-			"scoreChange",
-			"'",
-			"\"",
-			"'",
-			"url.path",
-			"badArg",
-			"badARg",
-			"@html",
-			"type=\"text/javascript\"",
-			"article"
+			"cat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -799,6 +781,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"%.2f",
+			"%f",
+			"%d",
+			"newLine",
+			"NO_POSTS_TIME",
+			"SHOW_TIME",
 			"context",
 			"userProfileRegisterForm",
 			"UserProfileRegisterForm",
@@ -882,7 +870,7 @@
 			"GameState",
 			"array"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -891,149 +879,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "ComputingCoursework/static/css/globals.scss",
-					"settings":
-					{
-						"buffer_size": 6441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3994,
-								3994
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1521.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "ComputingCoursework/static/css/dialogue.scss",
-					"settings":
-					{
-						"buffer_size": 2522,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2516,
-								2516
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1287.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "ComputingCoursework/static/js/profile_buttons.coffee",
-					"settings":
-					{
-						"buffer_size": 4013,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3914,
-								3914
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1846.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "ComputingCoursework/static/js/profile_get_posts.coffee",
-					"settings":
-					{
-						"buffer_size": 10825,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9627,
-								9627
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3939.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "ComputingCoursework/static/css/user-list.scss",
-					"settings":
-					{
-						"buffer_size": 1086,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								182,
-								182
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1054,18 +901,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1108,6 +948,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 230.0,
+	"side_bar_width": 224.0,
 	"status_bar_visible": true
 }

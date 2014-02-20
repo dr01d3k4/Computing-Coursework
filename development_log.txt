@@ -39,7 +39,7 @@
 2014/01/19 Sunday
 - Added APIs for getUsersFollowedBy, getFollowers and getPostsByUsersFollowedBy
 - Changed profile page to show posts in getPostsByUsersFollowedBy
-- Changed follow button to submit AJAX POST request, rather than use a HTML form so that the page doesn't refresh and close posts
+- Changed follow button to submit AJAX POST request, rather than use a form so that the page doesn't refresh and close posts
 
 
 2014/01/20 Monday
@@ -54,6 +54,7 @@
 - Delete post button added
 - Started work on post new post (not reply) button
 
+
 2014/01/22 Wednesday
 - A user now follows themselves by default (so they view their own posts)
 - Got new post button working
@@ -64,11 +65,11 @@
 
 
 2014/01/24 Friday
-- Started rewrite of CSS
+- Started rewrite of SASS
 
 
 2014/01/25 Saturday
-- Finished rewrite of CSS
+- Finished rewrite of SASS
 
 
 2014/01/26 Sunday
@@ -107,13 +108,26 @@
 
 2014/01/30 Thursday
 - Profile image upload renames the files and deletes previous
-- Dialogue system now uses a class
+- Dialogue system now uses classes and polymorphism
 
 
+2014/02/02 Sunday
+- Tried to fix dialogue CSS
 
-Plan for what to do next:
-- Maybe change view full conversation to be recursive and actually show the full conversation (both up and down), rather than just 1 layer up
-- Change the algorithm for ordering in get-replies-to/post-id/ - description of how it should work in details.txt
-- Maybe change the APIs to accept additional parameters for limiting amount of results
-	- The client shouldn't be rendering hundreds of posts/replies at once
-	- Only when they either click on view more or scroll down are more loaded
+
+2014/02/03 Monday
+- Changed storing of post IDs on client as invisible divs to use data-post-id.
+- Get posts by users followed by now takes parameters for start and length
+- Client detects browser scrolled near bottom
+- Client loads more posts when scroll down
+- Get posts by now also supports length and start arguments
+- Wrote writeJson function
+- Moved writeJson and url matching into their own files
+
+
+2014/02/04 Tuesday
+- Fixed JSON writer outputting newlines in strings causing parsing errors
+- Started work on search page
+- Wrote search page HTML
+- Changed user list CSS
+- Posts now escape HTML characters before being put into databases (which fixed crashing bug on client)
