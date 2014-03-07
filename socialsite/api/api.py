@@ -4,11 +4,7 @@ from django.contrib.auth.decorators import login_required;
 from socialsite.models import UserProfile, Post, Reply, Following;
 from socialsite.json_writer import writeJson;
 from django.utils.html import conditional_escape;
-
-
-# def jsonToString(jsonObject):
-# 	return json.dumps(jsonObject, indent = 4);
-
+from django.db.models import Q;
 
 
 
@@ -55,18 +51,8 @@ def requiresUserFromUsername(viewFunction):
 
 
 
-def getPostFromId(id):
-	post = None;
-	try:
-		post = Post.objects.get(id = id);
-	except (Post.DoesNotExist):
-		raise Http404;
-	return post;
-
-
-
 def requiresPostFromId(viewFunction):
-	return lambda request, postId: viewFunction(request, getPostFromId(postId));
+	return lambda request, postId: viewFunction(request, Post.getPostFromId(postId));
 
 
 
@@ -83,7 +69,7 @@ def getPostsBy(request, user, length = 10, startPost = 0):
 	startPost = toInteger(startPost);
 	length = toInteger(length);
 	endPost = startPost + length;
-	return {"posts": [post.toDictionary(loggedInUser = request.user) for post in user.user_profile.getPostsQS()[startPost:endPost]]};
+	return {"posts": [post.toDictionary(loggedInUser = request.user) for post in user.user_profile.getPostsQs()[startPost:endPost]]};
 
 
 
@@ -93,10 +79,7 @@ def getPostsByUsersFollowedBy(request, user, length = 10, startPost = 0):
 	startPost = toInteger(startPost);
 	length = toInteger(length);
 	endPost = startPost + length;
-	followedUsers = user.user_profile.getFollowed();
-	postQS = Post.objects.filter(user__in = followedUsers).order_by("-date")[startPost:endPost];
-	posts = [post.toDictionary(loggedInUser = request.user) for post in postQS];
-	return {"posts": posts};
+	return {"posts": [post.toDictionary(loggedInUser = request.user) for post in user.user_profile.getPostsByUsersFollowedQs()[startPost:endPost]]};
 
 
 
@@ -111,19 +94,7 @@ def getRepliesTo(request, post):
 @returnHttpJson
 def postPost(request):
 	if (request.method == "POST"):
-		content = str(conditional_escape(request.POST["content"]));
-		print("Posting post", content);
-		replyToId = request.POST["replyToId"];
-		replyToPost = None;
-
-		replyToIdInteger = toInteger(replyToId);
-		if ((replyToIdInteger is not None) and (replyToIdInteger != -1)):
-			replyToPost = getPostFromId(replyToIdInteger);
-
-		post = Post.objects.create(user = request.user, content = content);
-		if (replyToPost != None):
-			reply = Reply.objects.create(first_post = replyToPost, reply_post = post);
-
+		post = Post.postPost(request.user, request.POST["content"], toInteger(request.POST["replyToId"]));
 		return {"post": post.toDictionary(loggedInUser = request.user)};
 	else:
 		return 500;
@@ -134,16 +105,13 @@ def postPost(request):
 @returnHttpJson
 def deletePost(request):
 	if (request.method == "POST"):
-		post = getPostFromId(request.POST["id"]);
+		post = Post.getPostFromId(request.POST["id"]);
 
-		if (not post.isDeletableBy(request.user)):
+		deleted = post.deleteBy(request.user);
+		if (deleted):
+			return {"response": "ok"};
+		else:
 			return 403;
-
-		Reply.objects.filter(first_post = post).delete();
-		Reply.objects.filter(reply_post = post).delete();
-		post.delete();
-
-		return {"response": "ok"};
 	else:
 		return 500;
 
@@ -164,7 +132,7 @@ def getFollowedCount(request, user):
 @returnHttpJson
 @requiresUserFromUsername
 def getFollowers(request, user):
-	return {"users": [following.follower.user_profile.toDictionary() for following in user.user_profile.getFollowersQS()]};
+	return {"users": [following.follower.user_profile.toDictionary() for following in user.user_profile.getFollowersQs()]};
 
 
 
@@ -172,4 +140,4 @@ def getFollowers(request, user):
 @returnHttpJson
 @requiresUserFromUsername
 def getUsersFollowedBy(request, user):
-	return {"users": [following.followed.user_profile.toDictionary() for following in user.user_profile.getFollowedQS()]};
+	return {"users": [following.followed.user_profile.toDictionary() for following in user.user_profile.getFollowedQs()]};

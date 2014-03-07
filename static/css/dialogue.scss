@@ -60,17 +60,19 @@
 				display: block;
 				height: 100%;
 				padding: $dialogue-content-padding;
-				// padding-top: 0px;
 
 				p {
-					// margin-top: $dialogue-content-paragraph-margin-vertical;
 					line-height: $dialogue-content-paragraph-line-height;
 					text-align: center;
+
+					&:not(:first-child) {
+						margin-top: 14px;
+					}
 				}
 
 
 				.dialogue-button-container {
-					margin-top: $dialogue-content-paragraph-margin-vertical;
+					margin-top: 2 * $dialogue-content-paragraph-margin-vertical;
 
 					.dialogue-button {
 						@extend %clickable;

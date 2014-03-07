@@ -1,26 +1,12 @@
-"""
-Django settings for ComputingCoursework project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os;
 BASE_DIR = os.path.dirname(os.path.dirname(__file__));
 SETTINGS_DIR = os.path.dirname(__file__);
 PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir));
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = "7ts7^z300)r$-m8p3=^oq+65=nyrl3h*&)i9&*&%oylevnx&z("''
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True;
 
 TEMPLATE_DEBUG = True;
@@ -28,7 +14,6 @@ TEMPLATE_DEBUG = True;
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"];
 
 
-# Application definition
 
 INSTALLED_APPS = (
 	"django.contrib.admin",
@@ -50,13 +35,13 @@ MIDDLEWARE_CLASSES = (
 	"django.middleware.clickjacking.XFrameOptionsMiddleware"
 );
 
+
+
 ROOT_URLCONF = "ComputingCoursework.urls";
 
 WSGI_APPLICATION = "ComputingCoursework.wsgi.application";
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASE_PATH = os.path.join(PROJECT_PATH, "social_site.db");
 
@@ -67,8 +52,7 @@ DATABASES = {
 	}
 };
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+
 
 LANGUAGE_CODE = "en-uk";
 
@@ -81,8 +65,6 @@ USE_L10N = True;
 USE_TZ = True;
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_PATH = os.path.join(PROJECT_PATH, "static");
 STATIC_URL = "/static/";

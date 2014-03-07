@@ -3,7 +3,9 @@
 {% block title %}Settings{% endblock %}
 {% block content %}
 	<form id="settings-form" method="post" action="{% url 'social:settings' %}" enctype="multipart/form-data">
-		<h1>Profile Settings</h1>
+		<h1>
+			Profile Settings
+		</h1>
 		{% csrf_token %}
 		{% for hidden in form.hidden_fields %}
 			{{ hidden }}
@@ -11,9 +13,12 @@
 		{% for field in userProfileSettingsForm.visible_fields %}
 			{% if field.help_text != "PROFILE_IMAGE" %}
 				{{ field.help_text }}
-				{% if field.errors %}{{ field.errors }}{% endif %}
+				{% if field.errors %}
+					{{ field.errors }}
+				{% endif %}
 				<br>
-				{{ field }}<br>
+				{{ field }}
+				<br>
 			{% endif %}
 		{% endfor %}
 		Select a profile image (optional):

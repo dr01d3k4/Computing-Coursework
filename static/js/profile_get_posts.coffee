@@ -255,8 +255,11 @@ $(document).ready ->
 		id = $post.data("post-id")
 
 		new ConfirmDialogue
-			title: "Delete Post"
-			body: "Are you sure you want to delete this post"
+			title: "Deleting Post"
+			body: [
+				"Are you sure you want to delete this post?",
+				$post.children(".post-content").text()
+			]
 			yesFunction: (dialogue) ->
 				dialogue.close()
 				$.ajax

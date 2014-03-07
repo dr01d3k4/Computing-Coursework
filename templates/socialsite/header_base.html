@@ -2,7 +2,11 @@
 {% block body %}
 	<header id="header">
 		<div id="inner-header">
-			{% if viewingUser != user %}<a id="home-button" href="{% url 'social:profile' %}">&lt;</a>{% endif %}
+			{% if viewingUser != user %}
+				<a id="home-button" href="{% url 'social:profile' %}">
+					&lt;
+				</a>
+			{% endif %}
 			<h1 id="title">
 				{{ userProfile.fullName }}
 			</h1>
@@ -10,6 +14,14 @@
 				@{{ user.username }}
 			</h4>
 			<div id="nav-container">
+				<div id="search-box-container">
+					<div id="search-box">
+						<form method="get" action="{% url 'social:search' %}" onsubmit="return false;">
+							<input id="search-query" name="query" type="text" placeholder="Search for a user" value="" />
+							<input id="search-submit" type="submit" onclick="window.location.href = this.form.action + this.form.query.value;" />
+						</form>
+					</div>
+				</div>
 				<nav id="nav" role="navigation">
 					<a id="menu-icon" href="#">Navigation</a>
 					<ul>

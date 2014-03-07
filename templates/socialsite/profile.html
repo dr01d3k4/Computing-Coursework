@@ -1,57 +1,90 @@
 {% extends "socialsite/header_base.html" %}
 {% load static %}
-{% block title %}{{ viewingProfile.fullName }}{% endblock %}
+{% block title %}
+	{{ viewingProfile.fullName }}
+{% endblock %}
 {% block content %}
-	<aside id="profile-about">
-		<img id="profile-about-image" src="{{ profileImage }}" alt="No profile image">
-		<h2 id="profile-viewing-fullname">
-			{{ viewingProfile.fullName }}
-		</h2>
-		<h3 id="profile-viewing-username">
-			@{{ viewingUser.username }}
-		</h3>
-		<section id="profile-about-content">
-			{% if viewingProfile.description %}
-				{{ viewingProfile.description }}
-			{% else %}
-				<i>{{ viewingProfile.first_name }} doesn't have a description.</i>
-			{% endif %}
-		</section>
-		{% if user != viewingUser %}
-			<div id="profile-follow-button" class="clickable
-				{% if isFollowing %}
-					profile-follow-button-followed
+	<aside id="profile-aside">
+		<section id="profile-about">
+			<img id="profile-about-image" src="{{ profileImage }}" alt="No profile image">
+			<h2 id="profile-viewing-fullname">
+				{{ viewingProfile.fullName }}
+			</h2>
+			<h3 id="profile-viewing-username">
+				@{{ viewingUser.username }}
+			</h3>
+			<section id="profile-about-content">
+				{% if viewingProfile.description %}
+					{{ viewingProfile.description }}
 				{% else %}
-					profile-follow-button-not-followed
-				{% endif %}">
-				{% if isFollowing %}
-					Following!
-				{% else %}
-					Follow
+					<i>
+						{{ viewingProfile.first_name }} doesn't have a description.
+					</i>
 				{% endif %}
+			</section>
+			{% if user != viewingUser %}
+				<div id="profile-follow-button" class="clickable
+					{% if isFollowing %}
+						profile-follow-button-followed
+					{% else %}
+						profile-follow-button-not-followed
+					{% endif %}">
+					{% if isFollowing %}
+						Following!
+					{% else %}
+						Follow
+					{% endif %}
+				</div>
+			{% endif %}
+			<div id="profile-view-followers-button">
+				View Followers
 			</div>
-		{% endif %}
-		<div id="profile-view-followers-button">
-			View Followers
-		</div>
-		<div id="profile-view-followed-button">
-			View Followed
-		</div>
-		<div id="profile-about-more-button">
-			About
-		</div>
-		<section id="profile-about-more">
+			<div id="profile-view-followed-button">
+				View Followed
+			</div>
+			<div id="profile-about-more-button">
+				About
+			</div>
+			<section id="profile-about-more">
+				<ul>
+					{% if viewingProfile.website %}
+						<li>
+							Website:
+							<a href="{{ viewingProfile.website }}" target="_blank">
+								{{ viewingProfile.website }}
+							</a>
+						</li>
+					{% endif %}
+					<li id="profile-about-followed-count">
+						Follows: 0
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section id="profile-suggestions">
+			<h2>
+				Users
+				{% if userProfile == viewingProfile %}
+					you've
+				{% else %}
+					{{ viewingProfile.fullName }} has
+				{% endif %}
+				replied to
+			</h2>
 			<ul>
-				{% if viewingProfile.website %}<li>Website: <a href="{{ viewingProfile.website }}" target="_blank">{{ viewingProfile.website }}</a></li>{% endif %}
-				<li id="profile-about-follower-count">Followers: 0</li>
-				<li id="profile-about-followed-count">Follows: 0</li>
+				{% for repliedToUser in usersRepliedTo %}
+					<li>
+						<a href="{{ repliedToUser.user_profile.get_absolute_url }}">@{{ repliedToUser.username }}</a>
+						- {{ repliedToUser.count }} replies
+					</li>
+				{% endfor %}
 			</ul>
+
 		</section>
 	</aside>
 	<section id="posts">
 		{% if viewingUser == user %}
 			<div id="post-new-post-button-outer-container" data-post-id="NEW">
-				<!--<div class="post-id-meta">NEW</div>-->
 				<div id="post-new-post-button-container">
 					<div id="post-new-post-button">
 						Post a new post

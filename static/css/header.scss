@@ -42,10 +42,44 @@
 			font-weight: normal;
 		}
 
+
+
 		#nav-container {
 			display: inline-block;
 			position: relative;
 			float: right;
+
+
+			$search-box-width: 200px;
+			$search-box-small-width: 32px;
+
+			#search-box-container {
+				display: inline-block;
+				margin: $header-nav-button-margin 0px;
+				font-size: 2em;
+				color: $white;
+
+				#search-box {
+					display: inline-block;
+					width: $search-box-width;
+					height: $header-nav-button-height;
+					margin-top: -4px;
+					background-color: darken($header-background-colour, 10%);
+					box-shadow: inset 2px 2px 0px $black;
+
+
+					#search-query {
+						width: $search-box-width;
+						padding: 4px;
+						color: $white;
+					}
+
+					#search-submit {
+						display: none;
+					}
+				}
+			}
+
 
 			#nav {
 				float: right;
@@ -66,6 +100,7 @@
 						@extend %clickable;
 						display: table-cell;
 						margin: 0px;
+						margin-left: -4px;
 						padding: 0px;
 						border: {
 							left: $global-light-border;

@@ -1,0 +1,17 @@
+- Maybe change the search results to be ordered by amount of followers someone has and if their friends follows them
+- Maybe add a page that shows who you talk to a lot (by count of reply links between them) and this could influence other parts of the site (such as search and reply ordering)
+
+- Maybe in some cases like getPostsByUsersFollowedBy() write SQL instead of using query sets (for project complexity as it uses nested SELECT statements)
+
+- Add notifications (if a user replies to your post and you're offline/not on a page where you can see it, it'll remember and tell you when you next login)
+
+- On somebody else's user profile, a button to post a message that would say "@person: stuff" but without being a reply
+- Private messages? How would these be implemented?
+	- Own database table with their own reply table
+	- Or same table as posts but with a boolean flag to say private or not
+
+- Fix CSS for the dialogues
+
+- Look at register, login, logout, follow and post APIs. They're inconsistent. Might move all of them to use the api directory.
+
+- Change delete API to use HTTP delete method

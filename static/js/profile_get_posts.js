@@ -256,8 +256,8 @@
       $post = $button.parent().parent();
       id = $post.data("post-id");
       return new ConfirmDialogue({
-        title: "Delete Post",
-        body: "Are you sure you want to delete this post",
+        title: "Deleting Post",
+        body: ["Are you sure you want to delete this post?", $post.children(".post-content").text()],
         yesFunction: function(dialogue) {
           dialogue.close();
           return $.ajax({

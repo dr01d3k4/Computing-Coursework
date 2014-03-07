@@ -1,0 +1,129 @@
+SELECT
+	user
+FROM
+	UserTable user,
+	PostTable post
+INNER JOIN
+	user
+ON
+	(user.id = post.user_id)
+WHERE
+	
+
+
+Get posts by user:
+SELECT
+	post
+FROM
+	Post post
+WHERE
+	post.user_id = @id
+
+Post.objects.filter(user = user);
+
+
+
+Get reply links where reply post was posted by user:
+SELECT
+	reply
+FROM
+	ReplyTable reply
+WHERE
+	reply.reply_post_id IN (
+		SELECT
+			post.id
+		FROM
+			post
+		WHERE
+			post.user_id = @id
+	)
+
+
+Reply.objects.filter(reply_post = Post.objects.filter(user = self.user))
+
+
+
+Get first posts from these reply links
+SELECT "socialsite_post"."id", "socialsite_post"."user_id", "socialsite_post"."content", "socialsite_post"."date" FROM "socialsite_post" INNER JOIN "socialsite_reply" ON ( "socialsite_post"."id" = "socialsite_reply"."first_post_id" ) WHERE "socialsite_reply"."id" IN (SELECT "socialsite_reply"."first_post_id" FROM "socialsite_reply" WHERE "socialsite_reply"."reply_post_id" IN (SELECT "socialsite_post"."id" FROM "socialsite_post" WHERE "socialsite_post"."user_id" = 1 ))
+
+SELECT
+	*
+FROM
+	Post
+INNER JOIN
+	ReplyTable
+ON
+	Post.id = ReplyTable.first_post_id
+WHERE
+	ReplyTable.id IN (
+		SELECT
+			ReplyTable.first_post_id
+		FROM
+			ReplyTable
+		WHERE
+			ReplyTable.reply_post_id IN (
+				SELECT
+					Post.id
+				FROM
+					Post
+				WHERE
+					Post.user_id = @id
+
+			)
+	)
+
+
+Post.objects.filter(first_post = Reply.objects.filter(reply_post = Post.objects.filter(user = self.user)).values("first_post"))
+
+
+
+
+SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" =  (SELECT U0."user_id" FROM "socialsite_post" U0 INNER JOIN "socialsite_reply" U1 ON ( U0."id" = U1."first_post_id" ) WHERE U1."id" IN (SELECT "socialsite_reply"."first_post_id" FROM "socialsite_reply" WHERE "socialsite_reply"."reply_post_id" IN (SELECT "socialsite_post"."id" FROM "socialsite_post" WHERE "socialsite_post"."user_id" = 1 )))
+
+
+SELECT DISTINCT
+	*
+FROM
+	UserTable
+WHERE
+	UserTable.id = (SELECT
+	)
+
+
+
+
+
+
+User.objects.filter(id__in = Post.objects.filter(id__in = Reply.objects.filter(reply_post = Post.objects.filter(user = self.user)).values("first_post")).values("user").distinct())
+
+
+SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" IN (SELECT DISTINCT U0."user_id" FROM "socialsite_post" U0 WHERE U0."id" IN (SELECT U0."first_post_id" FROM "socialsite_reply" U0 WHERE U0."reply_post_id" IN (SELECT "socialsite_post"."id" FROM "socialsite_post" WHERE "socialsite_post"."user_id" = 1 )))
+
+
+SELECT
+	user.username
+FROM
+	UserTable user
+WHERE
+	user.id IN (
+		SELECT DISTINCT
+			post.user_id
+		FROM
+			PostTable post
+		WHERE
+			post.id IN (
+				SELECT
+					reply.first_post_id
+				FROM
+					ReplyTable reply
+				WHERE
+					reply.reply_post_id IN (
+						SELECT
+							post.id
+						FROM
+							PostTable post
+						WHERE
+							post.user_id = @id
+					)
+			)
+	)

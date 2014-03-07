@@ -3,10 +3,16 @@
 {% block title %}Search{% endblock %}
 {% block content %}
 	<section id="user-list">
-		<h1 id="search-results-for">{{ userProfiles|length }} result{% if userProfiles|length != 1 %}s{% endif %} for '{{ searchTerm }}'</h1>
+		<h1 id="search-results-for">
+			{{ userProfiles|length }}
+			result{% if userProfiles|length != 1 %}s{% endif %}
+			for '{{ searchTerm }}'
+		</h1>
 		{% for userProfileItem in userProfiles %}
 			<div class="user-item">
-				<a class="user-item-view" href="{{ userProfileItem.absoluteUrl }}">View profile</a>
+				<a class="user-item-view" href="{{ userProfileItem.absoluteUrl }}">
+					View profile
+				</a>
 				<img class="user-item-profile-image" src="{{ MEDIA_URL }}{{ userProfileItem.profile_image }}" alt="No profile image">
 				<h2 class="user-item-full-name">
 					{{ userProfileItem.fullName }}

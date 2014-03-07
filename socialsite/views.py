@@ -21,7 +21,7 @@ class Index(View):
 		else:
 			context = { };
 			context["registerUserForm"] = UserForm();
-			context["registerUserProfileForm"] = UserProfileRegisterForm(); 
+			context["registerUserProfileForm"] = UserProfileRegisterForm();
 
 			return render(request, "socialsite/index.html", context);
 			
@@ -33,7 +33,17 @@ class Index(View):
 			userForm = UserForm(data = request.POST);
 			userProfileRegisterForm = UserProfileRegisterForm(data = request.POST);
 
-			if (userForm.is_valid() and userProfileRegisterForm.is_valid()):
+			currentUser = None;
+			try:
+				currentUser = User.objects.get(username__iexact = request.POST["username"]);
+			except (User.DoesNotExist):
+				pass;
+
+
+			passwordsMatch = (request.POST["password"] == request.POST["confirm_password"]);
+
+
+			if ((currentUser is None) and passwordsMatch and userForm.is_valid() and userProfileRegisterForm.is_valid()):
 				user = userForm.save();
 
 				user.set_password(user.password);
@@ -56,12 +66,24 @@ class Index(View):
 				context = { };
 				context["registerUserForm"] = userForm;
 				context["registerUserProfileForm"] = userProfileRegisterForm;
+				context["userAlreadyExists"] = (currentUser is not None);
+				context["passwordsDontMatch"] = not passwordsMatch;
 				context["autoOpenTo"] = "register";
 
 				return render(request, "socialsite/index.html", context);
 
 		elif (submit == "login"):
 			username = request.POST["username"];
+
+			logInUser = None;
+			try:
+				logInUser = User.objects.get(username__iexact = username);
+			except (User.DoesNotExist):
+				pass;
+
+			if (logInUser is not None):
+				username = logInUser.username;
+
 			password = request.POST["password"];
 			user = authenticate(username = username, password = password);
 
@@ -91,6 +113,7 @@ class Profile(View):
 		viewingProfile = None;
 		userProfile = request.user.user_profile;
 
+
 		if (username is None):
 			viewingUser = request.user;
 		else:
@@ -117,6 +140,17 @@ class Profile(View):
 		context["followerCount"] = followerCount;
 		context["followCount"] = followCount;
 
+		usersRepliedToQs = viewingProfile.getUsersRepliedToQs();
+		usersRepliedTo = [ ];
+
+		for otherUser in usersRepliedToQs:
+			otherUser.count = viewingProfile.getCountOfRepliesToPostsByUser(otherUser)
+			usersRepliedTo.append(otherUser);
+
+		usersRepliedTo.sort(key = lambda user: -user.count);
+
+		context["usersRepliedTo"] = usersRepliedTo;
+
 		if (viewingProfile.profile_image):
 			context["profileImage"] = viewingProfile.profile_image.url;
 
@@ -134,26 +168,17 @@ def logoutPage(request):
 class Follow(View):
 	@method_decorator(login_required)
 	def post(self, request):
-		followUsername = request.POST["followUser"]
-		followedUser = None;
+		usernameToFollow = request.POST["followUser"];
+		userToFollow = None;
+
 		try:
-			followedUser = User.objects.get(username = followUsername);
+			userToFollow = User.objects.get(username__iexact = usernameToFollow);
 		except (User.DoesNotExist):
 			raise Http404;
 
-		isAlreadyFollowing = False;
-		try:
-			Following.objects.get(followed = followedUser, follower = request.user);
-			isAlreadyFollowing = True;
-		except (Following.DoesNotExist):
-			pass;
+		follows = request.user.user_profile.toggleFollows(userToFollow);
 
-		if (isAlreadyFollowing):
-			Following.objects.get(followed = followedUser, follower = request.user).delete();
-		else:
-			Following.objects.get_or_create(followed = followedUser, follower = request.user);
-
-		return HttpResponse(str(not isAlreadyFollowing), content_type = "text/plain");
+		return HttpResponse(str(follows), content_type = "text/plain");
 
 
 

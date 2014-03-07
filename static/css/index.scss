@@ -147,11 +147,27 @@
 				padding: $index-about-item-container-padding-top 0px;
 				list-style-type: none;
 
+				vertical-align: text-top;
+
 				li {
 					display: table-cell;
 					width: $index-about-item-width;
 					padding: 0px $index-about-item-margin;
 					text-align: justify;
+					vertical-align: text-top;
+
+					$div-size: $index-about-item-width / 2;
+					div {
+						width: $div-size;
+						height: $div-size;
+						margin: {
+							left: auto;
+							right: auto;
+							bottom: 16px;
+						}
+						background-color: lighten($blue, 50%);
+						vertical-align: text-top;
+					}
 
 					header {
 						margin-bottom: $index-about-item-header-margin-bottom;

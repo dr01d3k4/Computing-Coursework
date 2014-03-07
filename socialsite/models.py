@@ -2,6 +2,7 @@ from django.contrib.auth.models import User;
 from django.db import models;
 from django.core.urlresolvers import reverse;
 from django.core.exceptions import ValidationError;
+from django.utils.html import conditional_escape;
 from ComputingCoursework import settings;
 from socialsite.url_matcher import urlPattern;
 import re;
@@ -18,7 +19,7 @@ class UserProfile(models.Model):
 	first_name = models.CharField(max_length = 256);
 	middle_name = models.CharField(max_length = 256, blank = True);
 	last_name = models.CharField(max_length = 256, blank = True);
-	description = models.CharField(max_length = 256, blank = True);
+	description = models.CharField(max_length = 1000, blank = True);
 
 
 
@@ -39,7 +40,7 @@ class UserProfile(models.Model):
 
 
 
-	def generateNewFilename(instance, filename):
+	def generateNewFilenameForProfileImage(instance, filename):
 		file, extension = os.path.splitext(filename);
 		newFileName = "/".join(("profile-images", "%s-profile-image%s" % (instance.user.username, extension)));
 
@@ -51,7 +52,7 @@ class UserProfile(models.Model):
 
 
 
-	profile_image = models.ImageField(upload_to = generateNewFilename, blank = True, validators = [validateProfileImage]);
+	profile_image = models.ImageField(upload_to = generateNewFilenameForProfileImage, blank = True, validators = [validateProfileImage]);
 
 
 
@@ -66,33 +67,33 @@ class UserProfile(models.Model):
 
 
 
-	def getFollowersQS(self):
+	def getFollowersQs(self):
 		return Following.objects.filter(followed = self.user);
 
 
 
-	def getFollowedQS(self):
+	def getFollowedQs(self):
 		return Following.objects.filter(follower = self.user);
 
 
 
 	def getFollowerCount(self):
-		return self.getFollowersQS().count() - 1;
+		return self.getFollowersQs().count() - 1;
 
 
 
 	def getFollowedCount(self):
-		return self.getFollowedQS().count() - 1;
+		return self.getFollowedQs().count() - 1;
 
 
 
 	def getFollowers(self):
-		return self.getFollowersQS().values_list("follower", flat = True);
+		return self.getFollowersQs().values_list("follower", flat = True);
 
 
 
 	def getFollowed(self):
-		return self.getFollowedQS().values_list("followed", flat = True);
+		return self.getFollowedQs().values_list("followed", flat = True);
 
 
 
@@ -108,7 +109,7 @@ class UserProfile(models.Model):
 
 
 
-	def followedByUser(self, otherUser):
+	def isFollowedBy(self, otherUser):
 		follows = False;
 		if (self.user != otherUser):
 			try:
@@ -120,8 +121,63 @@ class UserProfile(models.Model):
 
 
 
-	def getPostsQS(self):
+	def getPostsQs(self):
 		return Post.objects.filter(user = self.user).order_by("-date");
+
+
+
+	def getPostsByUsersFollowedQs(self):
+		return Post.objects.filter(user__in = self.getFollowed()).order_by("-date");
+
+
+
+	def getPostsRepliedToQs(self):
+		postsByUser = Post.objects.filter(user = self.user);
+		firstPostList = Reply.objects.filter(reply_post = postsByUser).values("first_post");
+		firstPosts = Post.objects.filter(id__in = firstPostList);
+		return firstPosts;
+
+
+
+	def getUsersRepliedToQs(self):
+		firstPosts = self.getPostsRepliedToQs();
+		firstPostPosters = firstPosts.values("user").distinct();
+		users = User.objects.filter(id__in = firstPostPosters).select_related("user_profile");
+		return users;
+
+
+
+	def getPostsRepliedToPostsByUserQS(self, otherUser):
+		return self.getPostsRepliedToQs().filter(user = otherUser);
+
+
+
+	def getPostsThatAreRepliesToPostsByUserQs(self, otherUser):
+		allRepliesToOtherUser = Reply.objects.filter(first_post__user = otherUser);
+		replyPostsToOtherUser = allRepliesToOtherUser.values_list("reply_post", flat = True)
+		postsBySelf = Post.objects.filter(user = self.user)
+		postsBySelfToOtherUser = postsBySelf.filter(id__in = replyPostsToOtherUser);
+		return postsBySelfToOtherUser;
+
+
+
+	def getCountOfRepliesToPostsByUser(self, otherUser):
+		return self.getPostsThatAreRepliesToPostsByUserQs(otherUser).count();
+
+
+
+	def toggleFollows(self, otherUser):
+		follows = False;
+
+		try:
+			Following.objects.get(follower = self.user, followed = otherUser).delete();
+			follows = False;
+
+		except (Following.DoesNotExist):
+			Following.objects.get_or_create(follower = self.user, followed = otherUser);
+			follows = True;
+
+		return follows;
 
 
 
@@ -176,7 +232,7 @@ class Post(models.Model):
 
 
 	def getReplies(self):
-		replies = Reply.objects.filter(first_post = self).order_by("-reply_post__date");
+		replyPosts = Post.objects.filter(id__in = Reply.objects.filter(first_post = self).values_list("reply_post", flat = True)).order_by("-date");
 
 		firstPosters = [ ];
 		firstPost = self;
@@ -188,8 +244,7 @@ class Post(models.Model):
 		postsByFirstPosters = [ ];
 		otherPosts = [ ];
 
-		for reply in replies:
-			replyPost = reply.reply_post;
+		for replyPost in replyPosts:
 
 			if (replyPost.user in firstPosters):
 				postsByFirstPosters.append(replyPost);
@@ -200,8 +255,50 @@ class Post(models.Model):
 
 
 
-	def isDeletableBy(self, user):
-		return (self.user == user);
+	def isDeletableBy(self, user = None):
+		return ((user is not None) and (self.user == user));
+
+
+	
+	@staticmethod
+	def getPostFromId(id):
+		post = None;
+		try:
+			post = Post.objects.get(id = id);
+		except (Post.DoesNotExist):
+			raise Http404;
+		return post;
+
+
+
+	@staticmethod
+	def postPost(user, content, replyToId = None):
+		content = str(conditional_escape(content));
+		replyToPost = None;
+
+		if ((replyToId is not None) and (replyToId >= 0)):
+			replyToPost = Post.getPostFromId(replyToId);
+
+		post = Post.objects.create(user = user, content = content);
+		if (replyToPost != None):
+			reply = Reply.objects.create(first_post = replyToPost, reply_post = post);
+
+		return post;
+
+
+
+	def deleteBy(self, user):
+		isDeletable = self.isDeletableBy(user);
+	
+		if (isDeletable):
+			self.delete();
+		
+		return isDeletable;
+
+
+
+	def getFormattedDate(self):
+		return self.date.strftime("%A, %d %B %Y %H:%M %p");
 
 
 
@@ -209,14 +306,10 @@ class Post(models.Model):
 		postDictionary = {
 			"id": self.id,
 			"content": self.content,
-			"date": self.date.strftime("%A, %d %B %Y %H:%M %p"),
-			"poster": UserProfile.objects.get(user = self.user).toDictionary()
+			"date": self.getFormattedDate(),
+			"poster": UserProfile.objects.get(user = self.user).toDictionary(),
+			"isDeletableByLoggedInUser": self.isDeletableBy(loggedInUser)
 		};
-
-		if (loggedInUser is not None):
-			postDictionary["isDeletableByLoggedInUser"] = self.isDeletableBy(loggedInUser);
-		else:
-			postDictionary["isDeletableByLoggedInUser"] = False;
 
 		firstPost = self.getFirstPost();
 		if ((firstPost is not None) and (not secondLevel)):
@@ -227,7 +320,7 @@ class Post(models.Model):
 
 
 	def __unicode__(self):
-		return "%s: %s" % (self.user.username, self.content);
+		return "%s %s: %s" % (self.getFormattedDate(), self.user.username, self.content);
 
 
 

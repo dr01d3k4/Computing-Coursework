@@ -6,11 +6,12 @@
 
   Dialogue = (function() {
     function Dialogue(options) {
+      var body, _i, _len, _ref;
       if ($("body").find(".dialogue").length !== 0) {
         return null;
       }
       this.title = options.title || "";
-      this.body = options.body || options.content || "";
+      this.body = options.body || options.content || [];
       this.hasCloseButton = options.closeButton != null ? options.closeButton : options.hasCloseButton != null ? options.hasCloseButton : true;
       this.$dialogue = $("<div>");
       this.$dialogue.addClass("dialogue");
@@ -49,9 +50,13 @@
       this.$dialogueContainer.append(this.$dialogueHeader);
       this.$dialogueContent = $("<div>");
       this.$dialogueContent.addClass("dialogue-content");
-      this.$dialogueContentBody = $("<p>");
-      this.$dialogueContentBody.text(this.body);
-      this.$dialogueContent.append(this.$dialogueContentBody);
+      _ref = this.body;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        body = _ref[_i];
+        this.$dialogueContentBody = $("<p>");
+        this.$dialogueContentBody.text(body);
+        this.$dialogueContent.append(this.$dialogueContentBody);
+      }
       this.$dialogueContainer.append(this.$dialogueContent);
       this.$dialogue.appendTo($("body"));
     }

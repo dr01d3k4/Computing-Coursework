@@ -131,3 +131,24 @@
 - Wrote search page HTML
 - Changed user list CSS
 - Posts now escape HTML characters before being put into databases (which fixed crashing bug on client)
+
+
+2014/02/28 Friday
+- Created search box
+- Search box now generates clean URL instead of query string
+- Added hint text to search box
+- Delete dialogue now shows the post body that they are deleting
+- Dialogues now take an array of body objects instead of a single string
+- Register form now checks that the username doesn't already exist (case insensitive) and has a confirm password field
+- Login is now also case insensitive
+- Wrote query for get users replied to
+
+
+2014/03/03 Monday
+- Refactored much of the API code into the model classes, including static methods
+
+
+2014/03/04 Tuesday
+- Deleted all test users and posts apart from Ben and Testy
+- Cleaned up HTML
+- Wrote getCountOfRepliesToPostsByUser and now displays that data to user

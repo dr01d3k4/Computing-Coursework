@@ -1,11 +1,27 @@
-#profile-about {
+#profile-aside {
 	display: inline-block;
 	float: left;
-	width: $profile-about-inner-width;
+	width: $profile-about-inner-width; //  + (2 * $profile-about-padding);
 	margin-left: $content-inner-margins;
+	@include multi-property(border-box, box-sizing);
+
+}
+
+
+%aside-block {
+	@include multi-property(border-box, box-sizing);
+	display: block;
+	width: 100%;
 	padding: $profile-about-padding;
 	background-color: $profile-about-background-colour;
 	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
+}
+
+
+
+#profile-about {
+	@extend %aside-block;
+	margin-bottom: 16px;
 
 	#profile-about-image {
 		@extend %profile-image;
@@ -68,6 +84,34 @@
 
 		li {
 			line-height: $profile-about-more-line-height;
+
+			a {
+				color: $blue;
+
+				&:hover, &:active {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+
+#profile-suggestions {
+	@extend %aside-block;
+
+	h2 {
+		font: {
+			size: $profile-about-fullname-font-size;
+			weight: bold;
+		}
+		text-align: center;
+	}
+
+	ul {
+		list-style-type: none;
+		li {
+			margin-top: 8px;
 
 			a {
 				color: $blue;

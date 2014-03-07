@@ -13,24 +13,44 @@
 	<main id="index">
 		<section id="top-bar">
 			<div id="title">
-				<h1>Social Site Title</h1>
+				<h1>
+					Social Site Title
+				</h1>
 			</div>
 			<div id="register-form" class="invisible">
 				<form method="post" action="{% url 'social:index' %}">
 					{% csrf_token %}
-					<h2>Register for Social Site</h2>
+					<h2>
+						Register for Social Site
+					</h2>
 					<br>
 					{% for field in registerUserForm.visible_fields %}
 						{{ field.help_text }}
-						{% if field.errors %}{{ field.errors }}{% endif %}
+						{% if field.errors %}
+							{{ field.errors }}
+						{% else %}
+							{% if field.help_text == "Username:" and userAlreadyExists %}
+								<span class="errorlist">
+									Username taken
+								</span>
+							{% elif field.help_text == "Confirm password:" and passwordsDontMatch %}
+								<span class="errorlist">
+									Passwords don't match
+								</span>
+							{% endif %} 
+						{% endif %}
 						<br>
-						{{ field }}<br>
+						{{ field }}
+						<br>
 					{% endfor %}
 					{% for field in registerUserProfileForm.visible_fields %}
 						{{ field.help_text }}
-						{% if field.errors %}{{ field.errors }}{% endif %}
+						{% if field.errors %}
+							{{ field.errors }}
+						{% endif %}
 						<br>
-						{{ field }}<br>
+						{{ field }}
+						<br>
 					{% endfor %}
 					<div class="form-button-container">
 						<input id="index-form-register-button" type="submit" name="submit" value="Register"/>
@@ -43,13 +63,17 @@
 			<div id="login-form" class="invisible">
 				<form method="post" action="{% url 'social:index' %}">
 					{% csrf_token %}
-					<h2>Please sign in</h2>
+					<h2>
+						Please sign in
+					</h2>
 					<br>
-					Username:<br>
-					<input type="text" name="username" value="" size="50" />
+					Username:
 					<br>
-					Password:<br>
-					<input type="password" name="password" value="" size="50" />
+					<input type="text" name="username" />
+					<br>
+					Password:
+					<br>
+					<input type="password" name="password" />
 					<br>
 					<br>
 					{% if badDetails or disabledAccount %}
@@ -89,8 +113,12 @@
 				<ul>
 					{% for i in "123" %}
 						<li>
+							<div>
+							</div>
 							<header>
-								<h3>{% lorem 3 w random %}</h3>
+								<h3>
+									{% lorem 3 w random %}
+								</h3>
 							</header>
 							{% lorem 35 w random %}
 						</li>
@@ -104,10 +132,8 @@
 	</footer>
 {% endblock %}
 {% block script %}
-	{% if autoOpenTo %}
-		<script>
-			window.autoOpenTo = "{{ autoOpenTo }}";
-		</script>
-	{% endif %}
+	<script>
+		window.autoOpenTo = "{{ autoOpenTo|default:'' }}";
+	</script>
 	<script src="{% static 'js/index_register.js' %}"></script>
 {% endblock %}

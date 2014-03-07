@@ -65,17 +65,17 @@ $header-background-colour: $dark-grey;
 
 $small-nav-width: 1.2 * $header-nav-button-width;
 $small-nav-height: 2 * $header-nav-button-height;
-$total-height: 4 * $small-nav-height + $header-nav-button-height + $header-nav-button-margin;
+$total-height: (4 * $small-nav-height) + $header-nav-button-height + $header-nav-button-margin;
 
 
 
-$index-title-height: 440px;
+$index-title-height: 480px;
 $index-title-font-size: 5em;
 $index-form-width: $site-width / 2.2;
 $index-form-top-margin: 8px;
 $index-form-height: $index-title-height - $header-height - (2 * $index-form-top-margin);
 $index-form-header-margin-top: 12px;
-$index-inner-form-width: $index-form-width * 0.7;
+$index-inner-form-width: $index-form-width * 0.75;
 $index-form-button-container-margin-top: 0px;
 $index-input-margin-top: 2px;
 $index-input-margin-bottom: 16px;
@@ -106,10 +106,10 @@ $index-about-item-header-font-size: 1.6em;
 $content-top-margin: 16px;
 $content-background-colour: $white;
 
-$content-inner-margins: $site-width * 0.01;
+$content-inner-margins: $site-width * 0.015;
 
-$profile-about-width: 220px;
 $profile-about-padding: 12px;
+$profile-about-width: 220px; // + (2 * $profile-about-padding);
 $profile-about-inner-width: $profile-about-width - (2 * $profile-about-padding);
 $profile-about-background-colour: $light-grey;
 $profile-about-fullname-font-size: 1.4em;
@@ -175,16 +175,16 @@ $settings-form-change-button-font-size: 1em;
 
 $user-list-item-profile-image-size: 82px;
 $user-list-item-padding-vertical: 8px;
-$user-list-item-height: $user-list-item-profile-image-size;
+$user-list-item-height: $user-list-item-profile-image-size + (2 * $user-list-item-padding-vertical);
 $user-list-item-full-name-font-size: 1.2em;
 $user-list-item-profile-image-line-height: 22px;
 $user-list-item-text-padding-left: $user-list-item-profile-image-size + 8px;
 $user-list-item-full-name-line-height: 20px;
 $user-list-item-username-font-size: 1em;
-$user-list-item-view-width: 90px;
-$user-list-item-view-height: 14px;
+$user-list-item-view-width: 120px;
 $user-list-item-view-padding: 4px;
-$user-list-item-view-margin-top: $user-list-item-height - $user-list-item-view-height - $user-list-item-padding-vertical;
+$user-list-item-view-height: 14px + (2 * $user-list-item-view-padding);
+$user-list-item-view-margin-top: $user-list-item-height - $user-list-item-view-height - (2 * $user-list-item-padding-vertical);
 
 
 
@@ -228,7 +228,7 @@ $search-user-list-padding: 16px;
 	line-height: 1;
 	text-align: left;
 
-	&:focus {
+	&:hover, &:focus {
 		background-color: $index-input-focus-background-colour;
 	}
 }

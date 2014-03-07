@@ -3,7 +3,7 @@ class Dialogue
 		return null if $("body").find(".dialogue").length isnt 0
 
 		@title = options.title or ""
-		@body = options.body or options.content or ""
+		@body = options.body or options.content or [ ]
 		@hasCloseButton = if options.closeButton? then options.closeButton else if options.hasCloseButton? then	options.hasCloseButton else yes
 
 		@$dialogue = $ "<div>"
@@ -22,8 +22,8 @@ class Dialogue
 		@$dialogueVerticalCenterContainer.append @$dialogueContainer
 		@$dialogueContainer.click -> return no
 
-		@width = options.width or @$dialogueContainer.css("max-width");
-		@$dialogueContainer.css("max-width", @width);
+		@width = options.width or @$dialogueContainer.css "max-width"
+		@$dialogueContainer.css "max-width", @width
 
 		@$dialogueHeader = $ "<header>"
 		@$dialogueHeader.addClass "dialogue-header"
@@ -48,9 +48,10 @@ class Dialogue
 		@$dialogueContent = $ "<div>"
 		@$dialogueContent.addClass "dialogue-content"
 
-		@$dialogueContentBody = $ "<p>"
-		@$dialogueContentBody.text @body
-		@$dialogueContent.append @$dialogueContentBody
+		for body in @body
+			@$dialogueContentBody = $ "<p>"
+			@$dialogueContentBody.text body
+			@$dialogueContent.append @$dialogueContentBody
 
 		@$dialogueContainer.append @$dialogueContent
 

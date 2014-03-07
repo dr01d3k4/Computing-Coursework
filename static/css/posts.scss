@@ -85,14 +85,11 @@
 		#post-top-layer {
 			margin-left: -$post-inset;
 			text-align: center;
-
-			&:empty {
+		
+			&:empty:after {
+				margin-left: $post-inset;
 				text-align: center;
-				&:after {
-					margin-left: $post-inset;
-					text-align: center;
-					content: "No posts";
-				}
+				content: "No posts" !important;;
 			}
 		}
 

@@ -1,0 +1,160 @@
+http://en.wikibooks.org/wiki/A-level_Computing/AQA
+Check that site because some of below may be wrong
+
+
+Analysis
+
+Background to/identification of problem
+- Some stuff about social networking
+
+
+Description of the current system
+- No idea
+
+
+Identification of the prospective user(s)
+- Anybody with an internet connection
+
+
+Identification of user needs and acceptable limitations
+- Needs to be fast
+- Work on mobile
+
+
+Data source(s) and destination(s)
+- Input from users only
+- Stored in database
+
+
+Data volumes
+- Every user requires a row in the user profile and following tables (because follows self) (as well as Django created user table, so minimum of 3 rows per user)
+- Users can upload profile images, limited to a maximum size and when they upload another it overwrites their previous
+- Anywhere from 0 to 100s of messages a day, up to 255 characters each
+- These messages could be replies to other messages and so creates a row in the reply table (but this is just 3 integers - reply id primary key and ids of the 2 posts involved)
+- Each user could be followed up to COUNT(UserTable) times but again this is just 3 integers
+
+
+Analysis Data Dictionary
+- What's this?
+
+
+Data flow diagrams (DFDs) (existing and proposed systems)
+- I don't know existing
+- Input from user (user name, real name, profile image, description, website, posts, whether post is reply, whether user follows another user) goes into database
+- This data either goes to the Django template and turned into HTML on the server, or gets represented as JSON and sent to client via the API using HTTP
+- On the client, this JSON is iterated over to build up HTML elements to display to the client
+- These HTML elements can then be interacted with to send data to server
+
+
+Entity-relationship (E-R) model (if appropriate), E-R diagrams, entity descriptions
+- Diagrams of the Django models for database tables
+- Only other classes created are ones for Django views but do they count?
+- On client, Dialogue and ConfirmDialogue classes
+
+
+Object analysis diagrams - inheritance, aggregation (if appropriate)
+- Only expressed through database
+- ConfirmDialogue extends Dialogue
+
+
+Numbered general and specific objectives of the project
+- Meh
+
+
+Realistic appraisal of the feasibility of potential solutions
+- Mobile app
+- Google glass app?
+
+
+Justification of chosen solution
+- Django is easy
+- Web app is flexible (works on computer and mobile)
+- Server is designed to use an API so that in future a native mobile app could be written to access the same data without much modifying of the server code, and JSON used as platform independent
+
+
+Evidence of use of appropriate analysis techniques
+- ?
+
+
+
+
+Design
+
+Overall system design
+- Is this for code or site?
+- Each page on the site has its own class and each API call uses its own function
+- Both interact with methods in the models
+
+
+Description of modular structure of system
+- Not sure what difference is between this and above
+
+
+Definition of data requirements (Design Data Dictionary)
+- Is this basically column titles?
+- If so then just look at models.py
+
+
+Description of record structure (if appropriate)
+- Again, models.py
+
+
+Validation required
+- When user uploads their website, check it's a valid URL
+- Check post contents added
+- Stuff for registering and logging in
+
+
+File organisation and processing (if appropriate) or database design including normalised relations (if appropriate)
+- models.py and profile image naming
+
+
+Sample of planned SQL queries (if appropriate)
+- Look in models.py, views.py and api.py for query sets (especially getPostsByUsersFollowedBy)
+- Perhaps write the SQL for these queries, but then say because I'm using Django, the preferred method is to use query sets and so they will be written using them and show how
+
+
+Identification of storage media
+- Database (currently uses SQLite3, may change to MySQL?)
+- Folder for profile images
+
+
+Identification of suitable algorithms for data transformation, pseudo code of these algorithms
+- On server:
+	- api.postPost
+	- models.py, toDictionary methods
+	- models.Post.getReplies
+	- Potential algorithm for analysing friendships (look at todo.txt)
+- On client:
+	- Algorithms for turning JSON into HTML elements
+
+
+Class definitions (diagrams) and details of object behaviours and methods (if appropriate)
+- models.py
+
+
+User interface design (HCI) rationale
+- UI clear and simple
+- Consistent colours
+- Large font
+- Shown correctly on different browsers and resolutions (fixed width of 960px and changing for mobile)
+- Nesting of replies
+
+
+UI sample of planned data capture and entry designs
+UI sample of planned valid output designs
+- Screenshot various elements of the site and say what they are, maybe label
+
+
+Description of measures planned for security and integrity of data
+- models.Post.isDeletableBy and checking on server, not client
+- Django automatically adding CSRF token
+
+
+Description of measures planned for system security
+- No idea
+
+
+Overall test strategy
+- Maybe tests.py for server
+- Perhaps Django admin site for creating data to test output displaying before input fields written
