@@ -152,3 +152,16 @@
 - Deleted all test users and posts apart from Ben and Testy
 - Cleaned up HTML
 - Wrote getCountOfRepliesToPostsByUser and now displays that data to user
+
+
+2014/03/24 Monday
+- Moved view followers and view followed to their own pages
+- Changed about button and box on profile
+
+
+2014/03/26 Wednesday
+- Suggestion box now shows actual suggestions
+
+
+2014/03/28 Friday
+- Suggestion box now changes to show friends on other users profile

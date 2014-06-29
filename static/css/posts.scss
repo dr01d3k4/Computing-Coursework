@@ -1,4 +1,6 @@
 #posts {
+	@include multi-property(border-radius, $global-border-radius);
+	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
 	display: inline-block;
 	float: right;
 	width: $posts-inner-width;
@@ -7,6 +9,7 @@
 	background-color: $posts-background-colour;
 
 	%post-horizontal-strip {
+		@include multi-property(border-radius, $global-border-radius);
 		display: block;
 		height: $post-header-height;
 		padding: $post-header-padding-vertical $post-header-padding-horizontal;
@@ -62,6 +65,8 @@
 	}
 
 	#post-new-post-button-outer-container {
+		@include multi-property(border-radius, $global-border-radius);
+		background-color: $white;
 		border: $global-dark-border;
 		border-bottom: 0px;
 		margin-bottom: $post-inset;
@@ -79,6 +84,10 @@
 		#post-reply-box {
 			border-bottom: $global-dark-border;
 		}
+	}
+
+	#post-reply-box {
+			@include multi-property(border-radius, 0px 0px $global-border-radius $global-border-radius);
 	}
 
 	#posts-inner {
@@ -105,6 +114,7 @@
 		}
 
 		.post {
+			@include multi-property(border-radius, $global-border-radius);
 			border: $global-dark-border;
 			background-color: $posts-background-colour;
 
@@ -135,6 +145,7 @@
 				padding: $post-content-padding;
 				background-color: $post-content-background-colour;
 				word-break: break-all;
+				line-height: 18px;
 
 				.post-reply-to-username {
 					color: $blue;
@@ -163,6 +174,8 @@
 		}
 
 		.post-replies {
+			@include multi-property(border-radius, $global-border-radius);
+
 			&:not(:empty) {
 				padding-bottom: $post-gap;
 				box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
@@ -193,15 +206,25 @@
 
 			#post-reply-box-text-box {
 				display: block;
+				box-sizing: border-box;
 				min-width: 100%;
 				width: 100%;
 				max-width: 100%;
-				margin: 0px;
-				padding: 0px;
+				margin: -3px;
+				padding: 2px;
 				min-height: $post-text-box-one-line-height;
 				height: 2 * $post-text-box-one-line-height;
 				max-height: 4 * $post-text-box-one-line-height;
+				border: {
+					bottom: 1px solid grey;
+					right: 1px solid grey;
+					radius: $global-border-radius;
+				}
 				font-family: sans-serif;
+
+				&:hover, &:focus {
+					background-color: $index-input-focus-background-colour;
+				}
 			}
 		}
 

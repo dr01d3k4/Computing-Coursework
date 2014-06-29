@@ -9,10 +9,6 @@ class Dialogue
 		@$dialogue = $ "<div>"
 		@$dialogue.addClass "dialogue"
 
-		# @$dialogueFloater = $ "<div>"
-		# @$dialogueFloater.addClass "dialogue-floater"
-		# @$dialogue.append @$dialogueFloater
-
 		@$dialogueVerticalCenterContainer = $ "<div>"
 		@$dialogueVerticalCenterContainer.addClass "dialogue-vertical-center-container"
 		@$dialogue.append @$dialogueVerticalCenterContainer

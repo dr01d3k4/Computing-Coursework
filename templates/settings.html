@@ -1,0 +1,32 @@
+{% extends "header_base.html" %}
+{% load static %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+	<form id="settings-form" method="post" action="{% url 'connected:settings' %}" enctype="multipart/form-data">
+		<h1>
+			Profile Settings
+		</h1>
+		{% csrf_token %}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{% for field in userProfileSettingsForm.visible_fields %}
+			{% if field.help_text != "PROFILE_IMAGE" %}
+				{{ field.help_text }}
+				{% if field.errors %}
+					{{ field.errors }}
+				{% endif %}
+				<br>
+				{{ field }}
+				<br>
+			{% endif %}
+		{% endfor %}
+		Select a profile image (optional):
+		<img id="profile-image-view" src="{{ MEDIA_URL }}{{ userProfile.profile_image }}" alt="No profile image">
+		<input id="profile-image-field" name="profile_image" type="file">
+		<input id="settings-form-change-button" type="submit" name="submit" value="Accept Changes"/>
+	</form>
+{% endblock %}
+{% block script %}
+	<script src="{% static 'js/settings_preview_profile_image.js' %}"></script>
+{% endblock %}

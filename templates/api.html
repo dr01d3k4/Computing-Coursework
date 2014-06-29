@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Connected | API</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Connected API</h1>
+		<ul>
+			{% for apiMethod in apiMethods %}
+				<li>
+					<header class="api-method-title">
+						<span class="method">{{ apiMethod.method }}</span>
+						<span class="url">{{ apiMethod.url }}</span>
+						<span class="content-type">{{ apiMethod.returnContentType }}</span>
+					</header>
+					<ul class="api-method-parameters">
+						{% for parameter, info in apiMethod.parameters.items %}
+							<li class="parameter">
+								<span class="parameter-type">{{ info.type }}</span>
+								<span class="parameter-name">{{ parameter }}</span>
+								{% if info.default %}
+									<span class="parameter-default">(= {{ info.default }})</span>
+								{% endif %}
+								-
+								<span class="parameter-description">
+									{{ info.description }}
+								</span>
+							</li>
+						{% endfor %}
+					</ul>
+					<article class="api-method-description">
+						{{ apiMethod.description }}
+					</article>
+					<section class="api-method-return">
+						{{ apiMethod.returnValue }}
+					</section>
+				</li>
+				<br>
+			{% endfor %}
+		</ul>
+	</body>
+</html>

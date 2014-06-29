@@ -1,39 +1,18 @@
-/*
-Order of properties:
-- position
-- display
-- float
-- clear
-- width
-- height
-- top
-- right
-- bottom
-- left
-- margin
-- padding
-- border
-- other layout
-- colour
-- font
-*/
-
-
-
 $site-width: 960px;
 $border-thickness: 1px;
 
 $black: #000000;
 $white: #fefefe;
 $cyan: #1e90ff;
-$background-colour: $cyan;
+$background-colour: #20aaff;
 $dark-grey: #3a3a3a;
 $button-lighter-grey: lighten($dark-grey, 10%);
 $light-grey: #dcdcdc;
 $blue: darken($cyan, 20%);
 $red: #ff0000;
 
-$font-family: "lucidia", sans-serif;
+// $font-family: sans-serif;
+$font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 
 $global-light-border: $border-thickness solid $white;
 $global-dark-border: $border-thickness solid $black;
@@ -55,7 +34,7 @@ $small-top-layer-vertical-margin: 16px;
 $header-height: 38px;
 $header-z-index: 2;
 $header-title-font-size: 1.8em;
-$header-title-small-top: 0px;
+$header-title-small-top: 5px;
 $header-title-small-font-size: 0.9em;
 $header-nav-button-width: 112px;
 $header-nav-button-margin: 6px;
@@ -69,8 +48,8 @@ $total-height: (4 * $small-nav-height) + $header-nav-button-height + $header-nav
 
 
 
-$index-title-height: 480px;
-$index-title-font-size: 5em;
+$index-title-height: 510px;
+$index-title-font-size: 7em;
 $index-form-width: $site-width / 2.2;
 $index-form-top-margin: 8px;
 $index-form-height: $index-title-height - $header-height - (2 * $index-form-top-margin);
@@ -95,8 +74,8 @@ $index-register-button-height: $index-register-height * 0.5;
 $index-register-button-width: floor(($site-width - (4 * $index-register-button-margin)) / 2);
 
 $index-about-item-container-padding-top: 22px;
-$index-about-item-margin: 16px;
-$index-about-item-width: floor(($site-width - (6 * $index-about-item-margin)) / 3);
+$index-about-item-margin: 20px;
+$index-about-item-width: $site-width / 3;
 $index-about-item-header-margin-bottom: 12px;
 $index-about-item-header-font-size: 1.6em;
 
@@ -106,10 +85,10 @@ $index-about-item-header-font-size: 1.6em;
 $content-top-margin: 16px;
 $content-background-colour: $white;
 
-$content-inner-margins: $site-width * 0.015;
+$content-inner-margins: 16px;
 
 $profile-about-padding: 12px;
-$profile-about-width: 220px; // + (2 * $profile-about-padding);
+$profile-about-width: 240px;
 $profile-about-inner-width: $profile-about-width - (2 * $profile-about-padding);
 $profile-about-background-colour: $light-grey;
 $profile-about-fullname-font-size: 1.4em;
@@ -124,15 +103,15 @@ $posts-inner-width: $posts-width - (2 * $posts-padding);
 $posts-background-colour: $light-grey;
 
 $post-inset: 16px;
-$post-gap: 14px;
+$post-gap: 18px;
 $post-min-height: 0px;
-$post-content-padding: 6px;
+$post-content-padding: 8px;
 $post-content-background-colour: $white;
 $post-header-height: auto;
-$post-header-padding-vertical: 2px;
+$post-header-padding-vertical: 4px;
 $post-header-padding-horizontal: 0px;
-$post-horizontal-strip-text-padding: 0px 4px;		
-$post-horizontal-strip-text-height: 18px;
+$post-horizontal-strip-text-padding: 0px 6px;		
+$post-horizontal-strip-text-height: 20px;
 $post-horizontal-strip-text-font-size: 0.9em;
 $post-horizontal-strip-text-margin-vertical: 2px;
 $post-horizontal-strip-text-margin-horizontal: 6px;
@@ -142,7 +121,7 @@ $post-small-text-margin: 4px;
 
 
 
-$footer-height: 32px;
+$footer-height: 48px;
 
 
 
@@ -195,7 +174,12 @@ $search-user-list-width: $site-width * 0.9;
 $search-user-list-padding: 16px;
 
 
+$global-border-radius: 6px;
+
+
 %clickable {
+	@include multi-property(border-radius, $global-border-radius);
+
 	background-color: $dark-grey;
 	color: $white;
 	text-align: center;
@@ -204,7 +188,7 @@ $search-user-list-padding: 16px;
 
 	&:hover, &:active {
 		cursor: pointer;
-		box-shadow: inset 2 * $background-shadow-size 2 * $background-shadow-size $background-shadow-spread $background-shadow-colour;
+		box-shadow: inset $background-shadow-size $background-shadow-size $background-shadow-spread darken($background-shadow-colour, 10%);
 		background-color: $button-lighter-grey;
 
 	}
@@ -224,6 +208,7 @@ $search-user-list-padding: 16px;
 		top: $index-input-margin-top;
 		bottom: $index-input-margin-bottom;
 	}
+	border-radius: $global-border-radius;
 	border-bottom: $global-dark-border;
 	line-height: 1;
 	text-align: left;
@@ -250,11 +235,13 @@ $search-user-list-padding: 16px;
 
 
 %profile-image {
-	width: $profile-about-inner-width;
-	height: $profile-about-inner-width;
+	@include multi-property(border-radius, $global-border-radius);
+	max-width: $profile-about-inner-width;
+	max-height: $profile-about-inner-width;
 	margin: auto auto;
 	border: $global-dark-border;
 	color: $white !important;
+	background-color: $dark-grey;
 	line-height: $profile-about-inner-width;
 	text-align: center;
 }

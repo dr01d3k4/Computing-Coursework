@@ -1,0 +1,1 @@
+Users now don't follow themself - change that in all writeup and if any bugs appear, may be caused by that

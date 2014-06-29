@@ -1,0 +1,114 @@
+{% extends "header_base.html" %}
+{% load static %}
+{% block title %}
+	{{ viewingProfile.fullName }}
+{% endblock %}
+{% block content %}
+	<aside id="profile-aside">
+		<section id="profile-about">
+			<img id="profile-about-image" src="{{ profileImage }}" alt="No profile image">
+			<h2 id="profile-viewing-fullname">
+				{{ viewingProfile.fullName }}
+			</h2>
+			<h3 id="profile-viewing-username">
+				{{ viewingProfile.viewableUsername }}
+			</h3>
+			<section id="profile-about-content">
+				{% if viewingProfile.description %}
+					{{ viewingProfile.description }}
+				{% else %}
+					<i>
+						{{ viewingProfile.first_name }} doesn't have a description.
+					</i>
+				{% endif %}
+			</section>
+			{% if user != viewingUser %}
+				<div id="profile-follow-button" class="clickable
+					{% if isFollowing %}
+						profile-follow-button-followed
+					{% else %}
+						profile-follow-button-not-followed
+					{% endif %}">
+					{% if isFollowing %}
+						Following!
+					{% else %}
+						Follow
+					{% endif %}
+				</div>
+			{% endif %}
+			<a id="profile-view-followers-button" href="{% url 'connected:view-followers' viewingUser.username %}">
+				View Followers
+			</a>
+			<a id="profile-view-followed-button" href="{% url 'connected:view-followed' viewingUser.username %}">
+				View Followed
+			</a>
+			<section id="profile-about-more">
+				<div id="profile-about-more-button">
+					About
+				</div>
+				<ul>
+					{% if viewingProfile.website %}
+						<li>
+							Website:
+							<a href="{{ viewingProfile.website }}" target="_blank">
+								{{ viewingProfile.website }}
+							</a>
+						</li>
+					{% endif %}
+					<li id="profile-about-followed-count">
+					</li>
+					<li id="profile-about-follower-count">
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section id="profile-suggestions">
+			<h2>
+				{% if userProfile == viewingProfile %}
+					Suggestions
+				{% else %}
+					{{ viewingProfile.first_name }}{% if viewingProfile.first_name|make_list|last == "s" %}'{% else %}'s{% endif %} friends
+				{% endif %}
+			</h2>
+			<ul>
+				{% for repliedToUser in usersRepliedTo %}
+					<li>
+						<a href="{{ repliedToUser.user_profile.get_absolute_url }}">
+							{{ repliedToUser.user_profile.fullName }}
+							-
+							{{ repliedToUser.user_profile.viewableUsername }}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</aside>
+	<section id="posts">
+		{% if viewingUser == user %}
+			<div id="post-new-post-button-outer-container" data-post-id="NEW">
+				<div id="post-new-post-button-container">
+					<div id="post-new-post-button">
+						Post a new post
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<div id="posts-inner">
+			<div id="post-top-layer"></div>
+		</div>
+	</section>
+	<footer id="footer">
+		&copy; Ben Cooper ・ 2014
+	</footer>
+{% endblock %}
+{% block script %}
+	<script>
+		window.loggedInUsername = "{{ user.username }}";
+		window.viewingUsername = "{{ viewingUser.username }}";
+		window.viewingFirstName = "{{ viewingProfile.first_name }}";
+		window.viewingSelf = {% if user == viewingUser %}true{% else %}false{% endif %};
+	</script>
+	<script src="{% static 'js/dialogue.js' %}"></script>
+	<script src="{% static 'js/profile_get_posts.js' %}"></script>
+	<script src="{% static 'js/profile_buttons.js' %}"></script>
+{% endblock %}

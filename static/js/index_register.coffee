@@ -1,5 +1,5 @@
 $(document).ready ->
-	$title = $ "#title"
+	$title = $ "#index-title"
 	$titleText = $title.children("h1")
 
 	$registerForm = $ "#register-form"
@@ -12,12 +12,13 @@ $(document).ready ->
 
 
 
-	titleHeightLarge = $title.height()
+	titleHeightLarge = "480px"
+	halfTitleHeightLarge = "240px";
 	titleHeightSmall = "38px"
-	fontSizeLarge = "5em"
-	fontSizeSmall = "1.8em"
+	fontSizeLarge = "6em"
+	fontSizeSmall = "1.4em"
 
-	animateTime = 300
+	animateTime = 280
 	reopenDelay = 100
 
 
@@ -63,7 +64,7 @@ $(document).ready ->
 
 		$title.animate {
 			height: titleHeightLarge,
-			"line-height": titleHeightLarge / 2,
+			"line-height": halfTitleHeightLarge,
 		}, animateTime, ->
 			$registerForm.addClass "invisible"
 			$loginForm.addClass "invisible"

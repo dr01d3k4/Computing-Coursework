@@ -1,0 +1,273 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"TYPE_",
+				"TYPE_PLAIN_TYPE"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "connected/api/api.py",
+			"settings":
+			{
+				"buffer_size": 10027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/api.html",
+			"settings":
+			{
+				"buffer_size": 1258,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 826.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ben/DjangoProjects/Connected/connected/admin.py",
+		"/home/ben/DjangoProjects/Connected/Connected/urls.py",
+		"/home/ben/DjangoProjects/Connected/Connected/settings.py",
+		"/home/ben/DjangoProjects/Connected/connected/models.py",
+		"/home/ben/DjangoProjects/Connected/manage.py",
+		"/home/ben/DjangoProjects/Connected/static/js/profile_get_posts.coffee",
+		"/home/ben/DjangoProjects/Connected/static/js/settings_preview_profile_image.coffee",
+		"/home/ben/DjangoProjects/Connected/static/js/ajax_send.js",
+		"/home/ben/DjangoProjects/Connected/static/js/logout_button.coffee",
+		"/home/ben/DjangoProjects/Connected/static/js/profile_buttons.coffee",
+		"/home/ben/DjangoProjects/Connected/templates/header_base.html",
+		"/home/ben/DjangoProjects/Connected/templates/index.html",
+		"/home/ben/DjangoProjects/Connected/templates/profile.html",
+		"/home/ben/DjangoProjects/Connected/templates/settings.html",
+		"/home/ben/DjangoProjects/Connected/templates/user_list.html",
+		"/home/ben/DjangoProjects/Connected/connected/views.py",
+		"/home/ben/DjangoProjects/Connected/connected/api/urls.py",
+		"/home/ben/DjangoProjects/Connected/connected/forms.py",
+		"/home/ben/DjangoProjects/Connected/connected/urls.py",
+		"/home/ben/DjangoProjects/Connected/connected/api/api.py",
+		"/home/ben/DjangoProjects/Connected/templates/socialsite/api.html",
+		"/home/ben/DjangoProjects/Connected/Connected/wsgi.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"connected",
+			"social",
+			"course",
+			"social",
+			"course",
+			"socialsite",
+			"social"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"connected_app"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "connected/api/api.py",
+					"settings":
+					{
+						"buffer_size": 10027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6040,
+								6040
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3015.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/api.html",
+					"settings":
+					{
+						"buffer_size": 1258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 400.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				""
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 303.0,
+	"status_bar_visible": true
+}

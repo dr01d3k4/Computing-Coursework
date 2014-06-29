@@ -2,10 +2,11 @@ $(document).ready ->
 	$("html, body").animate scrollTop: "0px"
 
 
+
 	GET_POSTS_LENGTH = 10
 	gotAmount = 0
-	UPDATE_TIME_SECONDS = 60
-	WINDOW_BOTTOM_LOAD_NEW_POSTS_SCROLL = 64
+	UPDATE_TIME_SECONDS = 20
+	WINDOW_BOTTOM_LOAD_NEW_POSTS_SCROLL = 128
 	topLayerVisiblePosts = [ ]
 
 	isTopLayerVisiblePost = (id) ->
@@ -19,11 +20,11 @@ $(document).ready ->
 	$postTopLayer = $ "#post-top-layer"
 
 
-	SHOW_TIME = 250
-	NO_POSTS_TIME = 600
+	SHOW_TIME = 400
+	NO_POSTS_TIME = 450
 	viewRepliesPressed = no
 
-	maximumReplyLengthCharacters = 255
+	MAXIMUM_POST_LENGTH = 256
 
 	$postReplyBox = $ "<div>"
 	$postReplyBox.attr "id", "post-reply-box"
@@ -38,7 +39,7 @@ $(document).ready ->
 	$postReplyBoxTextBox.attr "type", "text"
 	$postReplyBoxTextBox.attr "placeholder", "Type a reply"
 	$postReplyBoxTextBox.attr "autofocus", "autofocus"
-	$postReplyBoxTextBox.attr "maxlength", maximumReplyLengthCharacters
+	$postReplyBoxTextBox.attr "maxlength", MAXIMUM_POST_LENGTH
 	$postReplyBoxTextBox.attr "name", "reply"
 	$postReplyBoxTextBox.attr "spellcheck", "true"
 	$postReplyBoxTextBox.attr "autocorrect", "on"
@@ -52,7 +53,7 @@ $(document).ready ->
 
 	$postReplyBoxCharactersRemaining = $ "<span>"
 	$postReplyBoxCharactersRemaining.addClass "post-small-text-left"
-	$postReplyBoxCharactersRemaining.text "255 characters remaining"
+	$postReplyBoxCharactersRemaining.text "#{MAXIMUM_POST_LENGTH} characters remaining"
 	$postReplyBoxFooter.append $postReplyBoxCharactersRemaining
 
 	$postReplyBoxPostContainer = $ "<div>"
@@ -66,11 +67,11 @@ $(document).ready ->
 	$postReplyBoxFooter.append $postReplyBoxPostContainer
 
 	$postReplyBox.append $postReplyBoxFooter
-
+	
 
 
 	$postReplyBoxTextBox.bind "input propertychange", ->
-		charactersRemaining = maximumReplyLengthCharacters - this.value.length
+		charactersRemaining = MAXIMUM_POST_LENGTH - this.value.length
 		$postReplyBoxCharactersRemaining.text "#{charactersRemaining} character#{if charactersRemaining isnt 1 then 's' else ''} remaining"
 
 		start = 50
@@ -131,7 +132,7 @@ $(document).ready ->
 		if postContent.length is 0
 			$blankPost = $ "<span>"
 			$blankPost.addClass "post-small-text-right"
-			$blankPost.text "Please enter a reply"
+			$blankPost.text "Please enter a post"
 			$blankPost.hide()
 			$button.after $blankPost
 			$blankPost.show(SHOW_TIME).delay(NO_POSTS_TIME).hide SHOW_TIME, ->
@@ -142,7 +143,7 @@ $(document).ready ->
 		id = postReplyBoxAppendedToId
 		$.ajax
 			type: "POST"
-			url: "/social/api/post-post/"
+			url: "/api/post-post/"
 			data:
 				content: postContent
 				replyToId: id
@@ -151,9 +152,7 @@ $(document).ready ->
 			$postReplyBoxTextBox.text("")
 
 			closePostReplyBox $postReplyBoxAppendedToButton
-			console.log id
 			if id is "NEW" or viewingSelf
-				console.log "ok"
 				buildPostHtml data.post, $postTopLayer, isTopLayer: yes, prepend: yes
 			
 			if id isnt "NEW"
@@ -177,7 +176,6 @@ $(document).ready ->
 
 
 	onViewRepliesClicked = ->
-		return if viewRepliesPressed
 		viewRepliesPressed = yes
 
 		$button = $(this)
@@ -186,7 +184,7 @@ $(document).ready ->
 		if $postReplyContainer.children().length is 0
 			id = $button.parent().parent().data("post-id")
 
-			$.getJSON "/social/api/get-replies-to/#{id}/", (data) ->
+			$.getJSON "/api/get-replies-to/#{id}/", (data) ->
 				if data.posts.length is 0
 					$noPosts = $ "<span>"
 					$noPosts.addClass "post-small-text-left"
@@ -221,7 +219,7 @@ $(document).ready ->
 			$container = $post.parent()	
 			$replies = $container.children ".post-replies"
 
-			$.getJSON "/social/api/get-post/#{id}/", (data) ->
+			$.getJSON "/api/get-post/#{id}/", (data) ->
 				$post.detach()
 				$replies.detach()
 
@@ -264,7 +262,7 @@ $(document).ready ->
 				dialogue.close()
 				$.ajax
 					type: "POST"
-					url: "/social/api/delete-post/"
+					url: "/api/delete-post/"
 					data:
 						id: id
 				.done ->
@@ -309,7 +307,7 @@ $(document).ready ->
 		$posterLink = $ "<a>"
 		$posterLink.addClass "post-poster-link"
 		$posterLink.attr "href", post.poster.absoluteUrl
-		$posterLink.text "#{post.poster.fullName} - @#{post.poster.username}"
+		$posterLink.text "#{post.poster.fullName} - #{post.poster.username}"
 		$postHeader.append $posterLink
 
 		if post.isReplyTo and showViewConversation
@@ -404,10 +402,10 @@ $(document).ready ->
 
 
 	getTopPostsApi = if viewingSelf
-		"/social/api/get-posts-by-users-followed-by/#{loggedInUsername}/"
+		"/api/get-posts-by-users-followed-by/#{loggedInUsername}/"
 		
 	else
-		"/social/api/get-posts-by/#{viewingUsername}/"
+		"/api/get-posts-by/#{viewingUsername}/"
 
 	getTopPostsApi += "#{GET_POSTS_LENGTH}/"
 
@@ -419,14 +417,17 @@ $(document).ready ->
 
 
 	loadingNext = no
+	gotAllPosts = no
 	loadNextPosts = ->
-		return if loadingNext
+		return if loadingNext or gotAllPosts
 		loadingNext = yes
 
 		getApi = getTopPostsApi + (if gotAmount is 0 then "0" else gotAmount.toString()) + "/"
 
 		$.getJSON getApi, (data) ->
 			renderFirstPosts data
+			if data.posts.length is 0
+				gotAllPosts = yes
 			loadingNext = no
 		
 
@@ -439,6 +440,7 @@ $(document).ready ->
 			loadNextPosts()
 	
 	$window.scroll detectScroll
+
 
 
 

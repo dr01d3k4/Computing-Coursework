@@ -21,9 +21,14 @@
 			font-size: $header-title-font-size;
 			font-weight: normal;
 			text-align: center;
+			box-shadow: 0px 0px 0px #000000;
 		}
 
-		#title {
+		#no-home-button {
+			display: inline-block;
+		}
+
+		#header-title {
 			display: inline-block;
 			height: 100%;
 			line-height: $header-height;
@@ -37,6 +42,7 @@
 			position: relative;
 			display: inline-block;
 			top: $header-title-small-top;
+			margin-left: 4px;
 			color: $white;
 			font-size: $header-title-small-font-size;
 			font-weight: normal;
@@ -49,27 +55,28 @@
 			position: relative;
 			float: right;
 
-
 			$search-box-width: 200px;
 			$search-box-small-width: 32px;
 
 			#search-box-container {
 				display: inline-block;
-				margin: $header-nav-button-margin 0px;
+				margin: $header-nav-button-margin 16px;
 				font-size: 2em;
 				color: $white;
+
 
 				#search-box {
 					display: inline-block;
 					width: $search-box-width;
 					height: $header-nav-button-height;
-					margin-top: -4px;
+					margin-top: -8px;
 					background-color: darken($header-background-colour, 10%);
 					box-shadow: inset 2px 2px 0px $black;
-
+					@include multi-property(border-radius, $global-border-radius);
 
 					#search-query {
 						width: $search-box-width;
+						margin-top: -9px;
 						padding: 4px;
 						color: $white;
 					}
@@ -97,36 +104,37 @@
 					list-style-type: none;
 
 					li {
-						@extend %clickable;
 						display: table-cell;
 						margin: 0px;
 						margin-left: -4px;
 						padding: 0px;
-						border: {
-							left: $global-light-border;
-							right: $global-light-border;
-						}
 
-						&:first-child {
+						&:first-child a {
 							border-left: 0px;
 						}
 
-						&:last-child {
+						&:last-child a, &:last-child div {
 							border-right: 0px;
 						}
 
-						a {
+						a, div {
+							@extend %clickable;
+							@include multi-property(border-radius, 0px);
 							display: table-cell;
 							width: $header-nav-button-width;
 							height: $header-nav-button-height;
 							margin: 0px;
 							padding: 0px;
+							border: {
+								left: $global-light-border;
+								right: $global-light-border;
+							}	
 							line-height: $header-nav-button-height;
 							vertical-align: middle;
 							color: $white;
 							font-size: $heaver-nav-button-font-size;
 							text-align: center;
-						}
+						}		
 					}
 				}
 			}
@@ -146,6 +154,10 @@
 		#inner-header {
 			width: 100% !important;
 
+			#no-home-button {
+				width: 8px;
+			}
+
 			#nav-container {
 				width: 0px;
 				height: 0px;
@@ -157,7 +169,7 @@
 					top: 0px;
 					left: -$small-nav-width - $header-nav-button-margin;
 
-					ul, &:active ul {
+					ul, &:active ul, &:target ul {
 						position: relative;
 						display: none;
 						width: $small-nav-width;
@@ -172,20 +184,28 @@
 						margin: 0px !important;
 						padding: 0px !important;
 						border: 0px solid !important;
-						border-top: $global-light-border  !important;
 						line-height: $small-nav-height !important;
 						text-align: center !important;
 
-						a {
+						a, div {
 							display: inline-block !important;
 							width: 100% !important;
 							height: 100% !important;
 							margin: 0px !important;
 							padding: 0px !important;
-							border: 0px solid  !important;
+							border: 0px solid !important;
+							border-top: $global-light-border !important;
 							line-height: $small-nav-height !important;
 							font-size: 1.3em !important;
 							text-align: center !important;
+						}
+
+						&:first-child a {
+							border-radius: $global-border-radius $global-border-radius 0px 0px;
+						}
+
+						&:last-child a, &:last-child div {
+							border-radius: 0px 0px $global-border-radius $global-border-radius;
 						}
 					}
 

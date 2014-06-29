@@ -7,7 +7,7 @@
 		height: $index-title-height;
 		background-color: $background-colour;
 
-		#title {
+		#index-title {
 			position: absolute;
 			width: 100%;
 			height: $index-title-height;
@@ -18,10 +18,12 @@
 			box-shadow: 0px $background-shadow-size $background-shadow-spread $background-shadow-colour;
 
 			h1 {
+				display: block;
+				height: 100%;
 				color: $white;
 				font-size: $index-title-font-size;
 				text-align: center;
-				font-weight: normal;
+				font-weight: bold;
 			}
 		}
 
@@ -153,11 +155,13 @@
 					display: table-cell;
 					width: $index-about-item-width;
 					padding: 0px $index-about-item-margin;
-					text-align: justify;
+					text-align: center;
 					vertical-align: text-top;
+					-moz-box-sizing: content-box;
 
 					$div-size: $index-about-item-width / 2;
-					div {
+					.default-icon {
+						@include multi-property(border-radius, $global-border-radius);
 						width: $div-size;
 						height: $div-size;
 						margin: {

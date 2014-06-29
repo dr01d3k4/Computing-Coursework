@@ -12,25 +12,26 @@ pluralPersonWord = (count) -> if count is 1 then "person" else "people"
 
 
 $(document).ready ->
-	$aboutButton = $ "#profile-about-more-button"
+	$aboutMoreButton = $ "#profile-about-more-button"
 	$aboutMore = $ "#profile-about-more"
+	$aboutMoreUl = $aboutMore.children "ul"
 
 
 
 	updateFollowerCountLabel = ->
 		$.ajax
 			type: "get"
-			url: "/social/api/get-follower-count/#{viewingUsername}/"
+			url: "/api/get-follower-count/#{viewingUsername}/"
 		.done (data) ->
 			followerCount = parseInt data
-			$aboutMore.find("#profile-about-follower-count").text("Followers: #{followerCount} #{pluralPersonWord followerCount}")
+			$aboutMore.find("#profile-about-follower-count").text("Followed by #{followerCount} #{pluralPersonWord followerCount}")
 
 		$.ajax
 			type: "get"
-			url: "/social/api/get-followed-count/#{viewingUsername}/"
+			url: "/api/get-followed-count/#{viewingUsername}/"
 		.done (data) ->
 			followedCount = parseInt data
-			$aboutMore.find("#profile-about-followed-count").text("Follows: #{followedCount} #{pluralPersonWord followedCount}")
+			$aboutMore.find("#profile-about-followed-count").text("Follows #{followedCount} #{pluralPersonWord followedCount}")
 
 
 
@@ -52,14 +53,14 @@ $(document).ready ->
 			aboutSlideTime
 
 		if aboutVisible
-			$aboutMore.slideDown time, -> aboutSliding = no
-			$aboutButton.text "Close"
+			$aboutMoreUl.slideDown time, -> aboutSliding = no
+			$aboutMoreButton.text "Close"
 		else
-			$aboutMore.slideUp time, -> aboutSliding = no
-			$aboutButton.text "About"
+			$aboutMoreUl.slideUp time, -> aboutSliding = no
+			$aboutMoreButton.text "About"
 
 
-	$aboutButton.click ->
+	$aboutMoreButton.click ->
 		setAboutMoreVisible not aboutVisible
 
 	setAboutMoreVisible no, yes
@@ -75,7 +76,7 @@ $(document).ready ->
 
 		$.ajax
 			type: "POST"
-			url: "/social/follow/"
+			url: "/api/toggle-follows/"
 			data: followUser: viewingUsername
 		.done (data) ->
 			if data.toLowerCase() is "true"
@@ -88,64 +89,3 @@ $(document).ready ->
 			updateFollowerCountLabel()
 
 			clickedFollowButton = no
-
-
-
-	viewFollowersFollowedButtonClicked = (title, url) ->
-		dialogue = new Dialogue title: title
-		return unless dialogue
-
-		$.getJSON url, (data) ->
-			# [{fullName: "Ben", username: "Ben", profileImage: ""}, {fullName: "Testy", username: "Test", profileImage: ""}, {fullName: "A", username: "a", profileImage: ""}]
-
-			# for i in [0...255]
-			# 	dialogue.$dialogueContent.append i + "<br>"
-
-
-			for user in data.users
-				$userItem = $ "<div>"
-				$userItem.addClass "user-item"
-
-				$profileView = $ "<a>"
-				$profileView.addClass "user-item-view"
-				$profileView.attr "href", user.absoluteUrl
-				$profileView.text "View profile"
-				$userItem.append $profileView
-
-				$profileImage = $ "<img>"
-				$profileImage.addClass "user-item-profile-image"
-				$profileImage.attr "src", user.profileImage
-				$profileImage.attr "alt", "No profile image"
-				$userItem.append $profileImage
-
-				$fullName = $ "<div>"
-				$fullName.addClass "user-item-full-name"
-				$fullName.text user.fullName
-				$userItem.append $fullName
-
-				$username = $ "<div>"
-				$username.addClass "user-item-username"
-				$username.text "@#{user.username}"
-				$userItem.append $username
-
-				$description = $ "<div>"
-				$description.addClass "user-item-description"
-				$description.text user.description
-				$userItem.append $description
-
-				$userItem.hide().appendTo(dialogue.$dialogueContent).slideDown(200)
-
-
-
-	$viewFollowersButton = $ "#profile-view-followers-button"
-	$viewFollowersButton.click ->
-		viewFollowersFollowedButtonClicked "#{if viewingSelf then 'Your' else wordToGenitiveCase viewingFirstName} Followers",
-			"/social/api/get-followers/#{viewingUsername}"
-
-	$viewFollowedButton = $ "#profile-view-followed-button"
-	$viewFollowedButton.click ->
-		viewFollowersFollowedButtonClicked "Who #{if viewingSelf then 'you' else viewingFirstName} follow#{unless viewingSelf then 's' else ''}",
-			"/social/api/get-users-followed-by/#{viewingUsername}"
-
-
-	# viewFollowersFollowedButtonClicked "Your followers", "/social/api/get-followers/#{viewingUsername}"

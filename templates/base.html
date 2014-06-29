@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<title>Connected | {{ siteTitle }}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		{% block headContent %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% endblock %}
+		<noscript id="noscript" class="dialogue">
+			<div class="dialogue-vertical-center-container">
+				<div class="dialogue-container">
+					<header class="dialogue-header">
+						<h1>No JavaScript</h1>
+					</header>
+					<div class="dialogue-content">
+						<p>
+							This site requires JavaScript to function correctly. Please enable JavaScript in your browser or upgrade to a more modern browser that supports JavaScript.
+						</p>
+						<div class="dialogue-button-container">
+							<a class="dialogue-button" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">
+								<figure>
+									<img src="{% static 'image/mozilla-firefox-icon.png' %}" alt="Mozilla Firefox">
+									<figcaption>
+										Mozilla Firefox
+									</figcaption>
+								</figure>
+							</a>
+							<a class="dialogue-button" href="https://www.google.com/intl/en/chrome/browser/" target="_blank">
+								<figure>
+									<img src="{% static 'image/google-chrome-icon.png' %}" alt="Google Chrome">
+									<figcaption>
+										Google Chrome
+									</figcaption>
+								</figure>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</noscript>
+		<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+		<script src="{% static 'js/ajax_send.js' %}"></script>
+		<script>
+			$("#noscript").remove();
+		</script>
+		<script src="{% static 'js/logout_button.js' %}"></script>
+		{% block script %}
+		{% endblock %}
+	</body>
+</html>

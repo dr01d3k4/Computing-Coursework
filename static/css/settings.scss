@@ -2,6 +2,7 @@
 	width: 100%;
 	max-width: $settings-form-width;
 	margin: auto;
+	padding-bottom: 8px;
 
 	h1 {
 		font-size: $settings-title-font-size;
@@ -30,8 +31,13 @@
 		min-height: $post-text-box-one-line-height * 1;
 		height: $post-text-box-one-line-height * 2;
 		max-height: $post-text-box-one-line-height * 3;
-		border: $global-dark-border;
 		margin-bottom: $index-input-margin-bottom;
+		border: $global-dark-border;
+		border-radius: $global-border-radius;
+
+		&:hover, &:focus {
+			background-color: $index-input-focus-background-colour;
+		}
 	}
 
 	#profile-image-view {

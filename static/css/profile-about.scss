@@ -1,17 +1,17 @@
 #profile-aside {
-	display: inline-block;
-	float: left;
-	width: $profile-about-inner-width; //  + (2 * $profile-about-padding);
-	margin-left: $content-inner-margins;
 	@include multi-property(border-box, box-sizing);
 
+	display: inline-block;
+	float: left;
+	width: $profile-about-width;
+	margin-left: $content-inner-margins;
 }
 
 
 %aside-block {
 	@include multi-property(border-box, box-sizing);
+	@include multi-property(border-radius, $global-border-radius);
 	display: block;
-	width: 100%;
 	padding: $profile-about-padding;
 	background-color: $profile-about-background-colour;
 	box-shadow: $background-shadow-size $background-shadow-size $background-shadow-spread $background-shadow-colour;
@@ -21,7 +21,7 @@
 
 #profile-about {
 	@extend %aside-block;
-	margin-bottom: 16px;
+	margin-bottom: 32px;
 
 	#profile-about-image {
 		@extend %profile-image;
@@ -74,16 +74,20 @@
 
 	#profile-about-more-button {
 		@extend %profile-button;
-		margin-bottom: 0px;
+		margin: -1px -1px;
 	}
 
 	#profile-about-more {
 		@extend #profile-about-content;
-		padding: $profile-about-button-padding;
+		@include multi-property(border-radius, $global-border-radius);
+		margin-top: $profile-about-padding;
 		border: $global-dark-border;
+		font-size: 100%;
 
 		li {
+			padding: $profile-about-button-padding;
 			line-height: $profile-about-more-line-height;
+			font-size: 0.8em;
 
 			a {
 				color: $blue;
@@ -101,6 +105,7 @@
 	@extend %aside-block;
 
 	h2 {
+		margin-bottom: 16px;
 		font: {
 			size: $profile-about-fullname-font-size;
 			weight: bold;
@@ -119,6 +124,30 @@
 				&:hover, &:active {
 					text-decoration: underline;
 				}
+			}
+
+			ul {
+				margin-left: 16px;
+			}
+		}
+	}
+}
+
+
+
+@media only screen and (min-width: 0px) and (max-width: $site-width) {
+	#profile-aside {
+		width: 100%;
+		display: block;
+		margin: auto !important;
+		float: none;
+		clear: both;
+
+		#profile-about, #profile-suggestions {
+			margin: {
+				bottom: 16px !important;
+				left: auto !important;
+				right: auto !important;
 			}
 		}
 	}

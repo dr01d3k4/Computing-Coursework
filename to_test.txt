@@ -1,0 +1,84 @@
+Index
+	- Clicking on register/login buttons closes the cover and opens the correct form
+	- Cancel button closes form
+	- Clicking register and login buttons on the forms submit to the server
+		- Check validation for these
+			- Register
+				- Username is unique (case insensitive)
+				- Email is valid email
+				- Password security and confirm password matches
+				- First name supplied
+			- Login
+				- Username exists
+				- Password is correct
+				- User correctly authenticated (and not banned etc)
+	- After clicking on register or login
+		- If invalid then errors shown
+		- If valid then redirected to the profile page
+	- On mobile, the buttons and about place holders go vertical so no horizontal scrolling
+
+
+
+Header
+	- Back arrow shown on all pages apart from user's own profile
+	- Text next to back arrow shows correct text on all page
+	- Little text in header is correct
+	- Search bar shown on all pages and links to the search page with correct clean URL
+	- Profile and settings buttons take you to the correct page
+	- Logout POSTs to the API and redirects to the index page
+	- On mobile the header correctly becomes a drop down that is visible when clicked on, and search bar visible
+
+
+
+Profile
+	Side bar
+		About
+			- Shows correct profile image or "no profile image" place holders
+			- Shows the viewed user's real name and username
+			- Shows the user's description or "doesn't have a description" place holder
+			- Only shows the "follow" button on other users' profile
+			- Follow button is blue when followed, grey when not followed
+			- Follow button POSTs to the toggle follow API and changes its look based on the result
+			- View followers and view followed buttons link to the correct pages
+			- About button opens the about box that shows user's website and follower and follows count
+
+		Suggestion box
+			- On your profile, correctly picks up to 5 random people who the people you've spoken to a lot have spoken to and you aren't already following
+			- On somebody else's profile, shows up to 5 random friends
+
+	Posts
+		- 0When page loads, 10 most recent posts are fetched and loaded
+		- If no posts available then message shown
+		- When user scrolls down, 10 more posts are loaded
+			- If no posts are returned from server, then stops trying to fetch when scroll down (because limit reached - saves data 
+		- Every 20 (I think) seconds, latest posts are fetched from server and displayed, without duplicates
+		- When view replies button clicked, either "no replies" message displayed or replies loaded and shown, and the button changes to say "close"
+		- When this close button clicked, the replies children div closes
+		- View conservation button recursively loads parent post until top layer hit
+		- Post reply button closes the reply box wherever it is and reopens at this place, and button changes text to "close"
+		- Post new post button only showed when user on their own profile
+		- Post button posts new post to the server and is shown to the user, maybe in multiple places, and the post box closes
+		- Delete button stuff
+
+
+
+Settings
+	- Shows fields for first middle and last names, description, website and profile image
+	- Validation
+		- First name not blank
+		- Length of description
+		- Website is a valid URL
+		- Profile image isn't too large and right file type
+	- Clear profile image button deletes current image
+	- Accept changes posts update to server, shows errors if there are any else redirects to profile page
+
+
+
+Search, view followers and view followed
+	- Title changes correctly depending on which page it is
+
+
+
+Logout
+	- If the user is logged in, logs them out
+	- Redirects to index page

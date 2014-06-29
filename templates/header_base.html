@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+	<header id="header">
+		<div id="inner-header">
+			{% if viewingUser != user %}
+				<a id="home-button" href="{% url 'connected:profile' %}">
+					&lt;
+				</a>
+			{% else %}
+				<div id="no-home-button">
+				</div>
+			{% endif %}
+			<h1 id="header-title">
+				{{ headerTitle }}
+			</h1>
+			<h4 id="small-username">
+				{{ headerSmallTitle }}
+			</h4>
+			<div id="nav-container">
+				<div id="search-box-container">
+					<div id="search-box">
+						<form method="get" action="{% url 'connected:search' %}" onsubmit="return false;">
+							{% csrf_token %}
+							<input id="search-query" name="query" type="text" placeholder="Search for a user" value="" />
+							<input id="search-submit" type="submit" onclick="window.location.href = this.form.action + this.form.query.value;" />
+						</form>
+					</div>
+				</div>
+				<nav id="nav" role="navigation">
+					<a id="menu-icon">Navigation</a>
+					<ul>
+						<li>
+							<a href="{% url 'connected:profile' %}">Profile</a>
+						</li>
+						<li>
+							<a href="{% url 'connected:settings' %}">Settings</a>
+						</li>
+						<li>
+							<div id="logout-button">Logout</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main id="content-outer">
+		<div id="content-inner">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</main>
+{% endblock %}
+{% block script %}
+{% endblock %}
